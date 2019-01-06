@@ -4,340 +4,321 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dong Ho Max Home</title>
+    <title>Man-Watches</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script src="java.js"></script>
-	<script src="check_error.js"></script>
+    <script src="../JavaScript/java.js"></script>
+    <script src="../JavaScript/check_error.js"></script>
 
+ 
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style type="text/css">
 
-    <link rel="stylesheet" href="responsive.css">
+    </style>
 
-<body style="background-color: white;">
+<body style="background-color: aliceblue;">
+
     <script>
         var tk =  sessionStorage.getItem('ten');
         window.onload = function () {
             // do stuff to load your form fields 
-            if(tk =="namdang"|| tk == "vinhtran"){
-              
-                document.getElementById("tk").innerHTML = tk;
-            }else{
-                document.getElementById("tk").innerHTML = 'Tài Khoản';
-            }
-
-
-           
+            document.getElementById("tk").innerHTML = tk;
         }
       </script>
-
 
     <div id="wapper">
         <div class="container-fluid">
 
             <div class="row fixtop">
 
-                <?php
-                    include('top.php');
-                ?>
 
-            </div>
+                <div class="row">
+                    <div id="header">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">
 
+                            <!-- <img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image"> -->
+                            <a href="../index.php"><img style="margin: 20px 0px 20px 20px;" src="..\image\tissot-logo.png" class="img-responsive"
+                                    alt="Image">
+                            </a>
+                        </div>
 
-
-
-
-
-            <div class="row">
-                <!-- slide -->
-                <div style="position: relative" id="contain">
-
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-
-                        <!-- Wrapper for slides -->
-                        <div style="position: relative; margin-top: 170px;" class="carousel-inner">
-
-                            <div class="item active">
-                                <img src="image\slide1.jpg" class="d-block w-100" style="width:100%;">
-                                <div class="carousel-caption">
-                                    <h2>TISSOT TRADITION 5.5</h2>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <div class="row">
+                                <div class="bar">
+                                    <a style="width: 30%;" href="#news">Vị Trí <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
+                                    <a  style="width: 40%;"data-toggle="modal" data-target="#modal-idform"><span id="tk">Tài Khoản</span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
+                                    <a style="width: 30%;" href="displayCart.html">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
+                                            onclick="displayProduct()"></i><i id="cart2">0</i>
+                                    </a>
+                                  
                                 </div>
                             </div>
+                            <div class="row">
 
-                            <div class="item">
-                                <img src="image\slide2.jpg" class="d-block w-100" style="width:100%;">
-                                <div class="carousel-caption">
-                                    <h2>TISSOT CHRONO XL 3.5</h2>
-                                </div>
-                            </div>
+                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 offset-1">
+                                    <div class="row">
+                                        <div class="search">
+                                            <div class="input-group">
+                                                <input type="text" class="  search-query form-control" placeholder="Search" />
+                                                <span class="input-group-btn">
+                                                    <button style="float: left" class="btn btn-danger" type="button">
+                                                        <span class=" glyphicon glyphicon-search"></span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--row -->
 
-                            <div class="item">
-                                <img src="image\slide3.jpg" class="d-block w-100" style="width:100%;">
-                                <div class="carousel-caption">
-                                    <h2>TISSOT T-TOUCH</h2>
                                 </div>
+
+
                             </div>
-                            <div class="item">
-                                <img src="image\slide4.jpg" class="d-block w-100" style="width:100%;">
-                                <div class="carousel-caption">
-                                    <h2>TISSOT T-RACE 2.5</h2>
-                                </div>
-                            </div>
-                            <ol class="carousel-indicators ">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                                <li data-target="#myCarousel" data-slide-to="3"></li>
-                            </ol>
 
                         </div>
 
-                        <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                    </div>
+                    <!-- header -->
+                </div>
+
+
+
+                <div style="margin-left: 5px; margin-right: 3px;" class="row">
+                    <div class="row">
+                        <div class="row na1">
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                <nav style="background-color: aliceblue;" class="navbar navbar-default" role="navigation">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <button style="float: left;margin-left: 12px" type="button" class="navbar-toggle glyphicon glyphicon-shopping-cart">
+                                        </button>
+                                        <button style="float: left;" type="button" class="navbar-toggle glyphicon glyphicon-user">
+                                        </button>
+                                        <button style="float: left;" type="button" class="navbar-toggle glyphicon glyphicon-map-marker">
+                                        </button>
+
+                                    </div>
+
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                        <ul class="nav navbar-nav menu">
+                                            <li class="search2">
+                                                <div class="input-group">
+                                                    <input style="margin-left: 5px;" type="text" class="  search-query form-control"
+                                                        placeholder="Search" />
+                                                    <span class="input-group-btn">
+                                                        <button style="margin-right: 5px;" class="btn btn-danger" type="button">
+                                                            <span class=" glyphicon glyphicon-search"></span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <li class="menufull"><a href="javascript:void(0)">Thương Hiệu</a>
+
+                                                <div class="row">
+
+                                                    <ul style="width: 1050%;" class="nav navbar-nav menu-sub-full">
+                                                        <div class="row-fluid">
+
+                                                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                                <li style="width: 200%;" class="media">
+                                                                    <div class="media-body">
+
+                                                                        <ul class="unstyled">
+                                                                            <li>
+                                                                                <h4 href="#">Hãng Bán Chạy</h4>
+                                                                            </li>
+
+                                                                            <li><a href="#">Casio</a></li>
+                                                                            <li><a href="#">Citizen</a></li>
+                                                                            <li><a href="#">Seiko</a></li>
+                                                                            <li><a href="#">Op</a></li>
+                                                                            <li><a href="#">Sakagen</a></li>
+                                                                            <li><a href="#">Op</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </div>
+                                                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                                <li style="width: 200%;" class="media">
+                                                                    <div class="media-body">
+
+                                                                        <ul class="unstyled">
+                                                                            <li>
+                                                                                <h4 href="#">Đồng Hồ Cao Cấp</h4>
+                                                                            </li>
+
+                                                                            <li><a href="#">Patek Philipe</a></li>
+                                                                            <li><a href="#">Sarcar</a></li>
+                                                                            <li><a href="#">Zenith</a></li>
+                                                                            <li><a href="#">Rolex</a></li>
+                                                                            <li><a href="#">Sakagen</a></li>
+                                                                            <li><a href="#">Op</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </div>
+                                                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                                <li style="width: 200%;" class="media">
+                                                                    <div class="media-body">
+
+                                                                        <ul class="unstyled">
+                                                                            <li>
+                                                                                <h4 href="#">Đồng Hồ Thụy Sỹ</h4>
+                                                                            </li>
+
+                                                                            <li><a href="#">Oris</a></li>
+                                                                            <li><a href="#">Titoni</a></li>
+                                                                            <li><a href="#">Longines</a></li>
+                                                                            <li><a href="#">CC Watches</a></li>
+                                                                            <li><a href="#">Cover</a></li>
+                                                                            <li><a href="#">Rado</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </div>
+                                                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                                <li style="width: 200%;" class="media">
+                                                                    <div class="media-body">
+
+                                                                        <ul class="unstyled">
+                                                                            <li>
+                                                                                <h4 href="#">Đồng Hồ Nhật</h4>
+                                                                            </li>
+
+                                                                            <li><a href="#">Casio</a></li>
+                                                                            <li><a href="#">Citizen</a></li>
+                                                                            <li><a href="#">Orients</a></li>
+                                                                            <li><a href="#">Seiko</a></li>
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </ul>
+
+                                                </div>
+
+                                            </li>
+                                            <li><a href="Man-watch.html">Đồng Hồ Nam</a></li>
+                                            <li><a href="#">Đồng Hồ Nữ</a></li>
+                                            <li><a href="#">Đồng Hồ Đôi</a></li>
+                                            <li class="menu2"><a href="#">Phụ kiện</a>
+                                                <ul class="nav navbar-nav menu-sub">
+                                                    <li><a href="#">Dây Da ZRC</a></li>
+                                                    <li><a href="#">Dây Da Hir</a></li>
+                                                    <li><a href="#">Hộp Đồng Hồ</a></li>
+                                                </ul>
+
+                                            </li>
+                                            <li class="menu2"> <a>Liên Hệ</a>
+                                                <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> -->
+
+                                                <ul class="nav navbar-nav menu-sub">
+                                                    <li><a href="#">Thông Tin LH</a></li>
+                                                    <li><a href="#">Góp ý</a></li>
+
+                                                </ul>
+
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+                                </nav>
+                            </div><!-- /.navbar-collapse -->
+
+
+
+                        </div>
                     </div>
                 </div>
-                <!-- slide -->
+
+
             </div>
+
+
 
 
             <div class="row">
-                <div id="content">
-
-                    <h2 style="text-align: center">
-                        <b>SẢN PHẨM MỚI</b>
-                    </h2>
-
-
-                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product">
-                        
-                        <div class="product-img">
-                            <a href="chitiet.html" class="thumbnail">
-                                <img src="image/12.png" class="img-responsive hvr-pulse" alt="Image">
-                                
-                            </a>
+                <div class="row" style="margin-top: 140px;">
+                    <div class="container">
+                        <div class="page-header">
+                            <center>
+                                <h1>Đồng Hồ Nam<br><small>Sức Mạnh Cho Phái Mạnh.</small></h1>
+                            </center>
                         </div>
-                        <div class="caption">
-                            <h3>TISSOT CHRONO</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua
-                                    Ngay</button>
-                                <a href="chitiet.html">
-                                     
-                                </a>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                <center><img src="..\image\beck.jpg" class="img-responsive" alt="Image"></center>
                             </div>
-                        </div>
 
-                    </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
 
-                    <div style="width: 100%;" class="modal" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
+                                <center>
+                                    <h1>Thương Hiệu Đồng Hồ Nam</h1>
+                                </center>
 
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 style="text-align: center;" class="modal-title">Thông Tin Chi Tiết</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-
-                                    <div class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object" src="image/12.png" alt="Image">
-                                        </a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot  </h4>
-                                            <p>Thông tin sản phẩm</p>
-                                            <p><b> Mã Số Sản Phẩm:</b><i name="code">EFV-540L-1AVUDF</i> </p>
-                                            <p><b>Phân Loại:</b> Đồng Hồ Nam</p>
-                                            <p style="color: red;font-size: 20px;"><b name="price">2.562000</b>  ₫</p>
-                                            <p>Mẫu Casio EFV-540L-1AVUDF vẻ ngoài tạo nên dáng lịch lãm với phần dây
-                                                đeo bằng da tông đen quý phái, đồng hồ kiểu dáng 6 kim mang đến một
-                                                phong
-                                                cách độc đáo đầy nam tính khi đi kèm chức năng Chronograph.</p>
-
-                                            <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
-                                                    <button id="minus" type="button" onclick="minus(0)" class="btn btn-default btn-number"
-                                                        data-type="minus" data-field="quant[1]">
-                                                        <span class="glyphicon glyphicon-minus"></span> </button>
-
-                                                </span> <input name="quant[3]" class="form-control input-number" value="1"
-                                                    type="text" id="sl" > <span class="input-group-btn">
-
-
-                                                    <button id="plus" type="button" onclick="plus(0)" class="btn btn-default btn-number"
-                                                        data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
-                                                    </button> </span>
-                                            </div>
-                                            <br>
-                                            <button type="button" class="btn btn-danger btpro">Mua ngay</button>
-                                            <button type="button" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm
-                                                vào giỏ</button>
-
-
-
-
-
-
-                                        </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 thuonghieu">
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">CASIO</button>
                                     </div>
-
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;" class="modal" id="myModal2">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 style="text-align: center;" class="modal-title">Thông Tin Chi Tiết</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-
-                                    <div class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object" src="image/12.png" alt="Image">
-                                        </a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot 8.5</h4>
-                                            <p>Thông tin sản phẩm</p>
-                                            <p><b> Mã Số Sản Phẩm:</b><i name="code">EFV-540L-2AVUDF</i> </p>
-                                            <p><b>Phân Loại:</b> Đồng Hồ Nam</p>
-                                            <p style="color: red;font-size: 20px;"><b name="price">2.562000 </b>₫</p>
-                                            <p>Mẫu Casio EFV-540L-1AVUDF vẻ ngoài tạo nên dáng lịch lãm với phần dây
-                                                đeo bằng da tông đen quý phái, đồng hồ kiểu dáng 6 kim mang đến một
-                                                phong
-                                                cách độc đáo đầy nam tính khi đi kèm chức năng Chronograph.</p>
-
-                                            <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
-                                                    <button id="minus" type="button" onclick="minus(1)" class="btn btn-default btn-number"
-                                                        data-type="minus" data-field="quant[1]">
-                                                        <span class="glyphicon glyphicon-minus"></span> </button>
-
-                                                </span> <input name="quant[3]" class="form-control input-number" value="1"
-                                                    type="text" id="sl" > <span class="input-group-btn">
-
-
-                                                    <button id="plus" type="button" onclick="plus(1)" class="btn btn-default btn-number"
-                                                        data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
-                                                    </button> </span>
-                                            </div>
-                                            <br>
-                                            <button type="button" class="btn btn-danger btpro">Mua ngay</button>
-                                            <button type="button" onclick="addProduct(1)" class="btn btn-danger btpro">Thêm
-                                                vào giỏ</button>
-
-
-
-
-
-
-                                        </div>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">SEIKO</button>
                                     </div>
-
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">OP</button>
+                                    </div>
                                 </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 thuonghieu">
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">TITAN</button>
+                                    </div>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">SKAGEN</button>
+                                    </div>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">TIMEX</button>
+                                    </div>
                                 </div>
-
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 thuonghieu">
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">X-MEN</button>
+                                    </div>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">DOXA</button>
+                                    </div>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-default">POLICE</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-
-                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/2.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>TISSOT EVERYT</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-success">Mua
-                                    Ngay</button>
-                                <a href="chitiet.html">
-                                     
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/4.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>TISSOT SWISSM</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                 
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/5.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>TISSOT TRADITT</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                 
-
-                            </div>
-                        </div>
-
-                    </div>
-                   
-
-
-
-
-
-                </div> <!-- content -->
-
+                </div>
             </div>
+
+
+
+
+
             <div class="row">
                     <div id="content">
     
@@ -350,7 +331,7 @@
                             
                             <div class="product-img">
                                 <a href="chitiet.html" class="thumbnail">
-                                    <img src="image/12.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/12.png" class="img-responsive hvr-pulse" alt="Image">
                                     
                                 </a>
                             </div>
@@ -362,7 +343,7 @@
                                     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua
                                         Ngay</button>
                                     <a href="chitiet.html">
-                                         
+                                       
                                     </a>
                                 </div>
                             </div>
@@ -384,7 +365,7 @@
     
                                         <div class="media">
                                             <a class="pull-left" href="#">
-                                                <img class="media-object" src="image/12.png" alt="Image">
+                                                <img class="media-object" src="../image/12.png" alt="Image">
                                             </a>
                                             <div class="media-body">
                                                 <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot  </h4>
@@ -448,7 +429,7 @@
     
                                         <div class="media">
                                             <a class="pull-left" href="#">
-                                                <img class="media-object" src="image/12.png" alt="Image">
+                                                <img class="media-object" src="../image/12.png" alt="Image">
                                             </a>
                                             <div class="media-body">
                                                 <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot 8.5</h4>
@@ -502,7 +483,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/2.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/2.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -513,7 +494,7 @@
                                     <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-success">Mua
                                         Ngay</button>
                                     <a href="chitiet.html">
-                                         
+                                       
                                     </a>
                                 </div>
                             </div>
@@ -522,7 +503,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/4.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/4.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -531,7 +512,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -540,7 +521,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/5.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/5.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -549,7 +530,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -558,7 +539,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/6.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/6.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -567,7 +548,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -576,7 +557,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/7.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/7.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -585,7 +566,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -594,7 +575,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/8.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/8.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -603,7 +584,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -612,7 +593,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/10.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/10.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -621,7 +602,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -630,7 +611,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/11.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/11.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -639,7 +620,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -648,7 +629,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/12.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/12.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -657,7 +638,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -666,7 +647,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/6.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/6.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -675,7 +656,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -684,7 +665,7 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
                             <div class="product-img">
                                 <a href="#" class="thumbnail">
-                                    <img src="image/7.png" class="img-responsive hvr-pulse" alt="Image">
+                                    <img src="../image/7.png" class="img-responsive hvr-pulse" alt="Image">
                                 </a>
                             </div>
                             <div class="caption">
@@ -693,7 +674,7 @@
                                 <div class="bt-cost">
     
                                     <button type="button" class="btn btn-success">Mua Ngay</button>
-                                     
+                                   
     
                                 </div>
                             </div>
@@ -707,13 +688,13 @@
                     </div> <!-- content -->
     
                 </div>
-    
 
+
+                <div class="row">
+                    <?php include('bottom.php'); ?>
+                 </div>
             
-            <div class="row">
-                <?php include('bottom.php'); ?>
-            </div>
-            
+    
 
 
 
@@ -744,7 +725,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span id="errname">Tên Đăng Nhập:</span>
+                                    <span>Tên Đăng Nhập:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <input type="text" name="" id="input_name" class="form-control" value="" required="required" pattern="" title="">
@@ -752,7 +733,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span id="errpass">Mật khẩu:</span>
+                                    <span>Mật khẩu:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <input type="Password" name="" id="input_pass" class="form-control" value="" required="required" pattern="" title="">
@@ -937,7 +918,6 @@
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
