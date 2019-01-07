@@ -21,9 +21,6 @@ error_reporting(1);
         case 'display':
             header('Location: ../../view/product.php');
             break;
-        case 'update':
-            header('Location: ../../view/edit_product.php?idProduct=5');
-            break;
         
         default:
             # code...
