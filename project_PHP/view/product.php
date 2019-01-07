@@ -37,11 +37,11 @@
 
     <?php
         require "../model/database.php";
-        if(isset($_GET['acction'])){
-            echo "ok";
-        }else{
-            echo "No";
-        }
+        $db = new database;
+        $arr = array();
+        $arr=  $db->display("product");
+        
+       
     ?>
 
 
@@ -51,7 +51,7 @@
       <div class="row">
           
             
-            <nav style = "width:117%;margin-left:-100px;"class="navbar navbar-default" role="navigation">
+      <nav class="navbar navbar-default" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -102,7 +102,50 @@
             
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="display">...cgxcf</div>
+                 <!-- hiển thị sản phẩm -->
+                    <div role="tabpanel" class="tab-pane active" id="display">
+                    <div class="row">
+                            
+                            <table class="table table-hover table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Tình trạng</th>
+                                        <th>Ngày Nhập</th>
+                                        <th>Tùy chỉnh</th>
+                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $count =0;
+                                    foreach ($arr as $key => $value) {
+                                        $count ++;
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $count; ?></td>
+                                            <td><?php echo $value['prod_name']; ?></td>
+                                            <td><?php echo $value['price']; ?></td>
+                                            <td><?php echo $value['quantity']; ?></td>
+                                            <td><?php echo $value['status']; ?></td>
+                                            <td><?php echo $value['imported_date']; ?></td>
+                                        
+                                            <td> <a href="edit_product.php?idProduct=<?php echo $value['id']; ?>">Chỉnh sữa</a> 
+                                            |  <a href="index.php?idProduct=<?php echo $value['id']; ?>">Xóa</a> </td>
+                                        </tr>
+                                    <?php  
+                                    }
+                                    ?>
+
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                        
+                    </div>
                     <div role="tabpanel" class="tab-pane" id="add">...</div>
                 </div>
             </div>

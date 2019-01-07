@@ -41,7 +41,7 @@
       <div class="row">
           
             
-            <nav style = "width:117%;margin-left:-100px;"class="navbar navbar-default" role="navigation">
+            <nav class="navbar navbar-default" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -89,7 +89,7 @@
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 a">
 
-                <a href="product.php?acction = display" class="thumbnail icon">
+                <a href="../controller/product/controler.php?action=display" class="thumbnail icon">
 
                
 
