@@ -7,16 +7,16 @@
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <script src="java.js"></script>
-  <script src="check_error.js"></script>
+  <script src="JavaScript/java.js"></script>
+  <script src="JavaScript/check_error.js"></script>
 
 
-  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
   <div id="wapper">
     <div class="container-fluid">
 
-      <div style = "width: 100%;margin-left: -25px;margin-right: -30px;"  class="row fixtop">
+      <div style = "width: 100%;margin-left: -15px;margin-right: -30px;"  class="row fixtop">
 
 
         <div class="row">
@@ -74,7 +74,6 @@
           </div>
           <!-- header -->
         </div>
-
 
 
         <div style="margin-left: 5px; margin-right: 3px;" class="row">

@@ -34,6 +34,7 @@
 </head>
 
 <body>
+
     <?php
         require "../model/database.php";
         if(isset($_GET['acction'])){
@@ -42,6 +43,8 @@
             echo "No";
         }
     ?>
+
+
   
   <div class="container">
       

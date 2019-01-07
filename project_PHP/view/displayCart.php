@@ -4,25 +4,76 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Gio Hang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script src="java.js"></script>
-	<script src="check_error.js"></script>
+    <script src="../JavaScript/java.js"></script>
 
-    <link rel="stylesheet" href="Hover-master\css\hover.css">
-    <link rel="stylesheet" href="responsive.css">
-    <style type="text/css">
-     
-    </style>
+
+    <link rel="stylesheet" href="../css/responsive.css">
+
 <body style="background-color: aliceblue;">
 
+    <script>
+        var list2 = sessionStorage.getItem('list1');
+        var arrlist = JSON.parse(list2);
 
+        var sl = sessionStorage.getItem('SLpage2');
+        var leng = 0;
+
+        var tk =  sessionStorage.getItem('ten');
+        
+      
+
+       
+        window.onload = function () {
+            // do stuff to load your form fields 
+            document.getElementById("tk").innerHTML = tk;
+
+            document.getElementById("cart2").innerHTML = sl;
+
+            var table = document.getElementById("table2");
+
+            for (var i = leng; i < arrlist.length; i++) {
+                var newrow = table.insertRow(table.length);
+
+                var cell0 = newrow.insertCell(0);
+                var cell1 = newrow.insertCell(1);
+                var cell2 = newrow.insertCell(2);
+                var cell3 = newrow.insertCell(3);
+                cell0.innerHTML = arrlist[i].name_product;
+                cell1.innerHTML = arrlist[i].price;
+                cell2.innerHTML = arrlist[i].quantity;
+                cell3.innerHTML = "Xóa Sản Phẩm";
+
+                leng = i + 1;
+
+            }
+            totalPrice();
+        };
+
+        function totalPrice() {
+
+            var total = 0;
+            for (var i = 0; i < arrlist.length; i++) {
+                var a = parseFloat(arrlist[i].price) * parseFloat(arrlist[i].quantity);
+                total = total + a;
+            }
+
+
+            var x = document.getElementsByClassName("tien");
+            x[0].innerHTML = total;
+            x[1].innerHTML = total;
+
+        }
+
+
+    </script>
 
     <div id="wapper">
         <div class="container-fluid">
@@ -36,7 +87,7 @@
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">
 
                             <!-- <img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image"> -->
-                            <a href="#"><img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive"
+                            <a href="../index.php"><img style="margin: 20px 0px 20px 20px;" src="..\image\tissot-logo.png" class="img-responsive"
                                     alt="Image">
                             </a>
                         </div>
@@ -44,10 +95,10 @@
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             <div class="row">
                                 <div class="bar">
-                                    <a style="width: 30%;" href="#news">Store Locator <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
-                                    <a style="width: 40%;"data-toggle="modal" data-target="#modal-idform">My Account <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
-                                    <a style="width: 30%;" href="displayCart.html">My Cart <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
-                                            onclick="displayProduct()"></i><i id="cart">0</i>
+                                    <a style="width: 30%;" href="#news">Vị Trí <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
+                                    <a  style="width: 40%;"data-toggle="modal" data-target="#modal-idform"><span id="tk">Tài Khoản</span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
+                                    <a style="width: 30%;" href="displayCart.html">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
+                                            onclick="displayProduct()"></i><i id="cart2">0</i>
                                     </a>
                                   
                                 </div>
@@ -210,9 +261,9 @@
                                                 </div>
 
                                             </li>
-                                            <li><a href="#">Đồng Hồ Nam</a></li>
+                                            <li><a href="Man-watch.html">Đồng Hồ Nam</a></li>
                                             <li><a href="#">Đồng Hồ Nữ</a></li>
-                                            <li><a href="#">Đồng Hồ đôi</a></li>
+                                            <li><a href="#">Đồng Hồ Đôi</a></li>
                                             <li class="menu2"><a href="#">Phụ kiện</a>
                                                 <ul class="nav navbar-nav menu-sub">
                                                     <li><a href="#">Dây Da ZRC</a></li>
@@ -248,479 +299,471 @@
             </div>
 
 
+            <div class="row xemGioHang">
 
-            <div class="row">
-                <div class="row" style="margin-top: 140px;">
-                    <div class="container">
-                        <div class="page-header">
-                            <center>
-                                <h1>Đồng Hồ Nam<br><small>Sức Mạnh Cho Phái Mạnh.</small></h1>
-                            </center>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                <center><img src="image\beck.jpg" class="img-responsive" alt="Image"></center>
-                            </div>
+                <div class="row">
 
-                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-                               
-                                    <center>
-                                        <h1>Thương Hiệu Đồng Hồ Nam</h1>
-                                    </center>
-                              
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 thuonghieu">
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">CASIO</button>
-                                    </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">SEIKO</button>
-                                    </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">OP</button>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 thuonghieu">
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">TITAN</button>
-                                    </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">SKAGEN</button>
-                                    </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">TIMEX</button>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 thuonghieu">
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">X-MEN</button>
-                                    </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">DOXA</button>
-                                    </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-default">POLICE</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                    <div style="width: 100%;" class="container-fluid">
+                        <h1 class="title">
+                            <span>Giỏ Hàng</span>
+
+
+                        </h1>
+
                     </div>
-                    
+
+
                 </div>
+
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-md-offset-1">
+
+                        <table class="table table-hover table-bordered" id="table2">
+                            <thead>
+                                <tr>
+                                    <th>Sản Phẩm</th>
+                                    <th>Giá </th>
+                                    <th>Số Lượng</th>
+                                    <th>Xóa Sản Phẩm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+
+                        <div style="width: 100%" class="panel panel-danger tinhtien">
+
+                            <div class="panel-body">
+
+                                <div style="border-bottom: 1px solid blue" class="row">
+                                    <i style=>Thành tiền</i>
+                                    <i style="float: right;color: red">00 VND</i> <i class="tien" style="float: right;color: red">0</i>
+                                </div>
+                                <div class="row">
+                                    <i style=>Tổng</i>
+                                    <i style="float: right;">00 VND</i> <i class="tien" style="float: right;color: black">0</i>
+                                </div>
+
+                                <div class="row">
+                                    <button style="margin-top: 10%; margin-left: 20%; width: 60%;" type="button" class="btn btn-danger"> Đặt Hàng</button>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+              
+                <div class="row">
+                        <div id="content">
+        
+                            <h2 style="text-align: center">
+                                <b>CÓ THỂ BẠN QUAN TÂM</b>
+                            </h2>
+        
+        
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product">
+                                
+                                <div class="product-img">
+                                    <a href="chitiet.html" class="thumbnail">
+                                        <img src="../image/12.png" class="img-responsive hvr-pulse" alt="Image">
+                                        
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT CHRONO</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua
+                                            Ngay</button>
+                                        <a href="chitiet.html">
+                                            
+                                        </a>
+                                    </div>
+                                </div>
+        
+                            </div>
+        
+                            <div style="width: 100%;" class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+        
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 style="text-align: center;" class="modal-title">Thông Tin Chi Tiết</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+        
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+        
+                                            <div class="media">
+                                                <a class="pull-left" href="#">
+                                                    <img class="media-object" src="../image/12.png" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot  </h4>
+                                                    <p>Thông tin sản phẩm</p>
+                                                    <p><b> Mã Số Sản Phẩm:</b><i name="code">EFV-540L-1AVUDF</i> </p>
+                                                    <p><b>Phân Loại:</b> Đồng Hồ Nam</p>
+                                                    <p style="color: red;font-size: 20px;"><b name="price">2.562000</b>  ₫</p>
+                                                    <p>Mẫu Casio EFV-540L-1AVUDF vẻ ngoài tạo nên dáng lịch lãm với phần dây
+                                                        đeo bằng da tông đen quý phái, đồng hồ kiểu dáng 6 kim mang đến một
+                                                        phong
+                                                        cách độc đáo đầy nam tính khi đi kèm chức năng Chronograph.</p>
+        
+                                                    <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
+                                                            <button id="minus" type="button" onclick="minus(0)" class="btn btn-default btn-number"
+                                                                data-type="minus" data-field="quant[1]">
+                                                                <span class="glyphicon glyphicon-minus"></span> </button>
+        
+                                                        </span> <input name="quant[3]" class="form-control input-number" value="1"
+                                                            type="text" id="sl" > <span class="input-group-btn">
+        
+        
+                                                            <button id="plus" type="button" onclick="plus(0)" class="btn btn-default btn-number"
+                                                                data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
+                                                            </button> </span>
+                                                    </div>
+                                                    <br>
+                                                    <button type="button" class="btn btn-danger btpro">Mua ngay</button>
+                                                    <button type="button" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm
+                                                        vào giỏ</button>
+        
+        
+        
+        
+        
+        
+                                                </div>
+                                            </div>
+        
+                                        </div>
+        
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width: 100%;" class="modal" id="myModal2">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+        
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 style="text-align: center;" class="modal-title">Thông Tin Chi Tiết</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+        
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+        
+                                            <div class="media">
+                                                <a class="pull-left" href="#">
+                                                    <img class="media-object" src="../image/12.png" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot 8.5</h4>
+                                                    <p>Thông tin sản phẩm</p>
+                                                    <p><b> Mã Số Sản Phẩm:</b><i name="code">EFV-540L-2AVUDF</i> </p>
+                                                    <p><b>Phân Loại:</b> Đồng Hồ Nam</p>
+                                                    <p style="color: red;font-size: 20px;"><b name="price">2.562000 </b>₫</p>
+                                                    <p>Mẫu Casio EFV-540L-1AVUDF vẻ ngoài tạo nên dáng lịch lãm với phần dây
+                                                        đeo bằng da tông đen quý phái, đồng hồ kiểu dáng 6 kim mang đến một
+                                                        phong
+                                                        cách độc đáo đầy nam tính khi đi kèm chức năng Chronograph.</p>
+        
+                                                    <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
+                                                            <button id="minus" type="button" onclick="minus(1)" class="btn btn-default btn-number"
+                                                                data-type="minus" data-field="quant[1]">
+                                                                <span class="glyphicon glyphicon-minus"></span> </button>
+        
+                                                        </span> <input name="quant[3]" class="form-control input-number" value="1"
+                                                            type="text" id="sl" > <span class="input-group-btn">
+        
+        
+                                                            <button id="plus" type="button" onclick="plus(1)" class="btn btn-default btn-number"
+                                                                data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
+                                                            </button> </span>
+                                                    </div>
+                                                    <br>
+                                                    <button type="button" class="btn btn-danger btpro">Mua ngay</button>
+                                                    <button type="button" onclick="addProduct(1)" class="btn btn-danger btpro">Thêm
+                                                        vào giỏ</button>
+        
+        
+        
+        
+        
+        
+                                                </div>
+                                            </div>
+        
+                                        </div>
+        
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/2.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT EVERYT</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-success">Mua
+                                            Ngay</button>
+                                        <a href="chitiet.html">
+                                            
+                                        </a>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/4.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT SWISSM</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/5.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT TRADIT</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/6.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT V8ALP</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/7.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT TISSOT</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/8.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT HERITA</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/10.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT TISSOT</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/11.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT VISODT</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/12.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT AUTOMA</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/6.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT 5</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
+                                <div class="product-img">
+                                    <a href="#" class="thumbnail">
+                                        <img src="../image/7.png" class="img-responsive hvr-pulse" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="caption">
+                                    <h3>TISSOT 7</h3>
+                                    <div class="cost">Giá: 4.5000000</div>
+                                    <div class="bt-cost">
+        
+                                        <button type="button" class="btn btn-success">Mua Ngay</button>
+                                        
+        
+                                    </div>
+                                </div>
+        
+                            </div>
+        
+        
+        
+        
+        
+                        </div> <!-- content -->
+        
+                    </div>
+
+
+
             </div>
+
+
+
+
+
+
+
 
 
 
 
 
             <div class="row">
-                <div id="content">
-
-                    <h2 style="text-align: center">
-                        <b>SẢN PHẨM BÁN CHẠY</b>
-                    </h2>
-
-
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product">
-                        <div class="product-img">
-                            <a href="chitiet.html" class="thumbnail">
-                                <img src="image/12.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua
-                                    Ngay</button>
-                                <a href="chitiet.html">
-                                    <button type="button" class="btn btn-success">Chi Tiết</button>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div style="width: 100%;" class="modal" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 style="text-align: center;" class="modal-title">Thông Tin Chi Tiết</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-
-                                    <div class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object" src="image/12.png" alt="Image">
-                                        </a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot 6.7</h4>
-                                            <p>Thông tin sản phẩm</p>
-                                            <p><b> Mã Số Sản Phẩm:</b><i name="code">EFV-540L-1AVUDF</i> </p>
-                                            <p><b>Phân Loại:</b> Đồng Hồ Nam</p>
-                                            <p style="color: red;font-size: 20px;"><b name="price">2.562000</b>  ₫</p>
-                                            <p>Mẫu Casio EFV-540L-1AVUDF vẻ ngoài tạo nên dáng lịch lãm với phần dây
-                                                đeo bằng da tông đen quý phái, đồng hồ kiểu dáng 6 kim mang đến một
-                                                phong
-                                                cách độc đáo đầy nam tính khi đi kèm chức năng Chronograph.</p>
-
-                                            <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
-                                                    <button id="minus" type="button" onclick="minus(0)" class="btn btn-default btn-number"
-                                                        data-type="minus" data-field="quant[1]">
-                                                        <span class="glyphicon glyphicon-minus"></span> </button>
-
-                                                </span> <input name="quant[3]" class="form-control input-number" value="1"
-                                                    type="text" id="sl" > <span class="input-group-btn">
-
-
-                                                    <button id="plus" type="button" onclick="plus(0)" class="btn btn-default btn-number"
-                                                        data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
-                                                    </button> </span>
-                                            </div>
-                                            <br>
-                                            <button type="button" class="btn btn-danger btpro">Mua ngay</button>
-                                            <button type="button" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm
-                                                vào giỏ</button>
-
-
-
-
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;" class="modal" id="myModal2">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 style="text-align: center;" class="modal-title">Thông Tin Chi Tiết</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-
-                                    <div class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object" src="image/12.png" alt="Image">
-                                        </a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot 8.5</h4>
-                                            <p>Thông tin sản phẩm</p>
-                                            <p><b> Mã Số Sản Phẩm:</b><i name="code">EFV-540L-2AVUDF</i> </p>
-                                            <p><b>Phân Loại:</b> Đồng Hồ Nam</p>
-                                            <p style="color: red;font-size: 20px;"><b name="price">2.562000 </b>₫</p>
-                                            <p>Mẫu Casio EFV-540L-1AVUDF vẻ ngoài tạo nên dáng lịch lãm với phần dây
-                                                đeo bằng da tông đen quý phái, đồng hồ kiểu dáng 6 kim mang đến một
-                                                phong
-                                                cách độc đáo đầy nam tính khi đi kèm chức năng Chronograph.</p>
-
-                                            <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
-                                                    <button id="minus" type="button" onclick="minus(1)" class="btn btn-default btn-number"
-                                                        data-type="minus" data-field="quant[1]">
-                                                        <span class="glyphicon glyphicon-minus"></span> </button>
-
-                                                </span> <input name="quant[3]" class="form-control input-number" value="1"
-                                                    type="text" id="sl" > <span class="input-group-btn">
-
-
-                                                    <button id="plus" type="button" onclick="plus(1)" class="btn btn-default btn-number"
-                                                        data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
-                                                    </button> </span>
-                                            </div>
-                                            <br>
-                                            <button type="button" class="btn btn-danger btpro">Mua ngay</button>
-                                            <button type="button" onclick="addProduct(1)" class="btn btn-danger btpro">Thêm
-                                                vào giỏ</button>
-
-
-
-
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/2.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" data-toggle="modal" data-target="#myModal2" class="btn btn-success">Mua
-                                    Ngay</button>
-                                <a href="chitiet.html">
-                                    <button type="button" class="btn btn-success">Chi Tiết</button>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/4.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/5.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/6.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/7.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/8.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/10.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/11.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/12.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/6.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3  product">
-                        <div class="product-img">
-                            <a href="#" class="thumbnail">
-                                <img src="image/7.png" class="img-responsive hvr-pulse" alt="Image">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Đồng Hồ Tissot 6.7</h3>
-                            <div class="cost">Giá: 4.5000000</div>
-                            <div class="bt-cost">
-
-                                <button type="button" class="btn btn-success">Mua Ngay</button>
-                                <button type="button" class="btn btn-success">Chi Tiết</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-
-
-                </div> <!-- content -->
-
+                <?php include('bottom.php'); ?>
             </div>
-
-
-            <div style="bottom: 0;" class="row">
-                <!-- footer -->
-
-                <div style="margin-top: 15px;" id="footer">
-                    <div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            Partner: <a>Webtretho</a>| <a>Tinh tế</a>| <a>Haravan</a>|<br><br>
-                            Forum software by XenFo 2010-2015 XenFo 2010-2015 XenFo <br>
-                            Giấy phép MXH số 493/GP-BTTT do Bộ TTTT cấp ngày 25/09/2015
-
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            Cty CP TM và DV Tin Học Nam Vinh <br>
-
-                            Trụ sở:114 Đường số 2 Cư Xá Đô Thành P.4,Q.3,Tp.HCM <br>
-                            ĐKKD số: 4102048497. Đăng ký ngày: 26/03/2007 <br>
-                            Cơ quan cấp ĐKKD: Sở Kế Hoạch & Đầu Tư Tp. HCM <br>
-                            Tel: ‎‎0903.94.5050 - ‎0937.566.777 <br>
-                            Email: 123@nhatnguyet.vn <br>
-
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            Liên hệ quảng cáo : 0902.111.357 (Mr. Thao), <br>
-                            0937.566.777 (Mr. Long) <br>
-                            Email: qc@nhatnguyet.vn <br>
-
-
-                        </div>
-                    </div>
-
-                </div> <!-- footer -->
-
-            </div>
+            
 
 
 
         </div><!-- container-fluid -->
     </div>
     <!-- wapper -->
-
     <div class="modal fade modalform" id="modal-idform">
         <div class="modal-dialog modal-xs">
             <div class="modal-content" style="background-color: #d4ffaa">
@@ -728,10 +771,10 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active">
-                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="background-color: #d4ffaa">login</a>
+                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="background-color: #d4ffaa">ĐĂNG NHẬP</a>
                         </li>
                         <li role="presentation">
-                            <a href="#tab" aria-controls="tab" role="tab" data-toggle="tab" style="background-color: #d4ffaa">create Acount</a>
+                            <a href="#tab" aria-controls="tab" role="tab" data-toggle="tab" style="background-color: #d4ffaa">ĐĂNG KÍ</a>
                         </li>
                     </ul>
 
@@ -739,12 +782,12 @@
                     <div class="tab-content" style="background-color: #d4ffaa">
                         <div role="tabpanel" class="tab-pane active" id="home"><div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">from login</h4>
+                            <h4 class="modal-title">ĐĂNG NHẬP</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span>Name:</span>
+                                    <span>Tên Đăng Nhập:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <input type="text" name="" id="input_name" class="form-control" value="" required="required" pattern="" title="">
@@ -752,7 +795,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span>Password:</span>
+                                    <span>Mật khẩu:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <input type="Password" name="" id="input_pass" class="form-control" value="" required="required" pattern="" title="">
@@ -766,17 +809,17 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary"  onclick="Check_Login()">Login</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary"  onclick="Check_Login()">ĐĂNG NHẬP</button>
                         </div></div>
                         <div role="tabpanel" class="tab-pane" id="tab"><div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Registration</h4>
+                            <h4 class="modal-title">ĐĂNG KÍ</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span id="errorName">Name:</span>
+                                    <span id="errorName">Tên Đăng Nhập:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <input type="text" name="" id="nameNew" class="form-control" value="" required="required" pattern="" title="">
@@ -784,10 +827,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span id="errorPhone">phone</span>
+                                    <span id="errorPhone">Sdt</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                    <input type="text" name="" id="phone" class="form-control" value="" required="required" pattern="" title="">
+                                    <input type="number" name="" id="phone" class="form-control" value="" required="required" pattern="" title="">
                                 </div>
                             </div>
                             <div class="row">
@@ -800,12 +843,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span id="errorBirth-day">Birth-day:</span>
+                                    <span id="errorBirth-day">Ngày Sinh:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <div class="row">
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <p id="errorDay">Day:</p>
+                                            <p id="errorDay">Ngày:</p>
                                             <select class="input" name="" id="day" class="form-control" data-toggle="dropdown" required="required">
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -841,7 +884,7 @@
                                             </select>
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <p id="errorMonth">Month:</p>
+                                            <p id="errorMonth">Tháng:</p>
                                             <select class="input" name="" id="month" class="form-control" data-toggle="dropdown" required="required">
                                                 <option value="Tháng 1">Tháng 1</option>
                                                 <option value="Tháng 2">Tháng 2</option>
@@ -858,7 +901,7 @@
                                             </select>
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <p id="errorYear">Year:</p>
+                                            <p id="errorYear">Năm:</p>
                                             <select class="input" name="" id="year" class="form-control" data-toggle="dropdown" required="required">
                                                 <option value="1980">1980</option>
                                                 <option value="1981">1981</option>
@@ -905,7 +948,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span id="errorAddress">address:</span>
+                                    <span id="errorAddress">Địa Chỉ:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <input type="text" name="" id="add" class="form-control" value="" required="required" pattern="" title="">
@@ -913,7 +956,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span id="errorPassword">password:</span>
+                                    <span id="errorPassword">Mật Khẩu:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <input type="Password" name="" id="pass" class="form-control" value="" required="required" pattern="" title="">
@@ -921,7 +964,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <span id="errorPassword-confirm">password-confirm:</span>
+                                    <span id="errorPassword-confirm">Xác Nhập Mật Khẩu:</span>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <input type="Password" name="" id="pass-confirm" class="form-control" value="" required="required" pattern="" title="">
@@ -929,8 +972,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" onclick="Check_New_User()" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                            <button type="button" onclick="Check_New_User()" class="btn btn-primary">Đăng Kí</button>
                         </div></div>
                     </div>
                 </div>
@@ -938,6 +981,7 @@
         </div>
     </div>
 
+    <script src="java.js"></script>
 </body>
 
 </html>
