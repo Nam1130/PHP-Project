@@ -19,6 +19,11 @@
 
   <link rel="stylesheet" href="css/responsive.css">
   <style>
+  .error {
+        color: #FF0000;
+        
+       margin-left: 50px;
+    }
       .icon{
         height: 400px;
         width: 300px;
@@ -39,7 +44,8 @@
 <body>
 
     <?php
-       
+        session_start();
+        require "../model/function.php";
         require "../model/product.php";
         $product = new product;
         
@@ -77,42 +83,8 @@
         //upload ảnh
         if(isset($_FILES["fileToUpload"])){
             
-             //print_r($_FILES);
-             
-             $link_foder = "image/";
-             $link_image = $link_foder.basename($_FILES["fileToUpload"]['name']);
-    
-             //kiểm tra ảnh
-    
-             //b1: kiểm tra kích thước
-             $size_file = $_FILES["fileToUpload"]['size'];
-             if ($size_file > 5242880) {
-               $err['fileUpload'] = "File bạn chọn không được quá 5MB";
-             }
-             //b2 kiểm tra hợp lệ file ảnh
-               //pathinfo lấy kiểu file
-               //PATHINFO_EXTENSION tên kiểu file file 
-    
-             $type_file = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
-             $type = array('png', 'jpg', 'jpeg', 'gif');
-             if (!in_array(strtolower($type_file), $type)) {
-                 $err['fileUpload'] = "vui lòng chọn hình ảnh";
-             }
-    
-             //b3: Kiểm tra tồn tại file chưa
-             if (file_exists($link_image)) {
-               $err['fileUpload'] = "File bạn chọn đã tồn tại trên hệ thống";
-           }
-           //đưa file lên server và thêm vào trong thư mục
-          // print_r($err);
-           if (empty($err)) {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $link_image)) {
-                    // echo "Bạn đã upload ảnh thành công";
-                    $_SESSION['image'] = $link_image;
-                } else {
-                    echo "File bạn vừa upload gặp sự cố";
-                }
-            }
+            $link_image = image();
+           $_SESSION['image'] = $link_image;
     
          }
     
@@ -126,7 +98,7 @@
                  if (empty($_POST["nameSp"])) {
                      $nameSpErr = "Nhập Tên sản phẩm";
                  } else {
-                     $nameSp = ($_POST["nameSp"]);
+                     $nameSp = trim(($_POST["nameSp"]));
                     
                  }
                 
@@ -172,16 +144,14 @@
                 }
     
     
-                if(empty($nameSpErr) && empty($priceErr)&& empty($idCateErr)&&empty($slErr) && empty($statusErr)&& empty($dateErr)){
+                if(empty($nameSpErr) && empty($priceErr)&& empty($idCateErr)&&empty($slErr) && empty($statusErr)&& empty($dateErr)&& isset($_SESSION['image'])){
+                   
+                        $link_image = $_SESSION['image'];
+                        $sql = "UPDATE product SET prod_name = '$nameSp', category_id = $id_cate, price =$price, quantity = $sl, status = '$status', imported_date = '$date', note = '$note1', image = '$link_image' WHERE id = $idProduct";
+                        $product->excute($sql);
                     
-                   // $link_image = $_SESSION['image'];
-                    $sql = "UPDATE product SET prod_name = '$nameSp', category_id = $id_cate, price =$price, quantity = $sl, status = '$status', imported_date = '$date', note = '$note1', image = '$link_image' WHERE id = $idProduct";
-                    $product->excute($sql);
                 }
              };
-    
-            
-            
     
            
             // trở về trang chủ

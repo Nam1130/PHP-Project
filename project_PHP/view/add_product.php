@@ -233,66 +233,9 @@
       </div>
 
       <div>
+      <div class="container">
             <p style = "text-align: center;font-size: 40px;color: blue;"><b>Admin</b></p>
-            <div role="tabpanel">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a href="#display" aria-controls="home" role="tab" data-toggle="tab">Hiển thị sản phẩm</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#add" aria-controls="tab" role="tab" data-toggle="tab">Thêm sản Phẩm</a>
-                    </li>
-                </ul>
-            
-                <!-- Tab panes -->
-                <div class="tab-content">
-                 <!-- hiển thị sản phẩm -->
-                    <div role="tabpanel" class="tab-pane active" id="display">
-                    <div class="row">
-                            
-                            <table class="table table-hover table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Giá</th>
-                                        <th>Số lượng</th>
-                                        <th>Tình trạng</th>
-                                        <th>Ngày Nhập</th>
-                                        <th>Tùy chỉnh</th>
-                                    
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $count =0;
-                                    foreach ($arr as $key => $value) {
-                                        $count ++;
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $count; ?></td>
-                                            <td><?php echo $value['prod_name']; ?></td>
-                                            <td><?php echo $value['price']; ?></td>
-                                            <td><?php echo $value['quantity']; ?></td>
-                                            <td><?php echo $value['status']; ?></td>
-                                            <td><?php echo $value['imported_date']; ?></td>
-                                        
-                                            <td> <a href="edit_product.php?idProduct=<?php echo $value['id']; ?>">Chỉnh sữa</a> 
-                                            |  <a href="index.php?idProduct=<?php echo $value['id']; ?>">Xóa</a> </td>
-                                        </tr>
-                                    <?php  
-                                    }
-                                    ?>
-
-                                </tbody>
-                            </table>
-                            
-                        </div>
-                        
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="add">
-                    
+           
                     <div class="panel panel-danger">
          
                     <div class="panel-body">
@@ -506,27 +449,10 @@
                         </div>
 
                     
-                        
-                        
-                        
-                    </div>
-         
-                 </div>
-                    
-                    
                     </div>
                 </div>
             </div>
-            
-  
-            
-
-      </div>
-      
-
-
-
-
+       
   </div>
   
 </body>
