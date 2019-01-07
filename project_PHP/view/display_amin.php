@@ -88,7 +88,11 @@
                 </a>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 a">
-                <a href="product.php" class="thumbnail icon">
+
+                <a href="product.php?acction = display" class="thumbnail icon">
+
+               
+
                     <img style = " height: 300px;" src="../image/product.png" alt="">
                     <div>
                         <p style = "text-align: center;font-size: 30px;">Sản Phẩm</p>
