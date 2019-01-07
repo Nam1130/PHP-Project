@@ -27,7 +27,7 @@ class database{
         return $this->results;
     }
    
-    //hiển thị sp
+    //hiển thị tất cả sp
 
     public function display($table)
     {
@@ -45,6 +45,19 @@ class database{
         else
             $arr = 0;
         return  $arr;
+    }
+    //hiển thị theo ID
+    function view($sql){
+        $arr = array();
+        $query = mysqli_query($this->conn, $sql);
+    
+        if ($query){
+            while ($row = mysqli_fetch_assoc($query)){
+                $arr[] = $row;
+            }
+        }
+    
+        return $arr;
     }
 
 }
