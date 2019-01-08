@@ -21,7 +21,9 @@ error_reporting(1);
         case 'display':
             header('Location: ../../view/product.php');
             break;
-        
+        case 'category':
+            header('Location: ../../view/category/view_category.php');
+            break;
         default:
             # code...
             break;

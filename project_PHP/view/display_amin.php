@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="css/responsive.css">
   <style>
       .icon{
-        height: 400px;
+        height: 300px;
         width: 300px;
        
       }
@@ -28,7 +28,7 @@
     margin: 40px;
    }
    img{
-       height: 300px;
+       height: 200px;
    }
     </style>
 </head>
@@ -38,7 +38,7 @@
 <div class="row">
           
             
-          <nav class="navbar navbar-default" role="navigation">
+          <nav style = "margin-right: 5px;" class="navbar navbar-default" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -78,7 +78,7 @@
                 </div><!-- /.navbar-collapse -->
             </nav>
           
-      </div>
+ </div>
   <div class="container">
       
     
@@ -87,7 +87,7 @@
             
             <div style = "" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 a">
                 <a href="#" class="thumbnail icon">
-                    <img style = " height: 300px;" src="../image/user.png" alt="">
+                    <img style="height: 250px;" src="../image/user.png" alt="">
                     <div>
                         <p style = "text-align: center;font-size: 30px;">User</p>
                     </div>
@@ -99,15 +99,27 @@
 
                
 
-                    <img style = " height: 300px;" src="../image/product.png" alt="">
+                    <img style="height: 250px;"  src="../image/product.png" alt="">
                     <div>
                         <p style = "text-align: center;font-size: 30px;">Sản Phẩm</p>
                     </div>
                 </a>
             </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 a">
+
+                <a href="../controller/product/controler.php?action=category" class="thumbnail icon">
+
+
+
+                    <img style="height: 250px;" src="../image/category_icon.png" alt="">
+                    <div>
+                        <p style = "text-align: center;font-size: 30px;">Danh Mục Sản Phẩm</p>
+                    </div>
+                </a>
+            </div>
             <div style = "margin-right: 30px;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 a">
                 <a href="#" class="thumbnail icon">
-                    <img style = " height: 300px;" src="../image/Setting-icon.png" alt="">
+                    <img style="height: 250px;" src="../image/Setting-icon.png" alt="">
                     <div>
                         <p style = "text-align: center;font-size: 30px;">Cài Đặt</p>
                     </div>
