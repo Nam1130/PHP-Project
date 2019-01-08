@@ -35,13 +35,10 @@
 
 <body>
 
-  
-  <div class="container">
-      
-      <div class="row">
+<div class="row">
           
             
-            <nav class="navbar navbar-default" role="navigation">
+          <nav class="navbar navbar-default" role="navigation">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -58,7 +55,14 @@
                     <ul class="nav navbar-nav">
                        
                         <li><a href="#">Trang Chủ</a></li>
-                        <li><a href="#">Sản Phẩm</a></li>
+                        <li class="dropdown">
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản Phẩm <b class="caret"></b></a>
+                             <ul class="dropdown-menu">
+                                 <li><a href="add_product.php">Thêm mới sản phẩm</a></li>
+                                 <li><a href="product.php">Xem sản phẩm</a></li>
+                             </ul>
+                         </li>
+                       
                         <li><a href="#">Khách Hàng</a></li>
                     </ul>
                     <form class="navbar-form navbar-left" role="search">
@@ -73,9 +77,11 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
-            
           
       </div>
+  <div class="container">
+      
+    
 
       <div>
             

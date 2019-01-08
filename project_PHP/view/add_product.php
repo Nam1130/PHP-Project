@@ -45,6 +45,7 @@
 
     <?php
         require "../model/product.php";
+        require "../model/function.php";
         $db = new product;
         $arr = array();
         $arr=  $db->display("product");
@@ -63,49 +64,11 @@
         $err = array();
         if(isset($_FILES["fileToUpload"])){
             
-             //print_r($_FILES);
-             
-             $link_foder = "image/";
-             $link_image = $link_foder.basename($_FILES["fileToUpload"]['name']);
-    
-             //kiểm tra ảnh
-    
-             //b1: kiểm tra kích thước
-             $size_file = $_FILES["fileToUpload"]['size'];
-             if ($size_file > 5242880) {
-               $err['fileUpload'] = "File bạn chọn không được quá 5MB";
-             }
-             //b2 kiểm tra hợp lệ file ảnh
-               //pathinfo lấy kiểu file
-               //PATHINFO_EXTENSION tên kiểu file file 
-    
-             $type_file = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
-             $type = array('png', 'jpg', 'jpeg', 'gif');
-             if (!in_array(strtolower($type_file), $type)) {
-                 $err['fileUpload'] = "vui lòng chọn hình ảnh";
-             }
-    
-             //b3: Kiểm tra tồn tại file chưa
-             if (file_exists($link_image)) {
-               $err['fileUpload'] = "File bạn chọn đã tồn tại trên hệ thống";
-           }
-           //đưa file lên server và thêm vào trong thư mục
-          // print_r($err);
-           if (empty($err)) {
-             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $link_image)) {
-                 //echo "Bạn đã upload ảnh thành công";
-                 $_SESSION['image'] = $link_image; 
-             } else {
-                 echo "File bạn vừa upload gặp sự cố";
-             }
-         }
+              
+            $link_image = image();
+            $_SESSION['image'] = $link_image;
     
          }
-    
-    
-    
-    
-       
        
              if(isset($_POST['btnSignUp'])) 
              { 
@@ -167,10 +130,16 @@
                 }
     
     
-                if(empty($nameSpErr) && empty($priceErr)&& empty($idCateErr)&&empty($slErr) && empty($statusErr)&& empty($dateErr)){
+                if(empty($nameSpErr) && empty($priceErr)&& empty($idCateErr)&&empty($slErr) && empty($statusErr)&& empty($dateErr)&& isset($_SESSION['image'])){
                   
-                    addProduct($nameSp,$id_cate,$price,$sl,$status,$date,$note1,$_SESSION['image']);
-        
+                    $db->inserProduct($nameSp,$id_cate,$price,$sl,$status,$date,$note1,$_SESSION['image']);
+                    $link_image = $_SESSION['image'];
+                    echo "<script type='text/javascript' >"; 
+                    echo "{";
+                        echo "alert('Thêm sản phẩm thành công');"; 
+                      
+                    echo "}";
+                echo "</script>"; 
                 }
              };
     
@@ -190,47 +159,52 @@
     ?>
 
 
-  
-  <div class="container">
-      
-      <div class="row">
-          
-            
-      <nav class="navbar navbar-default" role="navigation">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+<div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    
+                    </div>
                 
-                </div>
-            
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav">
-                       
-                        <li><a href="#">Trang Chủ</a></li>
-                        <li><a href="#">Sản Phẩm</a></li>
-                        <li><a href="#">Khách Hàng</a></li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Tìm Kiếm</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Tài khoản</a></li>
-                        <li><a href="#">Đăng Xuất</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav">
+                        
+                            <li><a href="display_amin.php">Trang Chủ</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản Phẩm <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="add_product.php">Thêm mới sản phẩm</a></li>
+                                    <li><a href="product.php">Xem sản phẩm</a></li>
+                                </ul>
+                            </li>
+                        
+                            <li><a href="#">Khách Hàng</a></li>
+                        </ul>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Tìm Kiếm</button>
+                        </form>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Tài khoản</a></li>
+                            <li><a href="#">Đăng Xuất</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
             </nav>
             
           
       </div>
+  <div class="container">
+      
+     
 
       <div>
       <div class="container">
