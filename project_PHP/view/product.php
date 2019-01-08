@@ -52,7 +52,7 @@
         $arr=$db->display("product"); 
 
 
-
+//xoa
         if (isset($_GET['idProduct']))
 	    {
             $idProduct = $_GET['idProduct'];
