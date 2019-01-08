@@ -19,516 +19,179 @@
 
   <link rel="stylesheet" href="css/responsive.css">
   <style>
-      .icon{
-        height: 400px;
-        width: 300px;
-       
-      }
-   .a{
-    margin: 40px;
-   }
-   img{
-       height: 300px;
-   }
-   .row{
-       margin: 15px;
-   }
-   .error {
-        color: #FF0000;
-        
-       margin-left: 50px;
+    .icon {
+      height: 400px;
+      width: 300px;
     }
-    </style>
+    
+    .a {
+      margin: 40px;
+    }
+    
+    img {
+      height: 300px;
+    }
+    
+    .row {
+      margin: 15px;
+    }
+    
+    .error {
+      color: #FF0000;
+      margin-left: 50px;
+    }
+  </style>
 </head>
 
 <body>
 
     <?php
         require "../model/product.php";
-        $db = new product;
-        $arr = array();
-        $arr=  $db->display("product");
+        $db=new product; 
+        $arr=array(); 
+        $arr=$db->display("product"); 
 
-        session_start();
-      
-    
-    
-    
-        
-        $nameSpErr = $note1Err = $priceErr = $slErr = $statusErr=$note2Err=$dateErr=$idCateErr = "";
-        $nameSp  = $status = $note1 = $note2 = "";
-        $price = $sl = 0;
-        $date;
-        $id_cate ;
-        $err = array();
-        if(isset($_FILES["fileToUpload"])){
-            
-             //print_r($_FILES);
-             
-             $link_foder = "image/";
-             $link_image = $link_foder.basename($_FILES["fileToUpload"]['name']);
-    
-             //kiểm tra ảnh
-    
-             //b1: kiểm tra kích thước
-             $size_file = $_FILES["fileToUpload"]['size'];
-             if ($size_file > 5242880) {
-               $err['fileUpload'] = "File bạn chọn không được quá 5MB";
-             }
-             //b2 kiểm tra hợp lệ file ảnh
-               //pathinfo lấy kiểu file
-               //PATHINFO_EXTENSION tên kiểu file file 
-    
-             $type_file = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
-             $type = array('png', 'jpg', 'jpeg', 'gif');
-             if (!in_array(strtolower($type_file), $type)) {
-                 $err['fileUpload'] = "vui lòng chọn hình ảnh";
-             }
-    
-             //b3: Kiểm tra tồn tại file chưa
-             if (file_exists($link_image)) {
-               $err['fileUpload'] = "File bạn chọn đã tồn tại trên hệ thống";
-           }
-           //đưa file lên server và thêm vào trong thư mục
-          // print_r($err);
-           if (empty($err)) {
-             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $link_image)) {
-                 //echo "Bạn đã upload ảnh thành công";
-                 $_SESSION['image'] = $link_image; 
-             } else {
-                 echo "File bạn vừa upload gặp sự cố";
-             }
-         }
-    
-         }
-    
-    
-    
-    
-       
-       
-             if(isset($_POST['btnSignUp'])) 
-             { 
-                
-                
-                 if (empty($_POST["nameSp"])) {
-                     $nameSpErr = "Nhập Tên sản phẩm";
-                 } else {
-                     $nameSp = ($_POST["nameSp"]);
-                    
-                 }
-                
-                 if (empty($_POST["price"])) {
-                     $priceErr = "Nhập Giá";
-                 } else {
-                     $price = ($_POST["price"]);
-                 }
-    
-    
-                 if (empty($_POST["id_cate"])) {
-                     $idCateErr = "Nhập id thể loại";
-                 } else {
-                     $id_cate = ($_POST["id_cate"]);
-                    
-                 }
-    
-                 if (empty($_POST["sl"])) {
-                    $slErr = "Nhập số lượng";
-                } else {
-                    $sl = ($_POST["sl"]);
-                   
-                }
-               
-                if (empty($_POST["status"])) {
-                    $statusErr = "Nhập Tình Trạng";
-                } else {
-                    $status = ($_POST["status"]);
-                }
-    
-    
-                if (empty($_POST["note1"])) {
-                   
-                } else {
-                    $note1 = ($_POST["note1"]);
-                }
-               
-               
-                if (empty($_POST["note2"])) {
-                   
-                } else {
-                    $note2 = ($_POST["note2"]);
-                }
-    
-                if (empty($_POST["date"])) {
-                    $dateErr = "Nhập ngày";
-                } else {
-                    $date = ($_POST["date"]);
-                 
-                }
-    
-    
-                if(empty($nameSpErr) && empty($priceErr)&& empty($idCateErr)&&empty($slErr) && empty($statusErr)&& empty($dateErr)){
-                  
-                    addProduct($nameSp,$id_cate,$price,$sl,$status,$date,$note1,$_SESSION['image']);
-        
-                }
-             };
-    
-            
-    
-             if(isset($_POST['clear'])) 
-             {
-                $nameSp = "";
-                $price = "";
-                $sl = "";
-                $id_cate = "";
-                $note1 = "";
-                $date = "";
-                
-             }
-        
+
+
+        if (isset($_GET['idProduct']))
+	    {
+            $idProduct = $_GET['idProduct'];
+            $sql = "DELETE  FROM product WHERE id  = " . $idProduct;
+            $db->excute($sql);
+            $arr=array(); 
+            $arr=$db->display("product"); 
+        }
     ?>
 
 
-  
+
+<div class="row">
+
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+
+      <li><a href="display_amin.php">Trang Chủ</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản Phẩm <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="add_product.php">Thêm mới sản phẩm</a></li>
+          <li><a href="product.php">Xem sản phẩm</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#">Khách Hàng</a></li>
+    </ul>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Tìm Kiếm</button>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Tài khoản</a></li>
+      <li><a href="#">Đăng Xuất</a></li>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+</nav>
+
+
+</div>
   <div class="container">
-      
-      <div class="row">
-          
-            
-      <nav class="navbar navbar-default" role="navigation">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                
-                </div>
-            
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav">
-                       
-                        <li><a href="#">Trang Chủ</a></li>
-                        <li><a href="#">Sản Phẩm</a></li>
-                        <li><a href="#">Khách Hàng</a></li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Tìm Kiếm</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Tài khoản</a></li>
-                        <li><a href="#">Đăng Xuất</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
-            
-          
-      </div>
 
+
+    <div>
+      <p style="text-align: center;font-size: 40px;color: blue;"><b>Admin</b></p>
       <div>
-            <p style = "text-align: center;font-size: 40px;color: blue;"><b>Admin</b></p>
-            <div role="tabpanel">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a href="#display" aria-controls="home" role="tab" data-toggle="tab">Hiển thị sản phẩm</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#add" aria-controls="tab" role="tab" data-toggle="tab">Thêm sản Phẩm</a>
-                    </li>
-                </ul>
-            
-                <!-- Tab panes -->
-                <div class="tab-content">
-                 <!-- hiển thị sản phẩm -->
-                    <div role="tabpanel" class="tab-pane active" id="display">
-                    <div class="row">
-                            
-                            <table class="table table-hover table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Giá</th>
-                                        <th>Số lượng</th>
-                                        <th>Tình trạng</th>
-                                        <th>Ngày Nhập</th>
-                                        <th>Tùy chỉnh</th>
-                                    
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $count =0;
-                                    foreach ($arr as $key => $value) {
-                                        $count ++;
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $count; ?></td>
-                                            <td><?php echo $value['prod_name']; ?></td>
-                                            <td><?php echo $value['price']; ?></td>
-                                            <td><?php echo $value['quantity']; ?></td>
-                                            <td><?php echo $value['status']; ?></td>
-                                            <td><?php echo $value['imported_date']; ?></td>
-                                        
-                                            <td> <a href="edit_product.php?idProduct=<?php echo $value['id']; ?>">Chỉnh sữa</a> 
-                                            |  <a href="index.php?idProduct=<?php echo $value['id']; ?>">Xóa</a> </td>
-                                        </tr>
-                                    <?php  
-                                    }
-                                    ?>
 
-                                </tbody>
-                            </table>
-                            
-                        </div>
-                        
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="add">
-                    
-                    <div class="panel panel-danger">
-         
-                    <div class="panel-body">
+        <div>
+          <!-- hiển thị sản phẩm -->
+          <div>
+            <div class="row">
 
-                    
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            
-                        
-                                <a href="#" class="thumbnail">
-                                    <?php
-                                        if (empty($err)) {
-                                            ?>
-                                            <img style= " width: 200px; height: 300px;" src="<?php echo $link_image; ?>">
-                                            <?php
-                                        }
-                                    ?>
-                                    <form method="post" enctype="multipart/form-data" action="">
-                            
-                            
-                                        <div class="form-group">
-                                        <input style= " width: 75px;margin-left: 90px;" type="file" name="fileToUpload" id="fileToUpload" size="35">
-                                        </div>
-                                    
-                                        <input style= "margin-left: 90px;" type="submit" value="Upload" name="upload">
-                                    </form>
-                                </a>
-                                <?php
-                                    if (!empty($err)) {
-                                    ?>
-                                    <b> <?php echo  $err['fileUpload']; ?> </b>
-                                    
-                                    <?php
-                                    }
-                                ?>
-                            
-                            
-                                
-                            
-                            
-                            
-                        </div>
-                        
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <form action="" method="POST" role="form">
-                                    <legend></legend>
-                                
-                                    <div class="form-group">
-                                    
-                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Tên sản phẩm:
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                                <input type="text" name="nameSp"  class="form-control" value=" <?php echo $nameSp;  ?>"  >
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Tên thể loại:
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                            
-                                            <select name="id_cate" id="id_cate" class="form-control" required="required">
-                                            <?php
-                                                    $sql = "select * from category";
-                                                    $arrCate = $db->view($sql);
-                                                    foreach ($arrCate as $key => $value) {
-                                                    ?>
-                                                        <option value= "<?php echo $value['id']; ?>"><?php echo $value['cat_name']; ?></option>
-                                                    <?php
-                                                    }
-                                                ?>
-                                            </select>
-                                            
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Giá:
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                                <input type="number" name="price" class="form-control" value="<?php echo $price; ?>"  >
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Số lượng:
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                                <input type="number" name="sl"  class="form-control" value="<?php echo $sl; ?>"  >
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Tình trạng: 
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                                <input type="number" name="status" id="status" class="form-control" value="<?php echo $status; ?>"  >
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Ngày thêm:
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                                <input type="date" name="date"  class="form-control" value="<?php echo $date; ?>"  >
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Ghi chú:
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                                <input type="text" name="note1"  class="form-control" value="<?php echo $note1; ?>"  >
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Ghi chú thể loại:
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                                <input type="text" name="note2"  class="form-control" value="<?php echo $note2; ?>"  >
-                                                
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        
-                                    </div>
-                                
-                                    
-                                
-                                <div class="row">
-                                    <button style = "margin-left: 150px;width: 150px;" type="submit" name = "btnSignUp"class="btn btn-primary">Thêm sản phẩm</button>
-                                    <button style = "margin-left: 350px;margin-top: -53px;width: 150px;" type="submit" name = "clear"class="btn btn-primary">Làm Mới</button>
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tình trạng</th>
+                    <th>Ngày Nhập</th>
+                    <th>Tùy chỉnh</th>
 
-                                </div>
-                                
-                                
-                                
-                                </form>
-                        </div>
-                        
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            
-                            <div class="row error">
-                                <?php echo $nameSpErr.'<br>';?>
-                            </div>
-                            <div class="row error">
-                                <?php echo $priceErr;?>
-                            </div>
-                            <div class="row error">
-                                <?php echo $slErr;?>
-                            </div>
-                            <div class="row error">
-                                <?php echo $statusErr;?>
-                            </div>
-                            <div class="row error">
-                                <?php echo $dateErr;?>
-                            </div>
-                            <div class="row error">
-                                <?php echo $idCateErr;?>
-                            </div>
-                        
-                        </div>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $count=0; foreach ($arr as $key=> $value) { $count ++; ?>
+                  <tr>
+                    <td>
+                      <?php echo $count; ?>
+                    </td>
+                    <td>
+                      <?php echo $value[ 'prod_name']; ?>
+                    </td>
+                    <td>
+                      <?php echo $value[ 'price']; ?>
+                    </td>
+                    <td>
+                      <?php echo $value[ 'quantity']; ?>
+                    </td>
+                    <td>
+                      <?php echo $value[ 'status']; ?>
+                    </td>
+                    <td>
+                      <?php echo $value[ 'imported_date']; ?>
+                    </td>
 
-                    
-                        
-                        
-                        
-                    </div>
-         
-                 </div>
-                    
-                    
-                    </div>
-                </div>
+                    <td> 
+                        <a href="edit_product.php?idProduct=<?php echo $value['id']; ?>">Chỉnh sữa</a> | 
+                        <a href="product.php?idProduct=<?php echo $value['id']; ?>">Xóa</a> 
+                    </td>
+                  </tr>
+                  <?php 
+                  }
+                   ?>
+
+                </tbody>
+              </table>
+
             </div>
-            
-  
-            
+
+          </div>
+
+        </div>
+
 
       </div>
-      
+    </div>
+ 
+
+
+
+
+  
+
 
 
 
 
   </div>
-  
+
 </body>
 
 </html>
