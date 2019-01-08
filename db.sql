@@ -92,13 +92,98 @@ status varchar(255) not null,
 
 primary key (id)
 );
-
-
-
-
 insert into category (cat_name) values
-(N'Đồng Hồ'),
-(N'Điện Thoại'),
-(N'Máy Tính'),
-(N'IPad');
+(N'Nam'),
+(N'Nữ'),
+(N'Dây Da'),
+(N'Đồng Hồ Không Dây');
 
+insert into product (prod_name,category_id,price,quantity,status,imported_date,note,image)values
+('Rolex',1,1222222,23,1,now(),'','image/18.png'),
+('Cartier',1,232522,23,1,now(),'','image/2.png'),
+('Omega ',1,1999999,23,1,now(),'','image/19.png'),
+('Patek Philippe',1,2999999,23,1,now(),'','image/4.png'),
+('Longines ',1,19999999,23,1,now(),'','image/5.png'),
+('Breitling ',1,1999999,23,1,now(),'','image/6.png'),
+('TAG Heuer',1,4999999,23,1,now(),'','image/7.png'),
+('Montblanc ',1,4999999,23,1,now(),'','image/8.png'),
+('Breguet',2,1999999,23,1,now(),'','image/9.png'),
+('Swiss Made',2,1499999,23,1,now(),'','image/10.png'),
+('Tissot',2,1789999,23,1,now(),'','image/11.png'),
+('Timex',2,1299999,23,1,now(),'','image/12.png'),
+('Calvin Klein',2,6999999,23,1,now(),'','image/13.png'),
+('Movado',1,1226666,23,1,now(),'','image/14.png'),
+('SEIKO',1,1229999,23,1,now(),'','image/15.png'),
+('Citizen',1,12222999,23,1,now(),'','image/16.png'),
+('Orient',1,12222999,23,1,now(),'','image/17.png');
+
+insert into slides(name, link,status) values
+('TISSOT TRADITION 5.5','image/slide1.jpg',''),
+('TISSOT CHRONO XL 3.5','image/slide2.jpg',''),
+('TISSOT T-TOUCH','image/slide3.jpg',''),
+('TISSOT T-RACE 2.5','image/slide4.jpg','');
+
+
+insert into customer(cus_name,user_name,password,address,email,sdt)values
+('Nguyễn Văn A','Nguyễn A','12345678','Quảng Trị','a@gmail.com','122228'),
+('Nguyễn Văn B','Nguyễn B','12345678','Quảng Ngãi','b@gmail.com','122228'),
+('Nguyễn Văn C','Nguyễn C','12345678','Đà Nẵng','c@gmail.com','122228'),
+('Nguyễn Văn D','Nguyễn D','12345678','Quảng Trị','d@gmail.com','122228'),
+('Nguyễn Văn E','Nguyễn E','12345678','Quảng Trị','e@gmail.com','122228'),
+('Nguyễn Văn F','Nguyễn F','12345678','Quảng Trị','f@gmail.com','122228'),
+('Nguyễn Văn G','Nguyễn G','12345678','Quảng Trị','g@gmail.com','122228');
+
+insert into orders(cus_id,date,status)values
+(1,'2018-12-12',''),
+(2,'2018-12-12',''),
+(3,'2018-12-12',''),
+(4,'2018-12-12',''),
+(3,'2018-12-12',''),
+(1,'2018-12-12',''),
+(1,'2018-12-12',''),
+(1,'2018-12-12',''),
+(2,'2018-12-12',''),
+(1,'2018-12-12',''),
+(3,'2018-12-12',''),
+(1,'2018-12-12',''),
+(5,'2018-12-12',''),
+(1,'2018-12-12',''),
+(4,'2018-12-12',''),
+(1,'2018-12-12',''),
+(1,'2018-12-12','');
+insert into prod_orders(prod_id,order_id,quantity)values
+(13,1,1),
+(2,2,1),
+(15,3,1),
+(14,4,1),
+(4,5,1),
+(5,6,1),
+(6,7,1),
+(7,8,1),
+(8,9,1),
+(9,10,1),
+(10,11,1),
+(11,12,1),
+(12,13,1);
+insert into orders(cus_id,date,status)values
+(1,'2019-1-2',''),
+(2,'2019-1-2',''),
+(3,'2019-1-2',''),
+(2,'2019-1-2',''),
+(1,'2019-1-2',''),
+(3,'2019-1-2',''),
+(1,'2019-1-2',''),
+(4,'2019-1-2',''),
+(1,'2019-1-2',''),
+(6,'2019-1-2',''),
+(2,'2019-1-2',''),
+(3,'2019-1-2',''),
+(1,'2019-1-2','');
+
+
+
+
+
+
+select * from product 
+order by imported_date limit 12;

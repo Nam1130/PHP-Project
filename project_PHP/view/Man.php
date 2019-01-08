@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="../css/responsive.css">
     <style type="text/css">
 
-    </style>
+    </style> 
+    
 
 <body style="background-color: aliceblue;">
 
