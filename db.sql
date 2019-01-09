@@ -14,7 +14,7 @@ create table if not exists product (
 id int(11) not null auto_increment,
 prod_name varchar(255) not null,
 category_id int(11),
-price int(11) not null,
+price DECIMAL(12,2) not null,
 quantity int(11) not null,
 status int(11) not null,
 imported_date date not null,
@@ -102,8 +102,8 @@ insert into product (prod_name,category_id,price,quantity,status,imported_date,n
 ('Rolex',1,1222222,23,1,now(),'','image/18.png'),
 ('Cartier',1,232522,23,1,now(),'','image/2.png'),
 ('Omega ',1,1999999,23,1,now(),'','image/19.png'),
-('Patek Philippe',1,2999999,23,1,now(),'','image/4.png'),
-('Longines ',1,19999999,23,1,now(),'','image/5.png'),
+('Philippe',1,2999999,23,1,now(),'','image/4.png'),
+('Longines ',1,19999999,23,1,now(),'','image/19.png'),
 ('Breitling ',1,1999999,23,1,now(),'','image/6.png'),
 ('TAG Heuer',1,4999999,23,1,now(),'','image/7.png'),
 ('Montblanc ',1,4999999,23,1,now(),'','image/8.png'),
@@ -181,6 +181,10 @@ insert into orders(cus_id,date,status)values
 (1,'2019-1-2','');
 
 
+select  *, sum(prod_orders.quantity) from product, prod_orders where product.id= prod_orders.prod_id
+GROUP BY prod_orders.prod_id
+ORDER BY Sum(prod_orders.quantity) DESC
+limit 12;
 
 
 

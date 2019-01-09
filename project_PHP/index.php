@@ -33,6 +33,14 @@
          $new=$db->view($sql); 
 
 
+
+         $sql = 'select  *, sum(prod_orders.quantity) from product, prod_orders where product.id= prod_orders.prod_id
+         GROUP BY prod_orders.prod_id
+         ORDER BY Sum(prod_orders.quantity) DESC
+         limit 12';
+         $bc=array(); 
+         $bc=$db->view($sql); 
+
     ?>
 
 
@@ -182,7 +190,7 @@
     
     
                         <?php
-                        foreach ($new as $key => $value) {
+                        foreach ($bc as $key => $value) {
                            ?>
                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product">
                             

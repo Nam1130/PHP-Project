@@ -59,7 +59,7 @@ class database{
     
         return $arr;
     }
-
+   
 }
 
 

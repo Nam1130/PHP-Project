@@ -31,10 +31,11 @@
         
         padding: 25px;
         font-size: 30px;
-        width: 540px;
+        width: 400px;
         text-align: center;
         text-decoration: none;
         margin: 5px 2px;
+        margin-left: 55px;
         }
     .row{
          margin-top: 20px;
@@ -42,32 +43,34 @@
     .btn,.social{
         margin-left:5px;
     }
+    b{
+        font-size: 16px;
     </style>
 </head>
 
 <body>
 
-  <div style= " background: rgb(112, 112, 117);" id="wapper">
+  <div style= " background: rgb(112, 112, 117);height:200%;" id="wapper">
     <div class="container-fluid">
         
-        <div style= " margin-top:20px;margin-bottom:20px;padding:15px;background: white;" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-md-offset-3">
+        <div style= " margin-top:150px;margin-bottom:200px;margin-left: 350px;;padding:15px;background: white;" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-md-offset-3">
         <form action="" method="POST" role="form">
             <legend style = " text-align: center;font-size: 30px;">Đăng Nhập</legend>
         
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <span id="errname">Tên Đăng Nhập:</span>
+                        <b id="">Tên Đăng Nhập:</b>
                     </div>
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                         <input type="text" name="" id="input_name" class="form-control" value="" required="required" pattern="" title="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <span id="errpass">Mật khẩu:</span>
+                        <b id="">Mật khẩu:</b>
                     </div>
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                         <input type="Password" name="" id="input_pass" class="form-control" value="" required="required" pattern="" title="">
                 
                     </div>
@@ -85,7 +88,7 @@
                 </div>
                        
                        <div class="row">
-                            <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng Nhập</button>
+                            <button style="margin-left: 60px;" type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng Nhập</button>
                        </div>
                        
                     <div class="social-login-content">
