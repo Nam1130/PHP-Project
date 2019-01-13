@@ -38,10 +38,11 @@ cus_name varchar(255) not null,
 user_name varchar(255) not null,
 password varchar(255) not null,
 address varchar(255),
-email varchar(255) not null,
+email varchar(255) not null unique,
 sdt varchar(15) not null,
 primary key (id)
 );
+
 
 create table if not exists orders (
 id int(11) not null auto_increment,
@@ -93,13 +94,16 @@ status varchar(255) not null,
 primary key (id)
 );
 insert into category (cat_name) values
-(N'Nam'),
-(N'Nữ'),
-(N'Dây Da'),
+(N'Đồng Hồ Nam'),
+(N'Đồng Hồ Nữ'),
+(N'Đồng Hồ Dây Da'),
 (N'Đồng Hồ Không Dây');
 
 insert into product (prod_name,category_id,price,quantity,status,imported_date,note,image)values
-('Rolex',1,1222222,23,1,now(),'','image/18.png'),
+('Rolex',1,1222222,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/18.png'),
 ('Cartier',1,232522,23,1,now(),'','image/2.png'),
 ('Omega ',1,1999999,23,1,now(),'','image/19.png'),
 ('Philippe',1,2999999,23,1,now(),'','image/4.png'),
@@ -125,13 +129,13 @@ insert into slides(name, link,status) values
 
 
 insert into customer(cus_name,user_name,password,address,email,sdt)values
-('Nguyễn Văn A','Nguyễn A','12345678','Quảng Trị','a@gmail.com','122228'),
-('Nguyễn Văn B','Nguyễn B','12345678','Quảng Ngãi','b@gmail.com','122228'),
-('Nguyễn Văn C','Nguyễn C','12345678','Đà Nẵng','c@gmail.com','122228'),
-('Nguyễn Văn D','Nguyễn D','12345678','Quảng Trị','d@gmail.com','122228'),
-('Nguyễn Văn E','Nguyễn E','12345678','Quảng Trị','e@gmail.com','122228'),
-('Nguyễn Văn F','Nguyễn F','12345678','Quảng Trị','f@gmail.com','122228'),
-('Nguyễn Văn G','Nguyễn G','12345678','Quảng Trị','g@gmail.com','122228');
+('Nguyễn Văn A','Nguyễn A','25d55ad283aa400af464c76d713c07ad','Quảng Trị','a@gmail.com','122228'),
+('Nguyễn Văn B','Nguyễn B','25d55ad283aa400af464c76d713c07ad','Quảng Ngãi','b@gmail.com','122228'),
+('Nguyễn Văn C','Nguyễn C','25d55ad283aa400af464c76d713c07ad','Đà Nẵng','c@gmail.com','122228'),
+('Nguyễn Văn D','Nguyễn D','25d55ad283aa400af464c76d713c07ad','Quảng Trị','d@gmail.com','122228'),
+('Nguyễn Văn E','Nguyễn E','25d55ad283aa400af464c76d713c07ad','Quảng Trị','e@gmail.com','122228'),
+('Nguyễn Văn F','Nguyễn F','25d55ad283aa400af464c76d713c07ad','Quảng Trị','f@gmail.com','122228'),
+('Nguyễn Văn G','Nguyễn G','25d55ad283aa400af464c76d713c07ad','Quảng Trị','g@gmail.com','122228');
 
 insert into orders(cus_id,date,status)values
 (1,'2018-12-12',''),
@@ -179,6 +183,9 @@ insert into orders(cus_id,date,status)values
 (2,'2019-1-2',''),
 (3,'2019-1-2',''),
 (1,'2019-1-2','');
+
+
+
 
 
 select  *, sum(prod_orders.quantity) from product, prod_orders where product.id= prod_orders.prod_id

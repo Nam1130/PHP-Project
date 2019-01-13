@@ -122,17 +122,17 @@
                     $note2 = ($_POST["note2"]);
                 }
     
-                if (empty($_POST["date"])) {
-                    $dateErr = "Nhập ngày";
-                } else {
-                    $date = ($_POST["date"]);
+                // if (empty($_POST["date"])) {
+                //     $dateErr = "Nhập ngày";
+                // } else {
+                //     $date = ($_POST["date"]);
                  
-                }
+                // }
     
     
-                if(empty($nameSpErr) && empty($priceErr)&& empty($idCateErr)&&empty($slErr) && empty($statusErr)&& empty($dateErr)&& isset($_SESSION['image'])){
+                if(empty($nameSpErr) && empty($priceErr)&& empty($idCateErr)&&empty($slErr) && empty($statusErr)&& isset($_SESSION['image'])){
                   
-                    $db->inserProduct($nameSp,$id_cate,$price,$sl,$status,$date,$note1,$_SESSION['image']);
+                    $db->inserProduct($nameSp,$id_cate,$price,$sl,$status, date('Y-m-d'),$note1,$_SESSION['image']);
                     $link_image = $_SESSION['image'];
                     echo "<script type='text/javascript' >"; 
                     echo "{";
@@ -341,19 +341,7 @@
                                             
                                         </div>
                                         
-                                        <div class="row">
-                                            
-                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                Ngày thêm:
-                                            </div>
-                                            
-                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                
-                                                <input type="date" name="date"  class="form-control" value="<?php echo $date; ?>"  >
-                                                
-                                            </div>
-                                            
-                                        </div>
+                                      
                                         
                                         <div class="row">
                                             

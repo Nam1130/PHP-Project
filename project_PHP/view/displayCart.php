@@ -28,50 +28,6 @@
 
         var tk =  sessionStorage.getItem('ten');
         
-      
-
-       
-        window.onload = function () {
-            // do stuff to load your form fields 
-            document.getElementById("tk").innerHTML = tk;
-
-            document.getElementById("cart2").innerHTML = sl;
-
-            var table = document.getElementById("table2");
-
-            for (var i = leng; i < arrlist.length; i++) {
-                var newrow = table.insertRow(table.length);
-
-                var cell0 = newrow.insertCell(0);
-                var cell1 = newrow.insertCell(1);
-                var cell2 = newrow.insertCell(2);
-                var cell3 = newrow.insertCell(3);
-                cell0.innerHTML = arrlist[i].name_product;
-                cell1.innerHTML = arrlist[i].price;
-                cell2.innerHTML = arrlist[i].quantity;
-                cell3.innerHTML = "Xóa Sản Phẩm";
-
-                leng = i + 1;
-
-            }
-            totalPrice();
-        };
-
-        function totalPrice() {
-
-            var total = 0;
-            for (var i = 0; i < arrlist.length; i++) {
-                var a = parseFloat(arrlist[i].price) * parseFloat(arrlist[i].quantity);
-                total = total + a;
-            }
-
-
-            var x = document.getElementsByClassName("tien");
-            x[0].innerHTML = total;
-            x[1].innerHTML = total;
-
-        }
-
 
     </script>
 
@@ -319,24 +275,56 @@
 
                 <div class="row">
 
-                    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-md-offset-1">
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Tên sản phẩm</th>
+      <th>Giá</th>
+      <th>Số lượng</th>
+      <th>Tình trạng</th>
+      <th>Ngày Nhập</th>
+      <th>Tùy chỉnh</th>
 
-                        <table class="table table-hover table-bordered" id="table2">
-                            <thead>
-                                <tr>
-                                    <th>Sản Phẩm</th>
-                                    <th>Giá </th>
-                                    <th>Số Lượng</th>
-                                    <th>Xóa Sản Phẩm</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+    </tr>
+  </thead>
+  <tbody>
+    <?php $count=0; foreach ($arr as $key=> $value) { $count ++; ?>
+    <tr>
+      <td>
+        <?php echo $count; ?>
+      </td>
+      <td>
+        <?php echo $value[ 'prod_name']; ?>
+      </td>
+      <td>
+        <?php echo $value[ 'price']; ?>
+      </td>
+      <td>
+        <?php echo $value[ 'quantity']; ?>
+      </td>
+      <td>
+        <?php echo $value[ 'status']; ?>
+      </td>
+      <td>
+        <?php echo $value[ 'imported_date']; ?>
+      </td>
 
+      <td> 
+          <a href="edit_product.php?idProduct=<?php echo $value['id']; ?>">Chỉnh sữa</a> | 
+          <a href="product.php?idProduct=<?php echo $value['id']; ?>">Xóa</a> 
+      </td>
+    </tr>
+    <?php 
+    }
+     ?>
 
-                            </tbody>
-                        </table>
+  </tbody>
+</table>
 
-                    </div>
+</div>
+
+</div>
 
                     <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
 

@@ -21,6 +21,7 @@
 <body style="background-color: white;">
 
     <?php
+    session_start();
          require "model/slides.php";
          $db=new slides; 
          $arr=array(); 
@@ -31,7 +32,7 @@
 
          $new=array(); 
          $new=$db->view($sql); 
-
+      
 
 
          $sql = 'select  *, sum(prod_orders.quantity) from product, prod_orders where product.id= prod_orders.prod_id
@@ -40,25 +41,12 @@
          limit 12';
          $bc=array(); 
          $bc=$db->view($sql); 
+$a = $_SESSION['card'];
+         print_r($a);
+
+
 
     ?>
-
-
-    <script>
-        var tk =  sessionStorage.getItem('ten');
-        window.onload = function () {
-            // do stuff to load your form fields 
-            if(tk =="namdang"|| tk == "vinhtran"){
-              
-                document.getElementById("tk").innerHTML = tk;
-            }else{
-                document.getElementById("tk").innerHTML = 'Tài Khoản';
-            }
-
-
-           
-        }
-      </script>
 
 
     <div id="wapper">
@@ -67,7 +55,7 @@
             <div class="row fixtop">
 
                 <?php
-                    include('view/top.php');
+                   // include('view/top.php');
                 ?>
                 
 
@@ -153,14 +141,14 @@
                                  <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product">
                         
                                     <div class="product-img">
-                                        <a style = "height: 286px;" href="chitiet.html" class="thumbnail">
+                                        <a style = "height: 286px;" href="view/chitiet.php?idProduct=<?php echo $value['id']; ?>" class="thumbnail">
                                             <img src="<?php echo $value['image'];?>" class="img-responsive hvr-pulse" alt="Image">
                                             
                                         </a>
                                     </div>
                                     <div class="caption">
                                         <h3><?php echo $value['prod_name'];?> </h3>
-                                        <div class="cost"><?php echo $value['price'];?></div>
+                                        <div class="cost"><?php echo $value['price'].' VNĐ';?></div>
                                         <div class="bt-cost">
 
                                             <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua
@@ -195,14 +183,14 @@
                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product">
                             
                                         <div class="product-img">
-                                            <a href="chitiet.html" class="thumbnail">
+                                            <a href="view/chitiet.php?idProduct=<?php echo $value['id']; ?>" class="thumbnail">
                                                 <img src="<?php echo $value['image'];?>" class="img-responsive hvr-pulse" alt="Image">
                                                 
                                             </a>
                                         </div>
                                         <div class="caption">
                                             <h3><?php echo $value['prod_name'];?></h3>
-                                            <div class="cost"><?php echo $value['price'];?></div>
+                                            <div class="cost"><?php echo $value['price'].' VNĐ';?></div>
                                             <div class="bt-cost">
                 
                                                 <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua
@@ -248,7 +236,7 @@
                                 </div>
 
                                 <!-- Modal body -->
-                                <div class="modal-body">
+                                <div class="modal-body">  
 
                                     <div class="media">
                                         <a class="pull-left" href="#">
@@ -280,7 +268,7 @@
                                             </div>
                                             <br>
                                             <button type="button" class="btn btn-danger btpro">Mua ngay</button>
-                                            <button type="button" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm
+                                            <button type="button"name ="addCard" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm
                                                 vào giỏ</button>
 
 
