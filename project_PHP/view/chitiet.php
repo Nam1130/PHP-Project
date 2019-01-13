@@ -29,7 +29,52 @@
             document.getElementById("tk").innerHTML = tk;
         } 
     </script>
+   
 
+   <?php
+   session_start();
+        require "../model/card.php";
+        require "../model/function.php";
+        
+        $db = new card;
+        if (isset($_GET['idProduct']))
+        {
+            $idProduct = $_GET['idProduct'];
+            $sql = "SELECT * FROM product WHERE id  = " . $idProduct;
+            $array = $db->view($sql);
+  
+            foreach ($array as $key => $value) {
+                $nameSp= $value['prod_name']; 
+                $id_cate= $value['category_id']; 
+                $price= $value['price']; 
+                $sl= $value['quantity']; 
+                $status= $value['status']; 
+                $date= $value['imported_date']; 
+                $note1= $value['note']; 
+                $link_image= $value['image']; 
+                
+            }
+
+            $sql = "SELECT cat_name FROM category,product WHERE category.id = product.id and product.id  = " . $idProduct;
+            $array2 = $db->view($sql);
+            foreach ($array2 as $key => $value) {
+                $cat_name= $value['cat_name']; 
+                
+            }
+           
+           
+
+           
+        }
+        if(isset($_POST['addCard'])) 
+        { 
+            $_SESSION['card'] = $array;
+            $db->orders($cus_id,$date,$status);
+            
+        }
+       
+
+   ?>
 
     <div id="wapper">
         <div class="container-fluid">
@@ -275,7 +320,7 @@
                                     <div style="position: relative; " class="carousel-inner">
 
                                         <div class="item active">
-                                            <img src="..\image\sp.png" class="img-responsive" alt="Image" style="height: auto; margin-left: 15px;width:100%; ">
+                                            <img src="<?php echo $link_image;   ?>  " class="img-responsive" alt="Image" style="height: auto; margin-left: 15px;width:70%; ">
                                             <!-- <img src="..\image\sp.png" class="d-block w-100" style="height: auto; margin-left: 15px;width:100%; "> -->
                                         </div>
 
@@ -318,18 +363,22 @@
                                 <h4>Mã Số Sản Phẩm: AE-1000W-1BVDF</h4>
                             </div>
                             <div class="row">
-                                <h4>Phân Loại: Đồng Hồ Nam</h4>
+                                <h4>Phân Loại: <?php  echo $cat_name; ?></h4>
                             </div>
                             <div class="row">
-                                <h3>940.000 ₫</h3>
+                                <h3><?php   echo $price; ?> ₫</h3>
                             </div>
                             <div class="row">
-                                <p>Đồng hồ nam điện tử Casio AE-1000W-1BVDF<br>với kiểu dáng mạnh mẽ cùng màu đen nam
-                                    tính,<br> các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,<br>
-                                    mặt kính nhựa chịu lực.</p>
+                                <p><?php echo $note1; ?> </p>
                             </div>
                             <div class="row">
-                                <button type="button" class="btn btn-lg btn-danger" style="width: 90%">THÊM VÀO GIỎ</button>
+                                
+                                <form action="" method="POST" role="form">
+                                    <button type="submit" name = "addCard"class="btn btn-lg btn-danger" style="width: 90%">THÊM VÀO GIỎ</button>
+                                </form>
+                                
+                               
+                              
                             </div>
                             <div class="row">
                                 <p>Gọi đặt mua:<a href=""> 1900.6777</a>(7:30-21:30)</p>
