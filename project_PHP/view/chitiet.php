@@ -57,6 +57,13 @@
                 
             }
 
+            $sql = "SELECT cat_name FROM category,product WHERE category.id = product.category_id and product.id  = " . $idProduct;
+            $array2 = $db->view($sql);
+            foreach ($array2 as $key => $value) {
+                $cat_name= $value['cat_name']; 
+                
+            }
+
             $sql = "SELECT * FROM details WHERE id  = " . $idProduct;
             $array = $db->view($sql);
   
@@ -77,18 +84,9 @@
                 $waterproof= $value['waterproof'];
                 $function= $value['function'];
                 
-            }          
-
-            $sql = "SELECT cat_name FROM category,product WHERE category.id = product.id and product.id  = " . $idProduct;
-            $array2 = $db->view($sql);
-            foreach ($array2 as $key => $value) {
-                $cat_name= $value['cat_name']; 
-                
-            }
+            }                    
            
-           
-
-           
+          
         }
         if(isset($_POST['addCard'])) 
         { 
@@ -102,19 +100,12 @@
 
     <div id="wapper">
         <div class="container-fluid">
-
             <div class="row fixtop">
 
                 <?php
                     include('top.php');
                 ?>
-                
-
-
             </div>
-
-
-
         </div>
 
             <div style="margin-top: 180px; margin-left: 2%; margin-right: 2%" class="row chitiet">
