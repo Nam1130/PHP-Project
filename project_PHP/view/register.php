@@ -19,9 +19,7 @@
 
   <link rel="stylesheet" href="css/responsive.css">
   <style>
-   
 
-   
     .btn {
         
         padding: 25px;
