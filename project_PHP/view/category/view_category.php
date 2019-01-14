@@ -153,7 +153,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản Phẩm <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="add_product.php">Thêm mới sản phẩm</a></li>
+            <li><a href="../add_product.php">Thêm mới sản phẩm</a></li>
             <li><a href="product.php">Xem sản phẩm</a></li>
           </ul>
         </li>

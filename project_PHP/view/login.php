@@ -27,6 +27,10 @@
     background: #dd4b39;
     color: white;
     }
+    .err{
+        color:red;
+        text-align: center;
+    }
     .btn,.fa {
         
         padding: 25px;
@@ -45,10 +49,52 @@
     }
     b{
         font-size: 16px;
+    }
     </style>
 </head>
 
 <body>
+<?php  
+ require "../model/users.php";
+ session_start();  
+ $data = new users;  
+ $message = '';  
+ if(isset($_POST["submit"]))  
+ {  
+
+      $ahihidongoc = $_POST['password'];
+
+      $pass= MD5($ahihidongoc);
+    
+     $login_data = array(  
+              
+            'user_name'    =>     mysqli_real_escape_string($data->conn, $_POST['user_name']),
+            'password'     =>     mysqli_real_escape_string($data->conn, $pass)
+      );
+
+      if($data->required_validation($login_data))  
+      {
+           if($data->can_login('customer', $login_data)==1)  
+           {  
+             
+                header("location:../index.php"); 
+                $_SESSION['name'] =  $login_data['user_name'];
+               
+               
+           }  
+           else  
+           {  
+                $message = "Tài khoản không tồn tại";  
+           } 
+      }
+      else  
+      {  
+           $message = $data->error;  
+      }  
+
+ }  
+ ?> 
+
 
   <div style= " background: rgb(112, 112, 117);height:200%;" id="wapper">
     <div class="container-fluid">
@@ -63,7 +109,7 @@
                         <b id="">Tên Đăng Nhập:</b>
                     </div>
                     <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                        <input type="text" name="" id="input_name" class="form-control" value="" required="required" pattern="" title="">
+                        <input type="text" name="user_name"  class="form-control" value="" >
                     </div>
                 </div>
                 <div class="row">
@@ -71,7 +117,7 @@
                         <b id="">Mật khẩu:</b>
                     </div>
                     <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                        <input type="Password" name="" id="input_pass" class="form-control" value="" required="required" pattern="" title="">
+                        <input type="Password" name="password" id="input_pass" class="form-control" value="" >
                 
                     </div>
                 </div>
@@ -84,11 +130,14 @@
                 <label class="pull-right">
                         <a href="#">Quên Mật Khẩu?</a>
                 </label>
+                <label class = "err">
+                        <?php echo $message;   ?>
+                </label>
 
-                </div>
+                </div> 
                        
                        <div class="row">
-                            <button style="margin-left: 60px;" type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng Nhập</button>
+                            <button style="margin-left: 60px;" type="submit"name="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng Nhập</button>
                        </div>
                        
                     <div class="social-login-content">
@@ -107,7 +156,7 @@
                     
                     <div class="row">
                     <div class="register-link m-t-15 text-center">
-                        <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                        <p>Dont have account ? <a href="register.php"> Sign Up Here</a></p>
                     </div>
                     </div>
                     
