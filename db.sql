@@ -98,7 +98,6 @@ CREATE TABLE `details` (
   `id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `product_code` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
   `brand` varchar(255) NOT NULL,
   `origin` varchar(255) NOT NULL,
   `forGen` varchar(255) NOT NULL,
