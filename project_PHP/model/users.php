@@ -18,8 +18,7 @@
                 return true;     
            }  
       }    
-      
-     
+    
       public function register($cus_name, $user_name, $password, $address, $email, $sdt)
       {
          $password = MD5($password);
