@@ -60,6 +60,7 @@
  $data = new users;  
  $message = '';  
  if(isset($_POST["submit"]))  
+   
  {  
 
       $ahihidongoc = $_POST['password'];

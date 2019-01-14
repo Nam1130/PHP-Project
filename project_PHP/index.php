@@ -41,8 +41,8 @@
          limit 12';
          $bc=array(); 
          $bc=$db->view($sql); 
-$a = $_SESSION['card'];
-         print_r($a);
+        $a = $_SESSION['card'];
+         //print_r($a);
 
 
 
@@ -55,7 +55,7 @@ $a = $_SESSION['card'];
             <div class="row fixtop">
 
                 <?php
-                   // include('view/top.php');
+                    include('view/top.php');
                 ?>
                 
 

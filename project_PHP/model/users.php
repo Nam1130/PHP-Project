@@ -1,6 +1,6 @@
 <?php   
   require "database.php";
- class Users  extends database{  
+ class users  extends database{  
       public $error;  
       public function required_validation($field)  
       {  
@@ -15,49 +15,68 @@
            }  
            if($count == 0)  
            {  
-                return true;  
+                return true;     
            }  
-      }  
+      }    
+      
      
       public function register($cus_name, $user_name, $password, $address, $email, $sdt)
       {
-        // $pass = password_hash($password, PASSWORD_BCRYPT);
+         $password = MD5($password);
+         $arr = array();
+         $sql = 'select email from customer';
+         $arr = $this->view($sql);
+        // print_r($arr);
+         foreach ($arr as $key => $value) {
+          //echo  $value['email'];
+             if($value['email'] != $email){
+               $stmt = $this->conn->prepare("INSERT INTO `customer` (cus_name, user_name,password,address,email,sdt) VALUES(?, ?, ?, ?, ?, ?)") or die($this->conn->error);
+               $stmt->bind_param("ssssss", $cus_name, $user_name, $password, $address, $email, $sdt);
+               if($stmt->execute())
+               {
+                 $stmt->close();
+                 $this->conn->close();
+                 return true;
+               }
+                 
+             }else{
+               echo  $value['email'];
+               $this->error = " Email này đã tồn tại";
+             }
+         }
 
-        $stmt = $this->con->prepare("INSERT INTO `customer` (cus_name, user_name,password,address,email,sdt) VALUES(?, ?, ?, ?, ?, ?)") or die($this->con->error);
-        $stmt->bind_param("ssssss", $cus_name, $user_name, $password, $address, $email, $sdt);
-        if($stmt->execute())
-        {
-          $stmt->close();
-          $this->con->close();
-          return true;
-        }
+       
       }
 
 
          public function can_login($table_name, $where_condition)  
       {  
-           $condition = '';  
+           $condition = '';  $kq;
            foreach($where_condition as $key => $value)  
            {  
                 $condition .= $key . " = '".$value."' AND ";  
            }  
            $condition = substr($condition, 0, -5);  
            
-           echo "$condition"; 
+           //echo "$condition";
            $query = "SELECT * FROM ".$table_name." WHERE " . $condition;  
-           $result = mysqli_query($this->con, $query); 
+           $result = mysqli_query($this->conn, $query); 
 
            if(mysqli_num_rows($result))  
            {  
-                return true;  
+                $kq =  1;  
+                echo $kq;
            }  
            else  
            {  
+                $kq = 0;
                 $this->error = "Wrong Data";  
-           }  
-      }   
+                
+           }
+           return $kq;
+      }
 
-   }  
+   }
 ?>  
 
 

@@ -119,28 +119,6 @@ CREATE TABLE `details` (
 
 
 
-CREATE TABLE `details` (
-  `id` int(11) NOT NULL,
-  `prod_id` int(11) NOT NULL,
-  `product_code` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `brand` varchar(255) NOT NULL,
-  `origin` varchar(255) NOT NULL,
-  `forGen` varchar(255) NOT NULL,
-  `glass` varchar(255) NOT NULL,
-  `machine` varchar(255) NOT NULL,
-  `guarantee` int(11) NOT NULL,
-  `guarantee_place` varchar(255) NOT NULL,
-  `diameter` float NOT NULL,
-  `surface_thickness` float NOT NULL,
-  `braces` varchar(255) NOT NULL,
-  `strap` varchar(255) NOT NULL,
-  `color` varchar(255) NOT NULL,
-  `waterproof` varchar(255) NOT NULL,
-  `function` varchar(255) NOT NULL,
-  primary key(id),
-  foreign key(prod_id) references product(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 insert into category (cat_name) values
