@@ -95,7 +95,7 @@ primary key (id)
 );
 
 CREATE TABLE `details` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL auto_increment,
   `prod_id` int(11) NOT NULL,
   `product_code` varchar(255) NOT NULL,
   `brand` varchar(255) NOT NULL,
@@ -211,6 +211,24 @@ insert into orders(cus_id,date,status)values
 (3,'2019-1-2',''),
 (1,'2019-1-2','');
 
+
+INSERT INTO `details` (`prod_id`, `product_code`, `brand`, `origin`, `forGen`, `glass`, `machine`, `guarantee`, `guarantee_place`, `diameter`, `surface_thickness`, `braces`, `strap`, `color`, `waterproof`, `function`) VALUES
+(1, 'AE-1000W-1BVDF', 'Casio', 'Nhật Bản', 'Nam', 'Resin Glass', 'Quartz (Pin)', 2, 'Tại Hải Triều', 44, 14, 'Nhựa', 'Dây Cao Su', 'Đen', '10 ATM', 'Lịch – Bộ Bấm Giờ – Giờ Kép – Đèn Led'),
+(2, 'AE-1000W-2BVDF', 'Casio', 'Hàn Quốc', 'Nam', 'Resin Glass', 'Quartz', 2, 'Tại Hải Triều', 44, 14, 'Da', 'Dây Da', 'Xám', '10 ATM', 'Lịch – Bộ Bấm Giờ – Giờ Kép – Đèn Led'),
+(3, 'AE-1000W-3BVDF', 'Casio', 'Hàn Quốc', 'Nam', 'Bamin Glass', 'Quartz (Pin)', 2, 'Tại Hải Triều', 34, 10, 'Nhựa', 'Dây cao su', 'Trắng', '11 ATM', 'Lịch – Bộ Bấm Giờ – Giờ Kép'),
+(4, 'AE-1000W-4BVDF', 'Casio', 'Nhật Bản', 'Nam', 'Nani Glass', 'Quartz (Pin)', 1, 'Tại Hồng Kông', 33, 10, 'Da', 'Dây Da', 'Xám', '14 ATM', 'Lịch – Bộ Bấm Giờ – Đèn Led'),
+(5, 'AE-1000W-5BVDF', 'Sam sung', 'Trung QUốc', 'Nam', 'Bamin Glass', 'Noman', 1, 'Tại Xing Cua', 40, 12, 'Da', 'Dây Da', 'Xám', '12 ATM', 'Bộ Bấm Giờ – Đèn Led'),
+(6, 'AE-1000W-6BVDF', 'Azino', 'Nhật Bản', 'Nam', 'Bamin Glass', 'Quartz (Pin)', 2, 'Tại Xing Cua', 40, 12, 'Da', 'Dây Da', 'Tím', '12 ATM', 'Lịch - Bộ Bấm Giờ – Đèn Led'),
+(7, 'AE-1000W-7BVDF', 'Sam sung', 'Trung QUốc', 'Nam', 'Nani Glass', 'Noman', 1, 'Tại Xing Cua', 40, 12, 'Sắt', 'Dây Sắt', 'Đỏ', '11 ATM', 'Bộ Bấm Giờ - Giờ Kép – Đèn Led'),
+(8, 'AE-1000W-8BVDF', 'Virtual', 'Mỹ', 'Nam', 'Nani Glass', 'Quartz (Pin)', 1, 'Tại Mandina', 40, 12, 'Inox', 'Dây Thép', 'Xám', '10 ATM', 'Nhắn tin - Bộ Bấm Giờ – Đèn Led'),
+(9, 'AE-1000W-9BVDF', 'Sam sung', 'Trung QUốc', 'Nữ', 'Bamin Glass', 'Wongxi', 1, 'Tại Xing Cua', 40, 12, 'Nhựa', 'Dây Cao Su', 'Trăng', '14 ATM', 'Lịch - Bộ Bấm Giờ – Đèn Led'),
+(10, 'AE-1000W-10BVDF', 'Virtual', 'Mỹ', 'Nữ', 'Bamin Glass', 'Wongxi', 1, 'Tại Mandina', 40, 12, 'Da', 'Dây Da', 'Đen', '12 ATM', 'Nhắn tin - Lịch - Bộ Bấm Giờ – Đèn Led'),
+(12, 'AE-1000W-12BVDF', 'Casio', 'Trung QUốc', 'Nữ', 'Bamin Glass', 'Quartz (Pin)', 2, 'Tại Xing Cua', 40, 12, 'Da', 'Dây Da', 'Đen', '13 ATM', 'Gọi điện - Bộ Bấm Giờ – Đèn Led'),
+(13, 'AE-1000W-13BVDF', 'Azino', 'Nhật Bản', 'Nữ', 'Resin Glass', 'Wongxi', 1, 'Tại Xing Cua', 40, 12, 'Da', 'Dây Da', 'Xám', '11 ATM', 'Bộ Bấm Giờ - Lịch – Đèn Led'),
+(14, 'AE-1000W-14BVDF', 'Sam sung', 'Trung QUốc', 'Nam', 'Bamin Glass', 'Noman', 1, 'Tại Xing Cua', 40, 12, 'Da', 'Dây Da', 'Xám', '12 ATM', 'Lịch - Bộ Bấm Giờ – Đèn Led'),
+(15, 'AE-1000W-15BVDF', 'Casio', 'Trung QUốc', 'Nam', 'Resin Glass', 'Noman', 1, 'Tại Xing Cua', 40, 12, 'Da', 'Dây Da', 'Đỏ', '12 ATM', 'Giờ Kép - Bộ Bấm Giờ – Đèn Led'),
+(16, 'AE-1000W-16BVDF', 'Casio', 'Trung QUốc', 'Nam', 'Bamin Glass', 'Noman', 1, 'Tại Xing Cua', 40, 12, 'Da', 'Dây Da', 'Xám', '12 ATM', 'Lịch - Giờ Kép – Đèn Led'),
+(17, 'AE-1000W-17BVDF', 'Virtual', 'Mỹ', 'Nam', 'Nani Glass', 'Quartz (Pin)', 1, 'Tại Mandina', 40, 12, 'Da', 'Dây Da', 'Xám', 'Vàng ATM', 'Lịch - Bộ Bấm Giờ – Đèn Led');
 
 
 
