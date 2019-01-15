@@ -46,6 +46,7 @@
             $array = $db->view($sql);
   
             foreach ($array as $key => $value) {
+                $prod_id= $value['id']; 
                 $nameSp= $value['prod_name']; 
                 $id_cate= $value['category_id']; 
                 $price= $value['price']; 
@@ -88,24 +89,304 @@
            
           
         }
+
+        $id_cus =  $_SESSION['id_cus'];
+         $sql = 'select prod_orders.prod_id,prod_orders.quantity from
+          product,prod_orders,orders where product.id = prod_orders.prod_id 
+         and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus;
+         $arr = $db->view($sql);
+
+
         if(isset($_POST['addCard'])) 
         { 
-            $_SESSION['card'] = $array;
-            $db->orders($cus_id,$date,$status);
+            foreach ($arr as $key => $value) {
+               if($value['prod_id']==$idProduct){
+                //    $sql = "update prod_orders set quantity = ".$value['quantity'] + 1;
+                //     $db->excute($sql);
+               }elseif($value['prod_id']!=$idProduct){
+                    $db->orders($_SESSION['id_cus'], date('Y-m-d'),1);
+                
+                    $sql  = 'select max(id) from orders';
+                    $order = $db->view($sql);
+                    foreach ($order as $key => $value) {
+                        $order_id = $value['max(id)'];
+                    }
+                    $_SESSION['card']= array(
+        
+                            'prod_id' => $prod_id,
+                            'order_id' =>$order_id,
+                            'sl' => 1,
+                            'id_cus'=>$_SESSION['id_cus']
+                        );
+                    $db->prod_orders($prod_id, $order_id,1,1);
+               }
+            }
+
+
+            
             
         }
        
+        $dhMy=array(); 
+         $sql = "SELECT name FROM provided WHERE address  =  'Mĩ'";
+         $dhMy = $db->view($sql);
+
+         $dhDuc=array(); 
+         $sql = "SELECT name FROM provided WHERE address  =  'Đức'";
+         $dhDuc = $db->view($sql);
+
+         $dhThuySy=array(); 
+         $sql = "SELECT name FROM provided WHERE address  =  'Thụy Sỹ'";
+         $dhThuySy = $db->view($sql);
+
+         $dhNhat=array(); 
+         $sql = "SELECT name FROM provided WHERE address  =  'Nhật'";
+         $dhNhat = $db->view($sql);
+
+
+         $cate=array(); 
+         $sql = "SELECT cat_name FROM category";
+         $cate = $db->view($sql);
+
 
    ?>
 
     <div id="wapper">
         <div class="container-fluid">
-            <div class="row fixtop">
+        <div style = "width: 100%;margin-left: -15px;margin-right: -30px;"  class="row fixtop">
 
-                <?php
-                    include('top.php');
-                ?>
+
+<div class="row">
+  <div style = "margin-left: -20px; width: 100%;" id="header">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">
+
+      <!-- <img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image"> -->
+      <a href="#"><img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image">
+      </a>
+    </div>
+
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <div class="row">
+        <div class="bar">
+          <a style="width: 30%;" href="#news">Vị Trí <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
+          <a style="width: 40%;"  href="view/login.php"><span id="tk">Xin chào <?php   ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
+          <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
+                    onclick="displayProduct()"></i><i id="cart">0</i>
+            </a>
+
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 offset-1">
+          <div class="row">
+            <div class="search">
+              <div class="input-group">
+                <input type="text" class="  search-query form-control" placeholder="Search" />
+                <span class="input-group-btn">
+                            <button style="float: left" class="btn btn-danger" type="button">
+                                <span class=" glyphicon glyphicon-search"></span>
+                </button>
+                </span>
+              </div>
             </div>
+          </div>
+          <!--row -->
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- header -->
+</div>
+
+
+<div style="margin-left: 5px; margin-right: 3px;" class="row">
+  <div class="row">
+    <div class="row na1">
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <nav style="background-color: aliceblue;" class="navbar navbar-default" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <button style="float: left;margin-left: 12px" type="button" class="navbar-toggle glyphicon glyphicon-shopping-cart">
+            </button>
+            <button style="float: left;" type="button" class="navbar-toggle glyphicon glyphicon-user">
+            </button>
+            <button style="float: left;" type="button" class="navbar-toggle glyphicon glyphicon-map-marker">
+            </button>
+
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav menu">
+              <li class="search2">
+                <div class="input-group">
+                  <input style="margin-left: 5px;" type="text" class="  search-query form-control" placeholder="Search" />
+                  <span class="input-group-btn">
+                                <button style="margin-right: 5px;" class="btn btn-danger" type="button">
+                                    <span class=" glyphicon glyphicon-search"></span>
+                  </button>
+                  </span>
+                </div>
+              </li>
+              <li class="menufull"><a href="javascript:void(0)">Thương Hiệu</a>
+
+                <div class="row">
+
+                  <ul style="width: 1050%;" class="nav navbar-nav menu-sub-full">
+                    <div class="row-fluid">
+
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <li style="width: 200%;" class="media">
+                          <div class="media-body">
+
+                            <ul class="unstyled">
+                              <li>
+                                <h4 href="#">Đồng Hồ Mĩ</h4>
+                              </li>
+                              <?php   
+                                foreach ($dhMy as $key => $value) {
+                                  ?>
+                                       <li><a href="#"><?php  echo $value['name'] ;?> </a></li>
+                                  <?php
+                                }
+                              
+                              ?>
+
+                             
+                              
+                            </ul>
+                          </div>
+                        </li>
+                      </div>
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <li style="width: 200%;" class="media">
+                          <div class="media-body">
+
+                            <ul class="unstyled">
+                              <li>
+                                <h4 href="#">Đồng Hồ Đức</h4>
+                              </li>
+                              <?php   
+                                foreach ($dhDuc as $key => $value) {
+                                  ?>
+                                       <li><a href="#"><?php  echo $value['name'] ;?> </a></li>
+                                  <?php
+                                }
+                              
+                              ?>
+                                
+                            </ul>
+                          </div>
+                        </li>
+                      </div>
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <li style="width: 200%;" class="media">
+                          <div class="media-body">
+
+                            <ul class="unstyled">
+                              <li>
+                                <h4 href="#">Đồng Hồ Thụy Sỹ</h4>
+                              </li>
+                              <?php   
+                                foreach ($dhThuySy as $key => $value) {
+                                  ?>
+                                       <li><a href="#"><?php  echo $value['name'] ;?> </a></li>
+                                  <?php
+                                }
+                              
+                              ?>
+                                
+                            </ul>
+                          </div>
+                        </li>
+                      </div>
+                      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <li style="width: 200%;" class="media">
+                          <div class="media-body">
+
+                            <ul class="unstyled">
+                              <li>
+                                <h4 href="#">Đồng Hồ Nhật</h4>
+                              </li>
+
+                              <?php   
+                                foreach ($dhNhat as $key => $value) {
+                                  ?>
+                                       <li><a href="#"><?php  echo $value['name'] ;?> </a></li>
+                                  <?php
+                                }
+                              
+                              ?>
+
+                            </ul>
+                          </div>
+                        </li>
+                      </div>
+
+
+                    </div>
+                  </ul>
+
+                </div>
+
+              </li>
+                            <?php   
+                                foreach ($cate as $key => $value) {
+                                  ?>
+                                       <li><a href="#"><?php  echo $value['cat_name'] ;?> </a></li>
+                                      
+                                  <?php
+                                }
+                              
+                              ?>
+                <ul class="nav navbar-nav menu-sub">
+                  <li><a href="#">Dây Da ZRC</a></li>
+                  <li><a href="#">Dây Da Hir</a></li>
+                  <li><a href="#">Hộp Đồng Hồ</a></li>
+                </ul>
+
+              </li>
+              <li class="menu2"> <a>Liên Hệ</a>
+                <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> -->
+
+                <ul class="nav navbar-nav menu-sub">
+                  <li><a href="#">Thông Tin LH</a></li>
+                  <li><a href="#">Góp ý</a></li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </div>
+        </nav>
+      </div>
+      <!-- /.navbar-collapse -->
+
+
+
+    </div>
+  </div>
+</div>
+
+
+</div>
+
         </div>
 
             <div style="margin-top: 180px; margin-left: 2%; margin-right: 2%" class="row chitiet">
@@ -115,6 +396,7 @@
                             <center>
                                 <h3 style="color: #999999">CASIO NAM – QUARTZ (PIN) – KÍNH NHỰA – DÂY CAO SU
                                     (AE-1000W-1BVDF)</small></h3>
+                                  
                             </center>
                         </div>
                     </div>
