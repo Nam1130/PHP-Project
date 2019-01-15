@@ -91,7 +91,7 @@
         <div class="bar">
           <a style="width: 30%;" href="#news">Vị Trí <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
           <a style="width: 40%;"  href="view/login.php"><span id="tk">Xin chào <?php   ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
-          <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
+          <a style="width: 30%;" href="view/displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
                     onclick="displayProduct()"></i><i id="cart">0</i>
             </a>
 
@@ -268,7 +268,7 @@
                             <?php   
                                 foreach ($cate as $key => $value) {
                                   ?>
-                                       <li><a href="#"><?php  echo $value['cat_name'] ;?> </a></li>
+                                       <li><a href="view/Man.php"><?php  echo $value['cat_name'] ;?> </a></li>
                                       
                                   <?php
                                 }
@@ -388,7 +388,7 @@
                                  <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product">
                         
                                     <div class="product-img">
-                                        <a style = "height: 286px;" href="view/chitiet.php?idProduct=<?php echo $value['id']; ?>" class="thumbnail">
+                                        <a style = "height: 286px;" href="view/chitiet.php?idProduct=<?php echo $value['id']; ?>&idcate=<?php  echo $value['category_id']; ?>" class="thumbnail">
                                             <img src="<?php echo $value['image'];?>" class="img-responsive hvr-pulse" alt="Image">
                                             
                                         </a>
