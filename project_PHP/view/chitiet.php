@@ -37,6 +37,12 @@
 
         require "../model/card.php";
         require "../model/function.php";
+
+
+        if (isset($_GET['idcate']))
+        {
+            $idcate = $_GET['idcate'];
+        }
         
         $db = new card;
         if (isset($_GET['idProduct']))
@@ -95,34 +101,48 @@
           product,prod_orders,orders where product.id = prod_orders.prod_id 
          and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus;
          $arr = $db->view($sql);
+         $arrId = array();
+         foreach ($arr as $key => $value) {
+            $arrId[] = $value['prod_id'];
+        }
+
+        $quan;
+        $sql = 'select prod_orders.quantity from
+        product,prod_orders,orders where product.id = prod_orders.prod_id 
+       and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus.'. and prod_orders.prod_id ='.$idProduct;
+       $quantityArr = $db->view($sql);
+       foreach ($quantityArr as $key => $value) {
+        $quan = $value['quantity'];
+    }
 
 
         if(isset($_POST['addCard'])) 
         { 
-            foreach ($arr as $key => $value) {
-               if($value['prod_id']==$idProduct){
-                //    $sql = "update prod_orders set quantity = ".$value['quantity'] + 1;
-                //     $db->excute($sql);
-               }elseif($value['prod_id']!=$idProduct){
-                    $db->orders($_SESSION['id_cus'], date('Y-m-d'),1);
+            if (!in_array($idProduct, $arrId)) {
+                $db->orders($_SESSION['id_cus'], date('Y-m-d'),1);
                 
-                    $sql  = 'select max(id) from orders';
-                    $order = $db->view($sql);
-                    foreach ($order as $key => $value) {
-                        $order_id = $value['max(id)'];
-                    }
-                    $_SESSION['card']= array(
-        
-                            'prod_id' => $prod_id,
-                            'order_id' =>$order_id,
-                            'sl' => 1,
-                            'id_cus'=>$_SESSION['id_cus']
-                        );
-                    $db->prod_orders($prod_id, $order_id,1,1);
-               }
+                $sql  = 'select max(id) from orders';
+                $order = $db->view($sql);
+                foreach ($order as $key => $value) {
+                    $order_id = $value['max(id)'];
+                }
+                $_SESSION['card']= array(
+    
+                        'prod_id' => $prod_id,
+                        'order_id' =>$order_id,
+                        'sl' => 1,
+                        'id_cus'=>$_SESSION['id_cus']
+                    );
+                $db->prod_orders($prod_id, $order_id,1,1);
+            }else{
+               $quan = $quan +1;
+                $sql = "UPDATE prod_orders SET quantity = '$quan' WHERE prod_id = $idProduct";
+                $db->excute($sql);
             }
 
+            
 
+          
             
             
         }
@@ -161,7 +181,7 @@
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">
 
       <!-- <img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image"> -->
-      <a href="#"><img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image">
+      <a href="../index.php"><img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image">
       </a>
     </div>
 
@@ -169,7 +189,7 @@
       <div class="row">
         <div class="bar">
           <a style="width: 30%;" href="#news">Vị Trí <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
-          <a style="width: 40%;"  href="view/login.php"><span id="tk">Xin chào <?php   ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
+          <a style="width: 40%;"  href="login.php"><span id="tk">Xin chào <?php   ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
           <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
                     onclick="displayProduct()"></i><i id="cart">0</i>
             </a>
@@ -396,7 +416,7 @@
                             <center>
                                 <h3 style="color: #999999">CASIO NAM – QUARTZ (PIN) – KÍNH NHỰA – DÂY CAO SU
                                     (AE-1000W-1BVDF)</small></h3>
-                                  
+                             
                             </center>
                         </div>
                     </div>
@@ -449,6 +469,7 @@
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ttin">
                             <div class="row">
                                 <h1>THÔNG TIN SẢN PHẨM</h1>
+                               
                             </div>
                             <div class="row">
                                 <h4>Mã Số Sản Phẩm: AE-1000W-1BVDF</h4>
@@ -719,9 +740,9 @@
                     <div id="content">
         
                                 <h2 style="text-align: center">
-                                    <b style="color: red;font-size: 40px;">SẢN PHẨM BÁN CHẠY</b>
+                                    <b style="color: red;font-size: 40px;">SẢN PHẨM LIÊN QUAN</b>
                                 </h2>
-                                <?php include('bestSeller.php'); ?>
+                                <?php include('spTuongTu.php'); ?>
                     </div>
                      
                 </div>

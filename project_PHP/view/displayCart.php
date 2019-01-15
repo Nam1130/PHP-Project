@@ -79,7 +79,7 @@
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">
 
       <!-- <img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image"> -->
-      <a href="#"><img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image">
+      <a href="../index.php"><img style="margin: 20px 0px 20px 20px;" src="image\tissot-logo.png" class="img-responsive" alt="Image">
       </a>
     </div>
 
@@ -588,7 +588,7 @@
                             <?php echo $value[ 'quantity']; ?>
                             </td>
                             <td> 
-                                <a href="edit_product.php?idProduct=<?php echo $value['id']; ?>">Chỉnh sữa</a> | 
+                               
                                 <a href="product.php?idProduct=<?php echo $value['id']; ?>">Xóa</a> 
                             </td>
                         </tr>

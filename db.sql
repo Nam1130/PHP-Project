@@ -172,22 +172,70 @@ insert into product (prod_name,category_id,price,quantity,status,imported_date,n
 với kiểu dáng mạnh mẽ cùng màu đen nam tính,
 các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
 mặt kính nhựa chịu lực.','image/18.png',1),
-('Cartier',1,232522,23,1,now(),'','image/2.png',1),
-('Omega ',1,1999999,23,1,now(),'','image/19.png',1),
-('Philippe',1,2999999,23,1,now(),'','image/4.png',1),
-('Longines ',1,19999999,23,1,now(),'','image/19.png',2),
-('Breitling ',1,1999999,23,1,now(),'','image/6.png',2),
-('TAG Heuer',1,4999999,23,1,now(),'','image/7.png',2),
-('Montblanc ',1,4999999,23,1,now(),'','image/8.png',2),
-('Breguet',2,1999999,23,1,now(),'','image/9.png',3),
-('Swiss Made',2,1499999,23,1,now(),'','image/10.png',3),
-('Tissot',2,1789999,23,1,now(),'','image/11.png',4),
-('Timex',2,1299999,23,1,now(),'','image/12.png',4),
-('Calvin Klein',2,6999999,23,1,now(),'','image/13.png',5),
-('Movado',1,1226666,23,1,now(),'','image/14.png',6),
-('SEIKO',1,1229999,23,1,now(),'','image/15.png',6),
-('Citizen',1,12222999,23,1,now(),'','image/16.png',7),
-('Orient',1,12222999,23,1,now(),'','image/17.png',7);
+('Cartier',1,232522,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/2.png',1),
+('Omega ',1,1999999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/19.png',1),
+('Philippe',1,2999999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/4.png',1),
+('Longines ',1,19999999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/19.png',2),
+('Breitling ',1,1999999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/6.png',2),
+('TAG Heuer',1,4999999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/7.png',2),
+('Montblanc ',1,4999999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/8.png',2),
+('Breguet',2,1999999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/9.png',3),
+('Swiss Made',2,1499999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/10.png',3),
+('Tissot',2,1789999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/11.png',4),
+('Timex',2,1299999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/12.png',4),
+('Calvin Klein',2,6999999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/13.png',5),
+('Movado',1,1226666,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/14.png',6),
+('SEIKO',1,1229999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/15.png',6),
+('Citizen',1,12222999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/16.png',7),
+('Orient',1,12222999,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
+với kiểu dáng mạnh mẽ cùng màu đen nam tính,
+các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
+mặt kính nhựa chịu lực.','image/17.png',7);
 
 insert into slides(name, link,status) values
 ('TISSOT TRADITION 5.5','image/slide1.jpg',''),
@@ -290,3 +338,13 @@ limit 12;
 
 select * from product 
 order by imported_date limit 12;
+
+
+select prod_orders.prod_id,prod_orders.quantity from
+          product,prod_orders,orders where product.id = prod_orders.prod_id 
+         and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id =1;
+         
+         
+select product.id, product.prod_name,product.price,prod_orders.quantity from
+          product,prod_orders,orders where product.id = prod_orders.prod_id 
+         and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id =2;
