@@ -48,7 +48,7 @@
       }
 
 
-         public function can_login($table_name, $where_condition)  
+      public function can_login($table_name, $where_condition)  
       {  
            $condition = '';  $kq;
            foreach($where_condition as $key => $value)  
@@ -59,12 +59,15 @@
            
            //echo "$condition";
            $query = "SELECT * FROM ".$table_name." WHERE " . $condition;  
-           $result = mysqli_query($this->conn, $query); 
+           $result = mysqli_query($this->conn, $query);
+           
 
            if(mysqli_num_rows($result))  
-           {  
+           {  foreach ($result as $key => $value) {
+               $_SESSION['id_cus'] =  $value['id'];
+           }
                 $kq =  1;  
-                echo $kq;
+                
            }  
            else  
            {  

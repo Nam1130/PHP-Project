@@ -10,6 +10,12 @@ note text,
 primary key(id)
 );
 
+create table if not exists provided(
+id int not null auto_increment,
+name varchar(255) not null,
+address varchar(255),
+primary key (id)
+);
 create table if not exists product (
 id int(11) not null auto_increment,
 prod_name varchar(255) not null,
@@ -20,9 +26,14 @@ status int(11) not null,
 imported_date date not null,
 note text,
 image varchar(255),
+provided_id int(11),
 primary key(id),
-foreign key(category_id) references category (id)
+foreign key(category_id) references category (id),
+foreign key(provided_id) references provided(id)
 );
+/*select product.id, product.prod_name,product.price,prod_orders.quantity from product,prod_orders,orders 
+where product.id = prod_orders.prod_id and prod_orders.order_id = orders.id and orders.cus_id =1;
+*/
 
 create table if not exists product_audit (
 id int(11) not null auto_increment,
@@ -47,7 +58,7 @@ primary key (id)
 create table if not exists orders (
 id int(11) not null auto_increment,
 cus_id	int(11),
-date datetime not null,
+date date not null,
 status varchar(255),
 primary key (id),
 foreign key (cus_id) references customer (id)
@@ -57,6 +68,7 @@ create table if not exists prod_orders (
 prod_id int(11),
 order_id int(11),
 quantity int(11) not null,
+status int(11) not null,
 primary key(prod_id, order_id),
 foreign key(prod_id) references product(id),
 foreign key(order_id) references orders(id)
@@ -93,7 +105,6 @@ status varchar(255) not null,
 
 primary key (id)
 );
-
 CREATE TABLE `details` (
   `id` int(11) NOT NULL auto_increment,
   `prod_id` int(11) NOT NULL,
@@ -120,33 +131,63 @@ CREATE TABLE `details` (
 
 
 
+
+
+
+
+
+insert into provided (name,address) values
+('Casio','Đức'),
+('Citizen','Đức'),
+('Seiko','Đức'),
+('Op','Đức'),
+('Sakagen','Đức'),
+('Sarcar','Mĩ'),
+('Zenith','Mĩ'),
+('Rolex','Mĩ'),
+('Sakagen','Mĩ'),
+('Patek Philipe','Mĩ'),
+('Oris','Thụy Sỹ'),
+('Titoni','Thụy Sỹ'),
+('Longines','Thụy Sỹ'),
+('CC Watches','Thụy Sỹ'),
+('Cover','Thụy Sỹ'),
+('Casio','Nhật'),
+('Citizen','Nhật'),
+('Orients','Nhật'),
+('Seiko','Nhật');
+
+
+
+
+
 insert into category (cat_name) values
 (N'Đồng Hồ Nam'),
 (N'Đồng Hồ Nữ'),
-(N'Đồng Hồ Dây Da'),
-(N'Đồng Hồ Không Dây');
+(N'Đồng Hồ Đôi'),
+(N'Phụ Kiện');
 
-insert into product (prod_name,category_id,price,quantity,status,imported_date,note,image)values
+insert into product (prod_name,category_id,price,quantity,status,imported_date,note,image,provided_id)values
 ('Rolex',1,1222222,23,1,now(),'Đồng hồ nam điện tử Casio AE-1000W-1BVDF
 với kiểu dáng mạnh mẽ cùng màu đen nam tính,
 các chức năng đa dụng tuyệt vời, chất được làm từ nhựa cao cấp siêu bền,
-mặt kính nhựa chịu lực.','image/18.png'),
-('Cartier',1,232522,23,1,now(),'','image/2.png'),
-('Omega ',1,1999999,23,1,now(),'','image/19.png'),
-('Philippe',1,2999999,23,1,now(),'','image/4.png'),
-('Longines ',1,19999999,23,1,now(),'','image/19.png'),
-('Breitling ',1,1999999,23,1,now(),'','image/6.png'),
-('TAG Heuer',1,4999999,23,1,now(),'','image/7.png'),
-('Montblanc ',1,4999999,23,1,now(),'','image/8.png'),
-('Breguet',2,1999999,23,1,now(),'','image/9.png'),
-('Swiss Made',2,1499999,23,1,now(),'','image/10.png'),
-('Tissot',2,1789999,23,1,now(),'','image/11.png'),
-('Timex',2,1299999,23,1,now(),'','image/12.png'),
-('Calvin Klein',2,6999999,23,1,now(),'','image/13.png'),
-('Movado',1,1226666,23,1,now(),'','image/14.png'),
-('SEIKO',1,1229999,23,1,now(),'','image/15.png'),
-('Citizen',1,12222999,23,1,now(),'','image/16.png'),
-('Orient',1,12222999,23,1,now(),'','image/17.png');
+mặt kính nhựa chịu lực.','image/18.png',1),
+('Cartier',1,232522,23,1,now(),'','image/2.png',1),
+('Omega ',1,1999999,23,1,now(),'','image/19.png',1),
+('Philippe',1,2999999,23,1,now(),'','image/4.png',1),
+('Longines ',1,19999999,23,1,now(),'','image/19.png',2),
+('Breitling ',1,1999999,23,1,now(),'','image/6.png',2),
+('TAG Heuer',1,4999999,23,1,now(),'','image/7.png',2),
+('Montblanc ',1,4999999,23,1,now(),'','image/8.png',2),
+('Breguet',2,1999999,23,1,now(),'','image/9.png',3),
+('Swiss Made',2,1499999,23,1,now(),'','image/10.png',3),
+('Tissot',2,1789999,23,1,now(),'','image/11.png',4),
+('Timex',2,1299999,23,1,now(),'','image/12.png',4),
+('Calvin Klein',2,6999999,23,1,now(),'','image/13.png',5),
+('Movado',1,1226666,23,1,now(),'','image/14.png',6),
+('SEIKO',1,1229999,23,1,now(),'','image/15.png',6),
+('Citizen',1,12222999,23,1,now(),'','image/16.png',7),
+('Orient',1,12222999,23,1,now(),'','image/17.png',7);
 
 insert into slides(name, link,status) values
 ('TISSOT TRADITION 5.5','image/slide1.jpg',''),
@@ -182,35 +223,6 @@ insert into orders(cus_id,date,status)values
 (4,'2018-12-12',''),
 (1,'2018-12-12',''),
 (1,'2018-12-12','');
-insert into prod_orders(prod_id,order_id,quantity)values
-(13,1,1),
-(2,2,1),
-(15,3,1),
-(14,4,1),
-(4,5,1),
-(5,6,1),
-(6,7,1),
-(7,8,1),
-(8,9,1),
-(9,10,1),
-(10,11,1),
-(11,12,1),
-(12,13,1);
-insert into orders(cus_id,date,status)values
-(1,'2019-1-2',''),
-(2,'2019-1-2',''),
-(3,'2019-1-2',''),
-(2,'2019-1-2',''),
-(1,'2019-1-2',''),
-(3,'2019-1-2',''),
-(1,'2019-1-2',''),
-(4,'2019-1-2',''),
-(1,'2019-1-2',''),
-(6,'2019-1-2',''),
-(2,'2019-1-2',''),
-(3,'2019-1-2',''),
-(1,'2019-1-2','');
-
 
 INSERT INTO `details` (`prod_id`, `product_code`, `brand`, `origin`, `forGen`, `glass`, `machine`, `guarantee`, `guarantee_place`, `diameter`, `surface_thickness`, `braces`, `strap`, `color`, `waterproof`, `function`) VALUES
 (1, 'AE-1000W-1BVDF', 'Casio', 'Nhật Bản', 'Nam', 'Resin Glass', 'Quartz (Pin)', 2, 'Tại Hải Triều', 44, 14, 'Nhựa', 'Dây Cao Su', 'Đen', '10 ATM', 'Lịch – Bộ Bấm Giờ – Giờ Kép – Đèn Led'),
@@ -232,6 +244,41 @@ INSERT INTO `details` (`prod_id`, `product_code`, `brand`, `origin`, `forGen`, `
 
 
 
+
+
+insert into prod_orders(prod_id,order_id,quantity,status)values
+(13,1,1,1),
+(2,2,1,1),
+(15,3,1,1),
+(14,4,1,1),
+(4,5,1,0),
+(5,6,1,0),
+(6,7,1,1),
+(7,8,1,0),
+(8,9,1,1),
+(9,10,1,0),
+(10,11,1,0),
+(11,12,1,0),
+(12,13,1,1);
+insert into orders(cus_id,date,status)values
+(1,'2019-1-2',''),
+(2,'2019-1-2',''),
+(3,'2019-1-2',''),
+(2,'2019-1-2',''),
+(1,'2019-1-2',''),
+(3,'2019-1-2',''),
+(1,'2019-1-2',''),
+(4,'2019-1-2',''),
+(1,'2019-1-2',''),
+(6,'2019-1-2',''),
+(2,'2019-1-2',''),
+(3,'2019-1-2',''),
+(1,'2019-1-2','');
+
+
+
+select name from provided where address = 'Đức';
+ SELECT * FROM provided WHERE address  =  'Đức';
 
 select  *, sum(prod_orders.quantity) from product, prod_orders where product.id= prod_orders.prod_id
 GROUP BY prod_orders.prod_id

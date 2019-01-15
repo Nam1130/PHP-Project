@@ -22,7 +22,7 @@
                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product">
                             
                                         <div class="product-img">
-                                            <a href="view/chitiet.php?idProduct=<?php echo $value['id']; ?>" class="thumbnail">
+                                            <a href="chitiet.php?idProduct=<?php echo $value['id']; ?>" class="thumbnail">
                                                 <img src="<?php echo $value['image'];?>" class="img-responsive hvr-pulse" alt="Image">
                                                 
                                             </a>
