@@ -39,7 +39,7 @@
                }
                  
              }else{
-               echo  $value['email'];
+              // echo  $value['email'];
                $this->error = " Email này đã tồn tại";
              }
          }
@@ -65,6 +65,7 @@
            if(mysqli_num_rows($result))  
            {  foreach ($result as $key => $value) {
                $_SESSION['id_cus'] =  $value['id'];
+               $_SESSION['cus_name'] =  $value['cus_name'];
            }
                 $kq =  1;  
                 

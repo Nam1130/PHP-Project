@@ -1,17 +1,9 @@
-<!--    <div class="row">
-       <div id="content">
-    
-                        <h2 style="text-align: center">
-                            <b style="color: red;font-size: 40px;">SẢN PHẨM BÁN CHẠY</b>
-                        </h2>
-    
-     -->
-
 
                         <?php
 
                        
-                        $sql='select * from product, category where  product.category_id = category.id and category.id ='.$idcate;
+                        $sql='select product.id,product.prod_name,product.category_id,product.price,image from product, category
+                         where  product.category_id = category.id and category.id ='.$idcate;
                         $bc=array(); 
                         $bc=$db->view($sql); 
 
@@ -20,7 +12,7 @@
                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product">
                             
                                         <div class="product-img">
-                                            <a href="chitiet.php?idProduct=<?php echo $value['id']; ?>" class="thumbnail">
+                                            <a href="chitiet.php?idProduct=<?php echo $value['id']; ?>&idcate=<?php  echo $value['category_id']; ?>" class="thumbnail">
                                                 <img src="<?php echo $value['image'];?>" class="img-responsive hvr-pulse" alt="Image">
                                                 
                                             </a>
@@ -32,7 +24,7 @@
                 
                                                 <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua
                                                     Ngay</button>
-                                                <a href="chitiet.html">
+                                                <a href="chitiet.php">
                                                     
                                                 </a>
                                             </div>
@@ -44,8 +36,4 @@
 
                     ?>
     
-    
-    
-  <!--   </div> content
-    
-</div> -->
+   

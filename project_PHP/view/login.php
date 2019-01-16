@@ -77,7 +77,7 @@
            if($data->can_login('customer', $login_data)==1)  
            {  
              
-                header("location:../index.php"); 
+                header("location:index.php"); 
                 $_SESSION['name'] =  $login_data['user_name'];
                
                
