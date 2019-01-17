@@ -24,7 +24,7 @@
         
         padding: 25px;
         font-size: 30px;
-        width: 540px;
+        width: 500px;
         text-align: center;
         text-decoration: none;
         margin: 5px 2px;
