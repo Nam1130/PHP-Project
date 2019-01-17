@@ -7,7 +7,6 @@ create table if not exists category (
 id int(11) not null auto_increment,
 cat_name varchar(255) not null,
 note text,
-link varchar(255),
 primary key(id)
 );
 
@@ -74,6 +73,7 @@ primary key(prod_id, order_id),
 foreign key(prod_id) references product(id),
 foreign key(order_id) references orders(id)
 );
+
 
 create table if not exists message (
 id int not null auto_increment,
