@@ -46,23 +46,6 @@
            $arr = $db->view($sql);
   
          }
-         $dhMy=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Mĩ'";
-         $dhMy = $db->view($sql);
-
-         $dhDuc=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Đức'";
-         $dhDuc = $db->view($sql);
-
-         $dhThuySy=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Thụy Sỹ'";
-         $dhThuySy = $db->view($sql);
-
-         $dhNhat=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Nhật'";
-         $dhNhat = $db->view($sql);
-
-
          $cate=array(); 
          $sql = "SELECT cat_name FROM category";
          $cate = $db->view($sql);
@@ -75,7 +58,7 @@
         <div style = "width: 100%;margin-left: -15px;margin-right: -30px;"  class="row fixtop">
 
           <?php
-               require_once "top.php";
+              require_once "top.php";
 
           ?>
         </div>
@@ -95,53 +78,13 @@
           </div>
 
 
+         
+
+
           <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-md-offset-1">
 
-                              <table   class="table table-hover table-bordered">
-                                  <thead>
-                                  <tr>
-                                      <th>STT</th>
-                                      <th>Tên sản phẩm</th>
-                                      <th>Giá</th>
-                                      <th>Số lượng</th>
-                                      <th>Tùy chỉnh</th>
-
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-
-                                  <?php
-                                      $count=0; 
-                                      if(isset($_SESSION['id_cus'])){
-                                          foreach ($arr as $key=> $value) { 
-                                            $count ++;
-                                            ?>
-                                          <tr>
-                                              <td>
-                                              <?php echo $count; ?>
-                                              </td>
-                                              <td>
-                                              <?php echo $value[ 'prod_name']; ?>
-                                              </td>
-                                              <td>
-                                              <?php echo $value[ 'price']; ?>
-                                              </td>
-                                              <td>
-                                              <?php echo $value[ 'quantity']; ?>
-                                              </td>
-                                              <td> 
-                                                
-                                                  <a href="product.php?idProduct=<?php echo $value['id']; ?>">Xóa</a> 
-                                              </td>
-                                          </tr>
-                                          <?php 
-                                          }
-                                     }
-                                  ?>
-
-                                  </tbody>
-                              </table>
+                  <div id="live_data"></div>
                               
 
                   </div>
@@ -200,7 +143,7 @@
 </div>
 
 
-            </div>
+  </div>
             
 
 
@@ -214,7 +157,41 @@
         </div><!-- container-fluid -->
     </div>
     <!-- wapper -->
+  <script>
+       function fetch_data()  
+      {  
+           $.ajax({  
+                url:"tableCart.php",  
+                method:"POST",  
+                success:function(data){  
+                     $('#live_data').html(data);  
+                }  
+           });  
+      } 
+     fetch_data();
+
+     function edit_data(id, quantity)  
+      {  
+           $.ajax({  
+                url:"updateCart.php",  
+                method:"POST",  
+                data:{id:id, quantity:quantity},  
+                dataType:"text",  
+                success:function(data){  
+                     alert(data);  
+                }  
+           });  
+      }
+      $(document).on('click', '.btn_upload', function(){  
+         
+           var id = $('#id').data("id1");  
+           var quantity = $('#quantity').data("id5"); 
+
+           alert(id);  
+           edit_data(id,quantity);  
+      });
   
+  </script>
 
     <script src="java.js"></script>
     <div style="width: 100%;" class="modal" id="myModal">
