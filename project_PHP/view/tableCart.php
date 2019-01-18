@@ -18,7 +18,7 @@
       <div class="table-responsive">  
            <table class="table table-bordered">  
                 <tr>  
-                    <th>STT</th>
+                    <th>STT</th>  
                     <th>Tên sản phẩm</th>
                     <th>Giá</th>
                     <th>Số lượng</th>
@@ -30,33 +30,32 @@
         $a = $count - 1;
            $output .= '  
                 <tr>  
-                     <td id ="id" class="id" data-id1="'.$value["id"].'">'.$value['id'].'</td>  
-                     <td >'.$value["prod_name"].'</td>  
-                     <td class="price" data-id2="'.$value["id"].'">'.number_format($value["price"]).'</td>  
+                     <td id ="id" class="id" data-id="'.$value["id"].'">'.$value['id'].'</td>  
+                     <td >'.$value["prod_name"].'</td>
+                     <td class="price" data-id="'.$value["id"].'">'.number_format($value["price"]).' VND</td>  
                      <td 
-                         <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
-                                <button id="minus" type="button" onclick="minus('.$a.')" class="btn btn-default btn-number"
-                                    data-type="minus" data-field="quant[1]">
-                                    <span class="glyphicon glyphicon-minus"></span> </button>
+                            <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
+                                    <button id="minus" type="button" onclick="minus('.$a.')" class="btn btn-default btn-number"
+                                        data-type="minus" data-field="quant[1]">
+                                        <span class="glyphicon glyphicon-minus"></span> </button>
 
-                            </span> <input name="quant[3]" id = "quantity"  data-id5="'.$value["quantity"].'" class="form-control input-number" value= "'.$value["quantity"].'"
-                                type="number" id="sl" > <span class="input-group-btn">
+                                    </span> <input name="quant[3]" id = "quantity"  data-id="'.$value["quantity"].'" class="form-control input-number" value= "'.$value["quantity"].'"
+                                    type="number" > <span class="input-group-btn">
 
 
-                                <button id="plus" type="button" onclick="plus('.$a.')" class="btn btn-default btn-number"
-                                    data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
-                                </button> </span>
-                        </div>
+                                    <button id="plus" type="button" onclick="plus('.$a.')" class="btn btn-default btn-number"
+                                        data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
+                                    </button> </span>
+                            </div>
                      
                      </td>  
-                     <td><button type="button" name="delete_btn" data-id3="'.$value["id"].'" class="btn btn-xs btn-danger btn_delete">x</button> |
-                      <button type="button" name="upload_btn" data-id4="'.$value["id"].'" class="btn btn-xs btn-danger btn_upload"><span class="glyphicon glyphicon-refresh"></span></button></td>  
+                     <td><button type="button" name="delete_btn" data-id="'.$value["id"].'" class="btn btn-xs btn-danger btn_delete">x</button> |
+                      <button type="button" id = "but" name="upload_btn" data-id="'.$value["id"].'" class="btn btn-xs btn-danger btn_upload"><span class="glyphicon glyphicon-refresh"></span></button></td>  
                       
                 </tr>  ';  
-    }  
+    } 
 
  $output .= '</table>  </div>';  
  echo $output;  
-
 
  ?>

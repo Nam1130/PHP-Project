@@ -44,22 +44,7 @@
          //print_r($a);
 
          
-         $dhMy=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Mĩ'";
-         $dhMy = $db->view($sql);
-
-         $dhDuc=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Đức'";
-         $dhDuc = $db->view($sql);
-
-         $dhThuySy=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Thụy Sỹ'";
-         $dhThuySy = $db->view($sql);
-
-         $dhNhat=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Nhật'";
-         $dhNhat = $db->view($sql);
-
+       
 
          $cate=array(); 
          $sql = "SELECT cat_name FROM category";
@@ -173,7 +158,7 @@
                                     </div>
                                     <div class="caption">
                                         <h3><?php echo $value['prod_name'];?> </h3>
-                                        <div class="cost"><?php echo $value['price'].' VNĐ';?></div>
+                                        <div class="cost"><?php echo number_format($value['price']).' VNĐ';?></div>
                                         <div class="bt-cost">
 
                                             <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua

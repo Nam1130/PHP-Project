@@ -31,21 +31,7 @@
     $sql = "SELECT cat_name FROM category";
     $cate = $db->view($sql);
 
-    $dhMy=array(); 
-    $sql = "SELECT name FROM provided WHERE address  =  'Mĩ'";
-    $dhMy = $db->view($sql);
-
-    $dhDuc=array(); 
-    $sql = "SELECT name FROM provided WHERE address  =  'Đức'";
-    $dhDuc = $db->view($sql);
-
-    $dhThuySy=array(); 
-    $sql = "SELECT name FROM provided WHERE address  =  'Thụy Sỹ'";
-    $dhThuySy = $db->view($sql);
-
-    $dhNhat=array(); 
-    $sql = "SELECT name FROM provided WHERE address  =  'Nhật'";
-    $dhNhat = $db->view($sql);
+    
 
 ?>
 
