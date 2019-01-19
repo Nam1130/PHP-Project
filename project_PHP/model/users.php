@@ -79,6 +79,13 @@
            return $kq;
       }
 
+      public function check_login(){
+        if(isset($_SESSION['user_name']) && !empty($_SESSION['user_name'] )) {
+          return true;
+        } else {
+           false;
+        }
+      }
    }
 ?>  
 

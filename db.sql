@@ -349,3 +349,6 @@ select prod_orders.prod_id,prod_orders.quantity from
 select product.id, product.prod_name,product.price,prod_orders.quantity from
           product,prod_orders,orders where product.id = prod_orders.prod_id 
          and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id =2;
+
+
+CREATE FULLTEXT INDEX searchindex ON product(prod_name);
