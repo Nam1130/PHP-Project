@@ -80,7 +80,6 @@
                 header("location:index.php"); 
                 $_SESSION['name'] =  $login_data['user_name'];
                
-               
            }  
            else  
            {  

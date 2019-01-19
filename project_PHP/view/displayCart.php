@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
 
     <script src="../JavaScript/java.js"></script>
 
@@ -117,7 +118,7 @@
 
           </div>
 
-    
+      
 
 
   </div>
@@ -179,15 +180,19 @@
                 dataType:"text",  
                 success:function(data){  
                      alert(data);  
+                     fetch_data();
                 }  
            });  
       }
       $(document).on('click', '.btn_upload', function(){  
          
-           var id = $('#id').data("id1");  
-           var quantity = $('#quantity').data("id5"); 
-
+        //    var id = $('#quantity').data("id5");  
+     
+            var id = document.getElementById('id').getAttribute('data-id');
+          
+            var quantity = $('#quantity').val();
            alert(id);  
+           alert(quantity);  
            edit_data(id,quantity);  
       });
   
