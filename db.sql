@@ -41,7 +41,8 @@ prod_id int,
 message text not null,
 primary key(id),
 foreign key(prod_id) references product (id)
-);
+);  
+
 
 create table if not exists customer (
 id int(11) not null auto_increment,
@@ -53,7 +54,15 @@ email varchar(255) not null unique,
 sdt varchar(15) not null,
 primary key (id)
 );
-
+create table if not exists bills (
+id int(11) not null primary key auto_increment,
+cus_id int(11) not null,
+imported_date date not null,
+price int(11) not null,
+address varchar(255) not null,
+status int(11) not null,
+foreign key (cus_id) references customer (id)
+);
 
 create table if not exists orders (
 id int(11) not null auto_increment,
@@ -73,6 +82,7 @@ primary key(prod_id, order_id),
 foreign key(prod_id) references product(id),
 foreign key(order_id) references orders(id)
 );
+
 
 
 create table if not exists message (
@@ -324,28 +334,6 @@ insert into orders(cus_id,date,status)values
 (3,'2019-1-2',''),
 (1,'2019-1-2','');
 
+SELECT order_id from prod_orders,orders where order_id = orders.id and prod_id= 6  and cus_id =1;
 
-
-select name from provided where address = 'Đức';
- SELECT * FROM provided WHERE address  =  'Đức';
-
-select  *, sum(prod_orders.quantity) from product, prod_orders where product.id= prod_orders.prod_id
-GROUP BY prod_orders.prod_id
-ORDER BY Sum(prod_orders.quantity) DESC
-limit 12;
-
-
-
-
-select * from product 
-order by imported_date limit 12;
-
-
-select prod_orders.prod_id,prod_orders.quantity from
-          product,prod_orders,orders where product.id = prod_orders.prod_id 
-         and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id =1;
-         
-         
-select product.id, product.prod_name,product.price,prod_orders.quantity from
-          product,prod_orders,orders where product.id = prod_orders.prod_id 
-         and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id =2;
+UPDATE prod_orders set quantity = 5 where order_id=7 and prod_id=6;
