@@ -114,18 +114,23 @@
        foreach ($quantityArr as $key => $value) {
         $quan = $value['quantity'];
     }
+    //oder id
+    if(isset($_SESSION['id_oder'])){
+        $order_id = $_SESSION['id_oder'];
+       
+    }
 
 
         if(isset($_POST['addCard'])) 
         { 
             if (!in_array($idProduct, $arrId)) {
-                $db->orders($_SESSION['id_cus'], date('Y-m-d'),1);
+                $db->orders($order_id,$_SESSION['id_cus'], date('Y-m-d'),1);
                 
-                $sql  = 'select max(id) from orders';
-                $order = $db->view($sql);
-                foreach ($order as $key => $value) {
-                    $order_id = $value['max(id)'];
-                }
+                // $sql  = 'select max(id) from orders';
+                // $order = $db->view($sql);
+                // foreach ($order as $key => $value) {
+                //     $order_id = $value['max(id)'];
+                // }
                 $_SESSION['card']= array(
     
                         'prod_id' => $prod_id,
@@ -147,21 +152,7 @@
             
         }
        
-        $dhMy=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Mĩ'";
-         $dhMy = $db->view($sql);
-
-         $dhDuc=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Đức'";
-         $dhDuc = $db->view($sql);
-
-         $dhThuySy=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Thụy Sỹ'";
-         $dhThuySy = $db->view($sql);
-
-         $dhNhat=array(); 
-         $sql = "SELECT name FROM provided WHERE address  =  'Nhật'";
-         $dhNhat = $db->view($sql);
+        
 
 
          $cate=array(); 

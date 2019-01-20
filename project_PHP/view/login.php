@@ -78,7 +78,12 @@
            {  
              
                 header("location:index.php"); 
-                $_SESSION['name'] =  $login_data['user_name'];
+               $sql  = 'select max(id) from orders';
+                $order = $data->view($sql);
+                foreach ($order as $key => $value) {
+                    $order_id = $value['max(id)'];
+                }
+                $_SESSION['id_oder'] = $order_id+1;
                
                
            }  

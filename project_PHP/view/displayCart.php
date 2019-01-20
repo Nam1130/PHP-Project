@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../JavaScript/java.js"></script>
 
 
@@ -40,15 +40,16 @@
          if(isset( $_SESSION['id_cus'])){
             $id_cus =  $_SESSION['id_cus'];
 
-            $sql = 'select product.id, product.prod_name,product.price,prod_orders.quantity from
-            product,prod_orders,orders where product.id = prod_orders.prod_id 
-           and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus;
-           $arr = $db->view($sql);
+           
   
          }
          $cate=array(); 
          $sql = "SELECT cat_name FROM category";
          $cate = $db->view($sql);
+
+         if (isset($_POST['dathang'])) {
+            header('Location:thanhtoan.php');
+         }
         
          
     ?>
@@ -82,29 +83,30 @@
 
 
           <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-md-offset-1">
+                  <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 ">
 
                   <div id="live_data"></div>
                               
 
                   </div>
-                  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                  <div  class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
 
-                  <div style="width: 100%" class="panel panel-danger tinhtien">
+                  <div style="width: 100%;margin-left: 50px;" class="panel panel-danger tinhtien">
 
                       <div class="panel-body">
 
                           <div style="border-bottom: 1px solid blue" class="row">
                               <i style=>Thành tiền</i>
-                              <i style="float: right;color: red">00 VND</i> <i class="tien" style="float: right;color: red">0</i>
+                              <i style="float: right;color: red"> </i> <i class="tien" style="float: right;color: red"></i>
                           </div>
                           <div class="row">
                               <i style=>Tổng</i>
-                              <i style="float: right;">00 VND</i> <i class="tien" style="float: right;color: black">0</i>
+                              <i style="float: right;"> </i> <i class="tien" style="float: right;color: black"></i>
                           </div>
 
                           <div class="row">
-                              <button style="margin-top: 10%; margin-left: 20%; width: 60%;" type="button" class="btn btn-danger"> Đặt Hàng</button>
+                              <a href="thanhtoan.php"> <button style="margin-top: 10%; margin-left: 20%; width: 60%;" name ="dathang" type="button" class="btn btn-danger "> Đặt Hàng</button></a>
+                             
                           </div>
 
 
@@ -158,6 +160,19 @@
     </div>
     <!-- wapper -->
   <script>
+      // tính tiền
+       function fetch_tien()  
+      {  
+           $.ajax({  
+                url:"tongTien.php",  
+                method:"POST",  
+                success:function(data){  
+                     $('.tien').html(data);  
+                }  
+           });  
+      } 
+      fetch_tien();
+      
        function fetch_data()  
       {  
            $.ajax({  
@@ -168,7 +183,7 @@
                 }  
            });  
       } 
-     fetch_data();
+      fetch_data();
 
      function edit_data(id, quantity)  
       {  
@@ -178,22 +193,49 @@
                 data:{id:id, quantity:quantity},  
                 dataType:"text",  
                 success:function(data){  
-                     alert(data);  
+                    
                 }  
            });  
       }
-      $(document).on('click', '.btn_upload', function(){  
-         
-           var id = $('#id').data("id1");  
-           var quantity = $('#quantity').data("id5"); 
+      $(document).on('click','a[data-role=update]',function(){
+       
+            var id  = $(this).data('id');
+            
+            //var quantity  = $('#'+id).data('id1');
+           var quantity  = $('#'+id).children('#quantity').val();
+         //  var quantity= $('#'.id).children('.quantity');
+          
+            alert(id);
+            alert(quantity);
+          
+          // edit_data(id,quantity);  
+      });
 
-           alert(id);  
-           edit_data(id,quantity);  
+      //xóa
+
+      function delete_data(id)  
+      {  
+           $.ajax({  
+                url:"deleteCart.php",  
+                method:"POST",  
+                data:{id:id},  
+                dataType:"text",  
+                success:function(data){  
+                    
+                }  
+           });  
+      }
+      $(document).on('click','a[data-role=delete]',function(){
+       
+            var id  = $(this).data('id');
+            delete_data(id);  
+            fetch_data();
+
       });
   
   </script>
 
-    <script src="java.js"></script>
+    <script src="../javaScript/java.js"></script>
     <div style="width: 100%;" class="modal" id="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
