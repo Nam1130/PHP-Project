@@ -30,5 +30,16 @@ error_reporting(1);
     }
 
 
+
 ?>
  
+ <?php
+include("database.php");
+if(isset($_POST["search-data"])){
+ 
+ $searchVal = trim($_POST["search-data"]);
+ $dao = new database();
+ echo $dao->searchData($searchVal);
+}
+
+?>

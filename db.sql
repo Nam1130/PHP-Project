@@ -335,5 +335,3 @@ insert into orders(cus_id,date,status)values
 (1,'2019-1-2','');
 
 SELECT order_id from prod_orders,orders where order_id = orders.id and prod_id= 6  and cus_id =1;
-
-UPDATE prod_orders set quantity = 5 where order_id=7 and prod_id=6;
