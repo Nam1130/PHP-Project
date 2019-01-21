@@ -60,11 +60,6 @@
  $data = new users;  
  $message = ''; 
 
- if($data->check_login()) {
-    header('Location: chitiet.php');
-  } else {
-      header('Location: login.php');
-
       if(isset($_POST["submit"]))  
        {  
 
@@ -99,9 +94,7 @@
             }  
 
        }  
-            exit;
-        }
-
+           
  
  ?> 
 

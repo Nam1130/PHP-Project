@@ -256,13 +256,7 @@
                                             </div>
                                             <br>
                                             <button type="button" class="btn btn-danger btpro">Mua ngay</button>
-                                            <button type="button"name ="addCard" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm
-                                                vào giỏ</button>
-
-
-
-
-
+                                            <button type="button"name ="addCard" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm vào giỏ</button>
 
                                         </div>
                                     </div>
