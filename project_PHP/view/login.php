@@ -85,7 +85,6 @@
                 }
                 $_SESSION['id_oder'] = $order_id+1;
                
-               
            }  
            else  
            {  

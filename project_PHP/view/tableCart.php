@@ -18,6 +18,7 @@
       <div class="table-responsive">  
            <table class="table">  
                 <tr>  
+
                     <th>Ảnh</th>
                     <th>Tên sản phẩm</th>
                     <th>Giá</th>
@@ -29,6 +30,7 @@
         $count++;
         $a = $count - 1;
            $output .= '  
+
                 <tr  >  
                      <td>
                         <img style= "width: 100px;height: 150px;" src="'.$value['image'].'" class="img-responsive" alt="Image">
@@ -56,12 +58,11 @@
                      <a href="#" data-role="delete" data-id=" '.$value['id'].'"class="btn btn-xs btn-danger btn_delete"><span class="glyphicon glyphicon-trash"></span></a>
                      | <a href="#" data-role="update"  data-id=" '.$value['id'].'"class="btn btn-xs btn-success btn_upload"><span class="glyphicon glyphicon-refresh"></span></a>
                      </td>  
-                      
+
                 </tr>  ';  
-    }  
+    } 
 
  $output .= '</table>  </div>';  
  echo $output;  
-
 
  ?>
