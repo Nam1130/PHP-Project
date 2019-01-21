@@ -146,7 +146,7 @@
                       <?php echo $value[ 'prod_name']; ?>
                     </td>
                     <td>
-                      <?php echo $value[ 'price']; ?>
+                      <?php echo number_format($value[ 'price']); ?>
                     </td>
                     <td>
                       <?php echo $value[ 'quantity']; ?>

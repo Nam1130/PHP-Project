@@ -148,21 +148,21 @@
                     <?php
                         foreach ($new as $key => $value) {
                            ?>
-                                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product">
+                                 <div  id="<?php echo $value['id']; ?>" class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product">
                         
                                     <div class="product-img">
                                         <a style = "height: 286px;" href="chitiet.php?idProduct=<?php echo $value['id']; ?>&idcate=<?php  echo $value['category_id']; ?>" class="thumbnail">
-                                            <img src="<?php echo $value['image'];?>" class="img-responsive hvr-pulse" alt="Image">
+                                            <img data-target="image" src="<?php echo $value['image'];?>" class="img-responsive hvr-pulse" alt="Image">
                                             
                                         </a>
                                     </div>
                                     <div class="caption">
-                                        <h3><?php echo $value['prod_name'];?> </h3>
-                                        <div class="cost"><?php echo number_format($value['price']).' VNĐ';?></div>
+                                        <h3 data-target="prod_name"><?php echo $value['prod_name'];?> </h3>
+                                        <div data-target="price" class="cost"><?php echo number_format($value['price']).' VNĐ';?></div>
                                         <div class="bt-cost">
 
-                                            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua
-                                                Ngay</button>
+                                           
+                                                <a style = "width: 70%;" href="#" data-role="view" data-id="<?php echo $value['id'] ;?>" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua Ngay</a>
                                             <a href="chitiet.html">
                                                 
                                             </a>
@@ -174,7 +174,7 @@
                            <?php
                         }
 
-                    ?>
+                    ?> 
 
                 </div> <!-- content -->
 
@@ -198,6 +198,8 @@
         </div><!-- container-fluid -->
     </div>
     <!-- wapper -->
+
+
     <div style="width: 100%;" class="modal" id="myModal">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -209,48 +211,7 @@
                                 </div>
 
                                 <!-- Modal body -->
-                                <div class="modal-body">  
-
-                                    <div class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object" src="image/12.png" alt="Image">
-                                        </a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading" name="namProduct">Đồng Hồ Tissot  </h4>
-                                            <p>Thông tin sản phẩm</p>
-                                            <p><b> Mã Số Sản Phẩm:</b><i name="code">EFV-540L-1AVUDF</i> </p>
-                                            <p><b>Phân Loại:</b> Đồng Hồ Nam</p>
-                                            <p style="color: red;font-size: 20px;"><b name="price">2.562000</b>  ₫</p>
-                                            <p>Mẫu Casio EFV-540L-1AVUDF vẻ ngoài tạo nên dáng lịch lãm với phần dây
-                                                đeo bằng da tông đen quý phái, đồng hồ kiểu dáng 6 kim mang đến một
-                                                phong
-                                                cách độc đáo đầy nam tính khi đi kèm chức năng Chronograph.</p>
-
-                                            <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
-                                                    <button id="minus" type="button" onclick="minus(0)" class="btn btn-default btn-number"
-                                                        data-type="minus" data-field="quant[1]">
-                                                        <span class="glyphicon glyphicon-minus"></span> </button>
-
-                                                </span> <input name="quant[3]" class="form-control input-number" value="1"
-                                                    type="text" id="sl" > <span class="input-group-btn">
-
-
-                                                    <button id="plus" type="button" onclick="plus(0)" class="btn btn-default btn-number"
-                                                        data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
-                                                    </button> </span>
-                                            </div>
-                                            <br>
-                                            <button type="button" class="btn btn-danger btpro">Mua ngay</button>
-                                            <button type="button"name ="addCard" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm
-                                                vào giỏ</button>
-
-
-
-
-
-
-                                        </div>
-                                    </div>
+                                <div id = "modal" class="modal-body">  
 
                                 </div>
 
@@ -263,8 +224,29 @@
                         </div>
                     </div>
                    
-                  
+   
 
 </body>
+        <script>
+                    
 
+            $(document).on('click','a[data-role=view]',function(){
+                    var id  = $(this).data('id');
+                   
+                    muaNgay(id);
+            });
+                    function muaNgay(id)  
+                    {  
+                        $.ajax({  
+                            url:"modal_muaNgay.php",  
+                            method:"POST",  
+                            data:{id:id},  
+                            dataType:"text",  
+                            success:function(data){  
+                                $('#modal').html(data);  
+                            }  
+                         });  
+                     }
+
+        </script>
 </html>

@@ -31,7 +31,13 @@
                 <div class="row">
                   <div class="bar">
                     <a style="width: 30%;" href="#news">Vị Trí <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
-                    <a style="width: 40%;"  href="login.php"><span id="tk">Xin chào <?php  ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
+                    <a style="width: 40%;"  href="login.php"><span id="tk"><?php 
+                        if(isset($_SESSION['cus_name'])){
+                            echo $_SESSION['cus_name'] ;
+                        }else{
+                          echo "Tài Khoản";
+                        }
+                    ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
                     <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
                               onclick="displayProduct()"></i><i id="cart">0</i>
                       </a>

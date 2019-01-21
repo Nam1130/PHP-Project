@@ -12,17 +12,16 @@
    and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus;
    $arr = $db->view($sql);
   
-
+  
  }
  $output .= '  
       <div class="table-responsive">  
            <table class="table">  
                 <tr>  
-
                     <th>Ảnh</th>
                     <th>Tên sản phẩm</th>
                     <th>Giá</th>
-                    <th style = "width: 45%;" >Số lượng</th>
+                    <th style = "width: 35%;" >Số lượng</th>
                     <th>Tùy chỉnh</th>
                 </tr>';  
     $count =0; 
@@ -44,19 +43,19 @@
                                 <span class="glyphicon glyphicon-minus"></span> </button> 
                             </span>
 
-                                <input name="quant[3]"id = "quantity" class="quantity form-control input-number" value= "'.$value["quantity"].'" type="number"> 
+                            <input name="quant[3]"  class="quantity form-control input-number" value= "'.$value["quantity"].'" type="number"> 
                                     
-                                 <span class="input-group-btn">
-                                    <button id="plus" type="button" onclick="plus('.$a.')" class="btn btn-default btn-number"
-                                        data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
-                                    </button> 
-                                </span>
+                            <span class="input-group-btn">
+                                <button id="plus" type="button" onclick="plus('.$a.')" class="btn btn-default btn-number"
+                                    data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
+                                </button> 
+                            </span>
                         </div>
                      
                      </td>  
                      <td>
                      <a href="#" data-role="delete" data-id=" '.$value['id'].'"class="btn btn-xs btn-danger btn_delete"><span class="glyphicon glyphicon-trash"></span></a>
-                     | <a href="#" data-role="update"  data-id=" '.$value['id'].'"class="btn btn-xs btn-success btn_upload"><span class="glyphicon glyphicon-refresh"></span></a>
+                     | <a href="#"  data-id=" '.$value['id'].'" data-role="update" class="btn btn-xs btn-success btn_upload"><span class="glyphicon glyphicon-refresh"></span></a>
                      </td>  
 
                 </tr>  ';  
