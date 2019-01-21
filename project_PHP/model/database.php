@@ -52,7 +52,7 @@ class database{
         $query = mysqli_query($this->conn, $sql);
     
         if ($query){
-            while ($row = mysqli_fetch_assoc($query)){
+            while ($row = mysqli_fetch_array($query)){
                 $arr[] = $row;
             }
         }
