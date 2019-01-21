@@ -1,3 +1,23 @@
+<?php
+      $dhMy=array(); 
+      $sql = "SELECT name FROM provided WHERE address  =  'Mĩ'";
+      $dhMy = $db->view($sql);
+
+      $dhDuc=array(); 
+      $sql = "SELECT name FROM provided WHERE address  =  'Đức'";
+      $dhDuc = $db->view($sql);
+
+      $dhThuySy=array(); 
+      $sql = "SELECT name FROM provided WHERE address  =  'Thụy Sỹ'";
+      $dhThuySy = $db->view($sql);
+
+      $dhNhat=array(); 
+      $sql = "SELECT name FROM provided WHERE address  =  'Nhật'";
+      $dhNhat = $db->view($sql);
+
+
+?>
+
 <div class="row">
             <div style = "margin-left: -20px; width: 100%;" id="header">
               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">
@@ -15,6 +35,7 @@
                     <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
                               onclick="displayProduct()"></i><i id="cart">0</i>
                       </a>
+                      
 
                   </div>
                 </div>
@@ -164,7 +185,7 @@
                                           }
                                         
                                         ?>
-                                          
+                                           
                                       </ul>
                                     </div>
                                   </li>
