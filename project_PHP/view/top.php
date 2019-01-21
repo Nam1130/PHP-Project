@@ -15,6 +15,7 @@
                     <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
                               onclick="displayProduct()"></i><i id="cart">0</i>
                       </a>
+                      
 
                   </div>
                 </div>
