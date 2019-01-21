@@ -31,11 +31,16 @@
                 <div class="row">
                   <div class="bar">
                     <a style="width: 30%;" href="#news">Vị Trí <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
-                    <a style="width: 40%;"  href="login.php"><span id="tk">Xin chào <?php  echo $_SESSION['name'] ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
+                    <a style="width: 40%;"  href="login.php"><span id="tk"><?php 
+                        if(isset($_SESSION['cus_name'])){
+                            echo $_SESSION['cus_name'] ;
+                        }else{
+                          echo "Tài Khoản";
+                        }
+                    ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
                     <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
                               onclick="displayProduct()"></i><i id="cart">0</i>
                       </a>
-                      
 
                   </div>
                 </div>
@@ -44,19 +49,15 @@
                   <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 offset-1">
                     <div class="row">
                       <div class="search">
-                          <form action="searchres.php" method="post">
-                              <input type="text" placeholder="Search" name="term"/>
-
-                              <span class="input-group-btn">
-                                  <button style="float: left" class="btn btn-danger" type="submit" ">
-
-                                    <span class=" glyphicon glyphicon-search"></span>
-
-                                  </button>
-                              </span>
-                          </form>
+                        <div class="input-group">
+                          <input type="text" class="  search-query form-control" placeholder="Search" />
+                          <span class="input-group-btn">
+                                      <button style="float: left" class="btn btn-danger" type="button">
+                                          <span class=" glyphicon glyphicon-search"></span>
+                          </button>
+                          </span>
+                        </div>
                       </div>
-
                     </div>
                     <!--row -->
 
@@ -101,21 +102,12 @@
                       <ul class="nav navbar-nav menu">
                         <li class="search2">
                           <div class="input-group">
-                            <input style="margin-left: 5px;" type="text" class="  search-query form-control" placeholder="Search" name="term" id="term" />
+                            <input style="margin-left: 5px;" type="text" class="  search-query form-control" placeholder="Search" />
                             <span class="input-group-btn">
-                                          <button style="margin-right: 5px;" class="btn btn-danger" type="submit">
+                                          <button style="margin-right: 5px;" class="btn btn-danger" type="button">
                                               <span class=" glyphicon glyphicon-search"></span>
                             </button>
                             </span>
-
-
-                            <?php
-                                if(isset($_POST["submit"]))  {
-
-                                   include('search.php');
-                                }  
-
-                            ?>
                           </div>
                         </li>
                         <li class="menufull"><a href="javascript:void(0)">Thương Hiệu</a>
@@ -253,6 +245,9 @@
                   </nav>
                 </div>
                 <!-- /.navbar-collapse -->
+
+
+
               </div>
             </div>
           </div>

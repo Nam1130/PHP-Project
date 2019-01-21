@@ -77,6 +77,7 @@
               <div style="width: 100%;" class="container-fluid">
                   <h1 class="title">
                       <span>Giỏ Hàng</span>
+                    
                   </h1>
               </div>
           </div>
@@ -88,7 +89,7 @@
           <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 ">
 
-                  <div id="live_data"></div>
+                    <div id="live_data"></div>
                               
 
                   </div>
@@ -163,6 +164,7 @@
     </div>
     <!-- wapper -->
   <script>
+      
       // tính tiền
        function fetch_tien()  
       {  
@@ -174,7 +176,7 @@
                 }  
            });  
       } 
-      fetch_tien();
+     
       
        function fetch_data()  
       {  
@@ -187,6 +189,7 @@
            });  
       } 
       fetch_data();
+      fetch_tien();
 
      function edit_data(id, quantity)  
       {  
@@ -201,17 +204,14 @@
            });  
       }
       $(document).on('click','a[data-role=update]',function(){
-       
             var id  = $(this).data('id');
-            
-            //var quantity  = $('#'+id).data('id1');
-           var quantity  = $('#'+id).children('#quantity').val();
-         //  var quantity= $('#'.id).children('.quantity');
-          
-            alert(id);
-            alert(quantity);
-          
-          // edit_data(id,quantity);  
+            var idQuan  = '#'+id;
+            idQuan =idQuan.replace(/\s/g, "");
+            var quantity=  $(idQuan).children('.quantity').val();
+           
+            edit_data(id,quantity); 
+            fetch_data(); 
+            fetch_tien();
       });
 
       //xóa
@@ -228,17 +228,17 @@
                 }  
            });  
       }
+     
       $(document).on('click','a[data-role=delete]',function(){
-       
             var id  = $(this).data('id');
+            
             delete_data(id);  
             fetch_data();
+            fetch_tien();
+     
+     
+         });
 
-                     alert(data);  
-                     fetch_data();
-                }  
-           });  
-      }
      
   </script>
 

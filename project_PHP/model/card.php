@@ -9,6 +9,7 @@
         public $cus_id="";
         public $status="";
 
+      
         public $imported_date_bill = "";
         public $price_bill = "";
         public $address_bill = "";
@@ -31,7 +32,21 @@
             }
         }
 
+        public function orders($id,$cus_id,$date,$status){
+            $sql = "INSERT INTO orders(id,cus_id,date,status) VALUES (?,?,?,?)";
 
+            if($stmt = $this->conn->prepare($sql)){
+               
+                $stmt->bind_param("iiss",$this->order_id_, $this->cus_id, $this->date, $this->status);
+                
+                $this->order_id = $id;
+                $this->cus_id = $cus_id;
+                $this->date = $date;
+                $this->status = $status;
+                
+                $stmt->execute();
+            }
+        }
 
         public function bills($cus_id,$imported_date_bill,$price_bill,$address_bill,$status_bill){
             $sql = "INSERT INTO bills(cus_id,imported_date,price,address,status) VALUES (?,?,?,?,?)";
@@ -46,22 +61,6 @@
                 $this->price_bill = $price_bill;
                 $this->address_bill = $address_bill;
                 $this->status_bill = $status_bill;
-                
-                $stmt->execute();
-            }
-        }
-
-        public function orders($cus_id,$date,$status){
-            $sql = "INSERT INTO orders(cus_id,date,status) VALUES (?,?,?)";
-
-            if($stmt = $this->conn->prepare($sql)){
-               
-                $stmt->bind_param("iss", $this->cus_id, $this->date, $this->status);
-                
-                
-                $this->cus_id = $cus_id;
-                $this->date = $date;
-                $this->status = $status;
                 
                 $stmt->execute();
             }

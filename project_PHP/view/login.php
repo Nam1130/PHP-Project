@@ -119,7 +119,7 @@
            {  
              
                 header("location:index.php"); 
-               $sql  = 'select max(id) from orders';
+                $sql  = 'select max(id) from orders';
                 $order = $data->view($sql);
                 foreach ($order as $key => $value) {
                     $order_id = $value['max(id)'];

@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="caption">
                                             <h3><?php echo $value['prod_name'];?></h3>
-                                            <div class="cost"><?php echo $value['price'].' VNĐ';?></div>
+                                            <div class="cost"><?php echo number_format($value['price']).' VNĐ';?></div>
                                             <div class="bt-cost">
                 
                                                 <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-success">Mua

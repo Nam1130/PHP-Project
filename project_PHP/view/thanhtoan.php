@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-
+  
     <script src="../JavaScript/java.js"></script>
 
 
@@ -108,8 +108,17 @@
                     //update tình trang oder sau khi đặt hàng
                     $sql = "UPDATE orders set status = 0 where id = '$id_order' and cus_id = '$id_cus' and status = 1";
                     $db->excute($sql);
+                   
+
+                    // đơn hàng khác
+                    $sql  = 'select max(id) from orders';
+                    $order = $db->view($sql);
+                    foreach ($order as $key => $value) {
+                        $order_id = $value['max(id)'];
+                    }
+                    $_SESSION['id_oder'] = $order_id+1;
                 }
-                header('Location:index.php');
+                header('Location:datHangThanhCong.php');
             }else{
                 $err = "Điền đầy đủ thông tin !";
             }
@@ -263,7 +272,7 @@
 
 
 
-                    <div style = " bottom: 0px" class="row">
+                    <div style = " bottom: 0px; margin-top: 30px;" class="row">
                         <?php include('bottom.php'); ?>
                     </div>
             

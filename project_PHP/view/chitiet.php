@@ -23,21 +23,15 @@
     </style> 
 <body style="background-color: aliceblue; margin-left: 1%; margin-right:2%;">
 
-    <script>
-        var tk = sessionStorage.getItem('ten');
-        window.onload = function () {
-            // do stuff to load your form fields 
-            document.getElementById("tk").innerHTML = tk;
-        } 
-    </script>
    
+     
 
    <?php
    session_start();
 
         require "../model/card.php";
         require "../model/function.php";
-
+        $order_id;
 
         if (isset($_GET['idcate']))
         {
@@ -95,17 +89,19 @@
            
           
         }
-
+#
         $id_cus =  $_SESSION['id_cus'];
          $sql = 'select prod_orders.prod_id,prod_orders.quantity from
           product,prod_orders,orders where product.id = prod_orders.prod_id 
          and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus;
          $arr = $db->view($sql);
          $arrId = array();
+        
          foreach ($arr as $key => $value) {
             $arrId[] = $value['prod_id'];
         }
-
+#
+//lấy số lượng sản phẩm này trong giỏ hàng
         $quan;
         $sql = 'select prod_orders.quantity from
         product,prod_orders,orders where product.id = prod_orders.prod_id 
@@ -117,15 +113,14 @@
     //oder id
     if(isset($_SESSION['id_oder'])){
         $order_id = $_SESSION['id_oder'];
-       
-    }
+    }  
 
 
         if(isset($_POST['addCard'])) 
         { 
             if (!in_array($idProduct, $arrId)) {
-                $db->orders($order_id,$_SESSION['id_cus'], date('Y-m-d'),1);
-                
+                $db->orders($order_id, $id_cus , date('Y-m-d'),1);
+                $db->prod_orders($prod_id, $order_id,1,1);
                 // $sql  = 'select max(id) from orders';
                 // $order = $db->view($sql);
                 // foreach ($order as $key => $value) {
@@ -136,9 +131,9 @@
                         'prod_id' => $prod_id,
                         'order_id' =>$order_id,
                         'sl' => 1,
-                        'id_cus'=>$_SESSION['id_cus']
+                        'id_cus'=> $id_cus 
                     );
-                $db->prod_orders($prod_id, $order_id,1,1);
+               
             }else{
                $quan = $quan +1;
                 $sql = "UPDATE prod_orders SET quantity = '$quan' WHERE prod_id = $idProduct";
@@ -255,7 +250,8 @@
                                 <form action="" method="POST" role="form">
                                     <button type="submit" name = "addCard"class="btn btn-lg btn-danger" style="width: 90%">THÊM VÀO GIỎ</button>
                                 </form>
-                                
+                                <!-- <a href="#" data-role="addCart" data-id="<?php echo $prod_id;  ?> " name = "addCard" class="btn btn-lg btn-danger">THÊM VÀO GIỎ</a>
+                                 -->
                                
                               
                             </div>
@@ -529,5 +525,28 @@
     </div>
  
 </body>
+        <script>
+                 function addCart(id)  
+                {  
+                    $.ajax({  
+                            url:"add_cart.php",  
+                            method:"POST",  
+                            data:{id:id, quantity:quantity}, 
+                            dataType:"text",  
+                            success:function(data){  
+                                alert(data);
+                            }  
+                    });  
+                }
+     
+                $(document).on('click','a[data-role=delete]',function(){
+                        var id  = $(this).data('id');
+                        
+                        addCart(id);  
+                        
+                
+                    });
+
+        </script>
 
 </html>
