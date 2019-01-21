@@ -67,6 +67,7 @@
          if(isset($_SESSION['cus_name'])){
            $cus_name = $_SESSION['cus_name'];
          }
+         
 
     ?>
 
