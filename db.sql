@@ -54,15 +54,6 @@ email varchar(255) not null unique,
 sdt varchar(15) not null,
 primary key (id)
 );
-create table if not exists bills (
-id int(11) not null primary key auto_increment,
-cus_id int(11) not null,
-imported_date date not null,
-price int(11) not null,
-address varchar(255) not null,
-status int(11) not null,
-foreign key (cus_id) references customer (id)
-);
 
 create table if not exists orders (
 id int(11) not null auto_increment,
@@ -72,10 +63,22 @@ status varchar(255),
 primary key (id),
 foreign key (cus_id) references customer (id)
 );
+create table if not exists bills (
+id int(11) not null primary key auto_increment,
+order_id int(11) not null,
+imported_date date not null,
+price int(11) not null,
+address varchar(255) not null,
+status int(11) not null,
+foreign key (order_id) references orders (id)
+);
+
+
 
 create table if not exists prod_orders (
-prod_id int(11),
+
 order_id int(11),
+prod_id int(11),
 quantity int(11) not null,
 status int(11) not null,
 primary key(prod_id, order_id),
