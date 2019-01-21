@@ -247,11 +247,11 @@
                             </div>
                             <div class="row">
                                 
-                                <form action="" method="POST" role="form">
+                                <!-- <form action="" method="POST" role="form">
                                     <button type="submit" name = "addCard"class="btn btn-lg btn-danger" style="width: 90%">THÊM VÀO GIỎ</button>
-                                </form>
-                                <!-- <a href="#" data-role="addCart" data-id="<?php echo $prod_id;  ?> " name = "addCard" class="btn btn-lg btn-danger">THÊM VÀO GIỎ</a>
-                                 -->
+                                </form> -->
+                                <a href="#" data-role="addCart" data-id="<?php echo $prod_id;  ?> " name = "addCard" class="btn btn-lg btn-danger">THÊM VÀO GIỎ</a>
+                                
                                
                               
                             </div>
@@ -526,7 +526,7 @@
  
 </body>
         <script>
-                 function addCart(id)  
+                 function addCart(id,quantity)  
                 {  
                     $.ajax({  
                             url:"add_cart.php",  
@@ -539,10 +539,11 @@
                     });  
                 }
      
-                $(document).on('click','a[data-role=delete]',function(){
+                $(document).on('click','a[data-role=addCart]',function(){
                         var id  = $(this).data('id');
-                        
-                        addCart(id);  
+                        alert(id);
+                        id= id.trim();
+                        addCart(id,1);  
                         
                 
                     });

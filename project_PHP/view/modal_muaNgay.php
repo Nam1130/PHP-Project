@@ -2,7 +2,7 @@
  session_start();
  require "../model/product.php";
  $db = new product;
- $id = $_POST['id'];  
+ $id = $_POST['id']; 
  $output = '';  
  $sp =array();
  $details =array();
@@ -40,24 +40,27 @@
             <p style="color: red;font-size: 20px;"><b name="price">'.number_format($price).'</b>  ₫</p>
             <p> '.$note.' </p>
 
-            <div style="width: 50%; " class="input-group"> <span class="input-group-btn">
-                    <button id="minus" type="button" onclick="minus(0)" class="btn btn-default btn-number"
-                        data-type="minus" data-field="quant[1]">
-                        <span class="glyphicon glyphicon-minus"></span> </button>
+           
+                 <div id="'.$id.'"  style="width: 50%;" class="input-group">
+                    <span class="input-group-btn">
+                        <button id="minus" type="button" onclick="minus(0)" class="btn btn-default btn-number"data-type="minus" data-field="quant[1]">
+                        <span class="glyphicon glyphicon-minus"></span> </button> 
+                    </span>
 
-                </span> <input name="quant[3]" class="form-control input-number" value="1"
-                    type="text" id="sl" > <span class="input-group-btn">
-
-
-                    <button id="plus" type="button" onclick="plus(0)" class="btn btn-default btn-number"
-                        data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
-                    </button> </span>
-            </div>
+                    <input name="quant[3]"  class="quantity form-control input-number" value= "1" type="number"> 
+                            
+                    <span class="input-group-btn">
+                        <button id="plus" type="button" onclick="plus(0)" class="btn btn-default btn-number"
+                            data-type="plus" data-field="quant[3]"> <span class="glyphicon glyphicon-plus"></span>
+                        </button> 
+                    </span>
+                </div>
+     
             <br>
             <button type="button" class="btn btn-danger btpro">Mua ngay</button>
-            <button type="button"name ="addCard" onclick="addProduct(0)" class="btn btn-danger btpro">Thêm
-                vào giỏ</button>
-
+            
+            <a href="#"style = "width: 40%;" data-role="addCart" data-id="'.$id.'" name = "addCard" class="btn  btn-danger">THÊM VÀO GIỎ</a>
+                            
 
 
 

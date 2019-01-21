@@ -248,5 +248,32 @@
                          });  
                      }
 
+
+                     function addCart(id,quantity)  
+                        {  
+                            $.ajax({  
+                                    url:"add_cart.php",  
+                                    method:"POST",  
+                                    data:{id:id, quantity:quantity}, 
+                                    dataType:"text",  
+                                    success:function(data){  
+                                        alert(data);
+                                    }  
+                            });  
+                         }
+     
+                $(document).on('click','a[data-role=addCart]',function(){
+                        var id  = $(this).data('id');
+                        var idQuan  = '#'+id;
+                        idQuan =idQuan.replace(/\s/g, "");
+                        var quantity=  $(idQuan).children('.quantity').val();
+
+
+                        id= id.trim();
+                        addCart(id,1);  
+                        
+                
+                    });
+
         </script>
 </html>
