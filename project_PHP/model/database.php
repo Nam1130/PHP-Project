@@ -59,6 +59,38 @@ class database{
     
         return $arr;
     }
+
+
+
+    public function searchData($searchVal){
+  
+  
+      try {
+       
+           $dbConnection = $this->dbConnect();
+           $stmt = $dbConnection->prepare("SELECT * FROM `product` WHERE `prod_name` like :searchVal");
+           $val = "%$searchVal%"; 
+           $stmt->bindParam(':searchVal', $val , PDO::PARAM_STR);   
+           $stmt->execute();
+
+           $Count = $stmt->rowCount(); 
+           //echo " Total Records Count : $Count .<br>" ;
+                     
+           $result ="" ;
+           if ($Count  > 0){
+            while($data=$stmt->fetch(PDO::FETCH_ASSOC)) {          
+               $result = $result .'<div class="search-result"><a style="text-decoration:none;" href="'.$data['prod_name'].'">'.$data['price'].'</a> </div>';    
+
+            }
+            return $result ;
+           }
+
+          }
+          catch (PDOException $e) {
+           echo 'Connection failed: ' . $e->getMessage();
+          }
+      }   
+ 
    
 }
 
