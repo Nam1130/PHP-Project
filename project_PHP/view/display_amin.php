@@ -125,6 +125,16 @@
                     </div>
                 </a>
             </div>
+
+            <div style = "margin-right: 30px;" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 a">
+                <a href="order.php?action=category" class="thumbnail icon">
+
+                    <img style="height: 250px;" src="../image/order.png" alt="">
+                    <div>
+                        <p style = "text-align: center;font-size: 30px;">Danh sách đặt hàng</p>
+                    </div>
+                </a>
+            </div>
             
 
       </div>

@@ -323,6 +323,5 @@ insert into prod_orders(prod_id,order_id,quantity,status)values
 insert into bills(order_id,imported_date,price,address,status)values
 (2,now(),23434,'TPHCM',0),(5,now(),23434,'Đà Nẵng',0),(4,now(),23434,'Đà Nẵng',0);
 
-/*quản lí đơn hàng*/
-select product.prod_name, prod_orders.quantity,product.image, product.price from product, orders,prod_orders, bills 
-where bills.order_id =  orders.id and orders.id = prod_orders.order_id and prod_orders.prod_id = product.id and bills.status = 0 and  orders.cus_id =1 group by prod_orders.prod_id;
+
+

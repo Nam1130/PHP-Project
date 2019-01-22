@@ -58,47 +58,51 @@
  require "../model/users.php";
  session_start();  
  $data = new users;  
- $message = '';  
- if(isset($_POST["submit"]))  
- {  
 
-      $ahihidongoc = $_POST['password'];
+ $message = ''; 
 
-      $pass= MD5($ahihidongoc);
-    
-     $login_data = array(  
-              
-            'user_name'    =>     mysqli_real_escape_string($data->conn, $_POST['user_name']),
-            'password'     =>     mysqli_real_escape_string($data->conn, $pass)
-      );
+      if(isset($_POST["submit"]))  
+       {  
 
-      if($data->required_validation($login_data))  
-      {
-           if($data->can_login('customer', $login_data)==1)  
-           {  
-             
-                header("location:index.php"); 
-                $sql  = 'select max(id) from orders';
-                $order = $data->view($sql);
-                foreach ($order as $key => $value) {
-                    $order_id = $value['max(id)'];
-                }
-                $_SESSION['id_oder'] = $order_id+1;
-              
-                
-           }  
-           else  
-           {  
-                $message = "Tài khoản không tồn tại";  
-           } 
-      }
-      else  
-      {  
-           $message = $data->error;  
-      }  
+            $ahihidongoc = $_POST['password'];
 
- }  
+            $pass= MD5($ahihidongoc);
+          
+           $login_data = array(  
+                    
+                  'user_name'    =>     mysqli_real_escape_string($data->conn, $_POST['user_name']),
+                  'password'     =>     mysqli_real_escape_string($data->conn, $pass)
+            );
+
+            if($data->required_validation($login_data))  
+            {
+                 if($data->can_login('customer', $login_data)==1)  
+                 {  
+                   
+                      header("location:index.php"); 
+                      $_SESSION['name'] =  $login_data['user_name'];
+                      
+                     
+                 }  
+                 else  
+                 {  
+                      $message = "Tài khoản không tồn tại";  
+                 } 
+            }
+            else  
+            {  
+                 $message = $data->error;  
+            }  
+ exit;
+       }  
+           
+        
+
+
+ 
  ?> 
+
+
 
 
   <div style= " background: rgb(112, 112, 117);height:200%;" id="wapper">
@@ -149,7 +153,7 @@
                         <div class="social">
                             
                             <div class="row">
-                             <a  href="#" class="fa fa-facebook"></a>
+                                <a  href="#" class="fa fa-facebook"></a>
                             </div>
                             
                             <div class="row">
