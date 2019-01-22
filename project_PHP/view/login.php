@@ -58,6 +58,47 @@
  require "../model/users.php";
  session_start();  
  $data = new users;  
+
+ $message = ''; 
+
+      if(isset($_POST["submit"]))  
+       {  
+
+            $ahihidongoc = $_POST['password'];
+
+            $pass= MD5($ahihidongoc);
+          
+           $login_data = array(  
+                    
+                  'user_name'    =>     mysqli_real_escape_string($data->conn, $_POST['user_name']),
+                  'password'     =>     mysqli_real_escape_string($data->conn, $pass)
+            );
+
+            if($data->required_validation($login_data))  
+            {
+                 if($data->can_login('customer', $login_data)==1)  
+                 {  
+                   
+                      header("location:index.php"); 
+                      $_SESSION['name'] =  $login_data['user_name'];
+                      
+                     
+                 }  
+                 else  
+                 {  
+                      $message = "Tài khoản không tồn tại";  
+                 } 
+            }
+            else  
+            {  
+                 $message = $data->error;  
+            }  
+
+       }  
+            exit;
+        }
+
+
  $message = '';  
  if(isset($_POST["submit"]))  
  {  
@@ -98,7 +139,10 @@
       }  
 
  }  
+
  ?> 
+
+
 
 
   <div style= " background: rgb(112, 112, 117);height:200%;" id="wapper">
@@ -149,7 +193,10 @@
                         <div class="social">
                             
                             <div class="row">
-                             <a  href="#" class="fa fa-facebook"></a>
+                             <?php
+                                include "FBlog.php"; 
+                              ?>
+                            
                             </div>
                             
                             <div class="row">
