@@ -32,7 +32,7 @@
 
                 <tr  >  
                      <td>
-                        <img style= "width: 100px;height: 150px;" src="'.$value['image'].'" class="img-responsive" alt="Image">
+                        <img style= "width: 80px;height: 100px;" src="'.$value['image'].'" class="img-responsive" alt="Image">
                      </td>  
                      <td >'.$value["prod_name"].'</td>  
                      <td class="price">'.number_format($value["price"]).' VND</td>  

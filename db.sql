@@ -54,25 +54,25 @@ email varchar(255) not null unique,
 sdt varchar(15) not null,
 primary key (id)
 );
-create table if not exists bills (
-id int(11) not null primary key auto_increment,
-cus_id int(11) not null,
-imported_date date not null,
-price int(11) not null,
-address varchar(255) not null,
-status int(11) not null,
-foreign key (cus_id) references customer (id)
-);
+
 
 create table if not exists orders (
-id int(11) not null auto_increment,
+id int(11) not null ,
 cus_id	int(11),
 date date not null,
 status varchar(255),
 primary key (id),
 foreign key (cus_id) references customer (id)
 );
-
+create table if not exists bills (
+id int(11) not null primary key auto_increment,
+order_id int(11) not null,
+imported_date date not null,
+price int(11) not null,
+address varchar(255) not null,
+status int(11) not null,
+foreign key (order_id) references orders(id)
+);
 create table if not exists prod_orders (
 prod_id int(11),
 order_id int(11),
@@ -264,24 +264,24 @@ insert into customer(cus_name,user_name,password,address,email,sdt)values
 ('Nguyễn Văn F','Nguyễn F','25d55ad283aa400af464c76d713c07ad','Quảng Trị','f@gmail.com','122228'),
 ('Nguyễn Văn G','Nguyễn G','25d55ad283aa400af464c76d713c07ad','Quảng Trị','g@gmail.com','122228');
 
-insert into orders(cus_id,date,status)values
-(1,'2018-12-12',''),
-(2,'2018-12-12',''),
-(3,'2018-12-12',''),
-(4,'2018-12-12',''),
-(3,'2018-12-12',''),
-(1,'2018-12-12',''),
-(1,'2018-12-12',''),
-(1,'2018-12-12',''),
-(2,'2018-12-12',''),
-(1,'2018-12-12',''),
-(3,'2018-12-12',''),
-(1,'2018-12-12',''),
-(5,'2018-12-12',''),
-(1,'2018-12-12',''),
-(4,'2018-12-12',''),
-(1,'2018-12-12',''),
-(1,'2018-12-12','');
+insert into orders(id,cus_id,date,status)values
+(1,1,'2018-12-12',''),
+(2,2,'2018-12-12',''),
+(3,3,'2018-12-12',''),
+(4,4,'2018-12-12',''),
+(5,3,'2018-12-12',''),
+(6,1,'2018-12-12',''),
+(7,1,'2018-12-12',''),
+(8,1,'2018-12-12',''),
+(9,2,'2018-12-12',''),
+(10,1,'2018-12-12',''),
+(11,3,'2018-12-12',''),
+(12,1,'2018-12-12',''),
+(13,5,'2018-12-12',''),
+(14,1,'2018-12-12',''),
+(15,4,'2018-12-12',''),
+(16,1,'2018-12-12',''),
+(17,1,'2018-12-12','');
 
 INSERT INTO `details` (`prod_id`, `product_code`, `brand`, `origin`, `forGen`, `glass`, `machine`, `guarantee`, `guarantee_place`, `diameter`, `surface_thickness`, `braces`, `strap`, `color`, `waterproof`, `function`) VALUES
 (1, 'AE-1000W-1BVDF', 'Casio', 'Nhật Bản', 'Nam', 'Resin Glass', 'Quartz (Pin)', 2, 'Tại Hải Triều', 44, 14, 'Nhựa', 'Dây Cao Su', 'Đen', '10 ATM', 'Lịch – Bộ Bấm Giờ – Giờ Kép – Đèn Led'),
@@ -319,21 +319,7 @@ insert into prod_orders(prod_id,order_id,quantity,status)values
 (10,11,1,0),
 (11,12,1,0),
 (12,13,1,1);
-insert into orders(cus_id,date,status)values
-(1,'2019-1-2',''),
-(2,'2019-1-2',''),
-(3,'2019-1-2',''),
-(2,'2019-1-2',''),
-(1,'2019-1-2',''),
-(3,'2019-1-2',''),
-(1,'2019-1-2',''),
-(4,'2019-1-2',''),
-(1,'2019-1-2',''),
-(6,'2019-1-2',''),
-(2,'2019-1-2',''),
-(3,'2019-1-2',''),
-(1,'2019-1-2','');
 
-SELECT order_id from prod_orders,orders where order_id = orders.id and prod_id= 6  and cus_id =1;
-
-UPDATE prod_orders set quantity = 5 where order_id=7 and prod_id=6;
+/*quản lí đơn hàng*/
+select prod_orders.prod_id,orders.cus_id,product.prod_name, prod_orders.quantity from product, orders,prod_orders, bills 
+where bills.order_id =  orders.id and orders.id = prod_orders.order_id and prod_orders.prod_id = product.id and  orders.cus_id =1 group by prod_orders.prod_id;

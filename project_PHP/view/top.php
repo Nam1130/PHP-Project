@@ -16,6 +16,7 @@
       $dhNhat = $db->view($sql);
 
 
+
 ?>
 
 <div class="row">
@@ -39,7 +40,7 @@
                         }
                     ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
                     <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
-                              onclick="displayProduct()"></i><i id="cart">0</i>
+                              onclick="displayProduct()"></i><i id="cart"></i>
                       </a>
 
                   </div>

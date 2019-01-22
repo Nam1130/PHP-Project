@@ -26,13 +26,14 @@
          $arr=array(); 
          $arr=$db->display("slides"); 
 
+         
+
+
          $sql = 'select * from product 
          order by imported_date limit 12';
 
          $new=array(); 
          $new=$db->view($sql); 
-      
-
 
          $sql = 'select  *, sum(prod_orders.quantity) from product, prod_orders where product.id= prod_orders.prod_id
          GROUP BY prod_orders.prod_id
@@ -229,7 +230,7 @@
 </body>
         <script>
                     
-
+        //hiển thị modal 
             $(document).on('click','a[data-role=view]',function(){
                     var id  = $(this).data('id');
                    
@@ -247,31 +248,25 @@
                             }  
                          });  
                      }
-
-
-                     function addCart(id,quantity)  
-                        {  
-                            $.ajax({  
-                                    url:"add_cart.php",  
-                                    method:"POST",  
-                                    data:{id:id, quantity:quantity}, 
-                                    dataType:"text",  
-                                    success:function(data){  
-                                        alert(data);
-                                    }  
-                            });  
-                         }
+                    
+                // thên sản phẩm vào giỏ hàng
+                function addCart(id,quantity)  
+                {  
+                    $.ajax({  
+                            url:"add_cart.php",  
+                            method:"POST",  
+                            data:{id:id, quantity:quantity}, 
+                            dataType:"text",  
+                            success:function(data){  
+                            }  
+                    });  
+                    }
      
                 $(document).on('click','a[data-role=addCart]',function(){
                         var id  = $(this).data('id');
-                        var idQuan  = '#'+id;
-                        idQuan =idQuan.replace(/\s/g, "");
-                        var quantity=  $(idQuan).children('.quantity').val();
-
-
-                        id= id.trim();
-                        addCart(id,1);  
-                        
+                        var quantity =  $('.quantity').val();
+                        addCart(id,quantity);  
+                       
                 
                     });
 

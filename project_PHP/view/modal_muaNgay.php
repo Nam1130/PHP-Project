@@ -41,13 +41,13 @@
             <p> '.$note.' </p>
 
            
-                 <div id="'.$id.'"  style="width: 50%;" class="input-group">
+                 <div   style="width: 50%;" class="input-group">
                     <span class="input-group-btn">
                         <button id="minus" type="button" onclick="minus(0)" class="btn btn-default btn-number"data-type="minus" data-field="quant[1]">
                         <span class="glyphicon glyphicon-minus"></span> </button> 
                     </span>
 
-                    <input name="quant[3]"  class="quantity form-control input-number" value= "1" type="number"> 
+                    <input name="quant[3]" id="'.$id.'" class="quantity form-control input-number" value= "1" type="number"> 
                             
                     <span class="input-group-btn">
                         <button id="plus" type="button" onclick="plus(0)" class="btn btn-default btn-number"
@@ -59,7 +59,7 @@
             <br>
             <button type="button" class="btn btn-danger btpro">Mua ngay</button>
             
-            <a href="#"style = "width: 40%;" data-role="addCart" data-id="'.$id.'" name = "addCard" class="btn  btn-danger">THÊM VÀO GIỎ</a>
+            <a href="#"style = "width: 40%; " data-role="addCart" data-id="'.$id.'" name = "addCard" class="btn  btn-danger">THÊM VÀO GIỎ</a>
                             
 
 
