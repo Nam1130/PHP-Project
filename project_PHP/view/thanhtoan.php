@@ -46,7 +46,7 @@
            and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus;
            $arr = $db->view($sql);
 
-            // hóa đơn 
+            // hóa đơn   
            
 
            // thông tin người nhận
@@ -94,20 +94,23 @@
                 $err = "Không Được Bỏ Trống";
             }
 
-            if(empty($err)){
-                
-                $db->bills( $id_cus,date('Y-m-d'),$_SESSION['tongtien'], $address,1);
+            
+                $order= $_SESSION['id_oder'];
+               
+                $db->bills($order,date('Y-m-d'),$_SESSION['tongtien'], $address,1);
                 //update status spham da dat hang
                 foreach ($arr as $key => $value) {
                     $id_product = $value['id'];
                     $id_order = $value['order_id'];
+
+                     //update tình trang oder sau khi đặt hàng
+                     $sql = "UPDATE orders set status = 0 where id = '$id_order' and cus_id = '$id_cus' and status = 1";
+                     $db->excute($sql);
                     //tình trạng sản phẩm sau khi đặt hàng
                     $sql = "UPDATE prod_orders set status = 0 where prod_id = '$id_product' and order_id = '$id_order' and status = 1";
                     $db->excute($sql);
 
-                    //update tình trang oder sau khi đặt hàng
-                    $sql = "UPDATE orders set status = 0 where id = '$id_order' and cus_id = '$id_cus' and status = 1";
-                    $db->excute($sql);
+                   
                    
 
                     // đơn hàng khác
@@ -119,9 +122,7 @@
                     $_SESSION['id_oder'] = $order_id+1;
                 }
                 header('Location:datHangThanhCong.php');
-            }else{
-                $err = "Điền đầy đủ thông tin !";
-            }
+           
         }
 
         
@@ -150,6 +151,7 @@
                             <form action="" method="POST" role="form">
                                     
                                 <h4 style="text-align: center;" class="modal-title">Thông Tin Người Nhận</h4>
+                                <?php  print_r( $_SESSION['id_oder']); ?>
                                     <div class="form-group">
                                             <div class="row tt">
                                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">

@@ -247,12 +247,11 @@
                             </div>
                             <div class="row">
                                 
-                                <form action="" method="POST" role="form">
+                                <!-- <form action="" method="POST" role="form">
                                     <button type="submit" name = "addCard"class="btn btn-lg btn-danger" style="width: 90%">THÊM VÀO GIỎ</button>
-                                </form>
-                                <!-- <a href="#" data-role="addCart" data-id="<?php echo $prod_id;  ?> " name = "addCard" class="btn btn-lg btn-danger">THÊM VÀO GIỎ</a>
-                                 -->
-                               
+                                </form> -->
+                                <a style = "margin-left: 100px;" href="#" data-role="addCart" data-id="<?php echo $prod_id;  ?> " name = "addCard" class="btn btn-lg btn-danger">THÊM VÀO GIỎ</a>
+                                
                               
                             </div>
                             <div class="row">
@@ -526,7 +525,7 @@
  
 </body>
         <script>
-                 function addCart(id)  
+                 function addCart(id,quantity)  
                 {  
                     $.ajax({  
                             url:"add_cart.php",  
@@ -534,15 +533,15 @@
                             data:{id:id, quantity:quantity}, 
                             dataType:"text",  
                             success:function(data){  
-                                alert(data);
+                               
                             }  
                     });  
                 }
      
-                $(document).on('click','a[data-role=delete]',function(){
+                $(document).on('click','a[data-role=addCart]',function(){
                         var id  = $(this).data('id');
-                        
-                        addCart(id);  
+                        id= id.trim();
+                        addCart(id,1);  
                         
                 
                     });

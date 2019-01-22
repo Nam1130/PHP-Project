@@ -125,7 +125,8 @@
                     $order_id = $value['max(id)'];
                 }
                 $_SESSION['id_oder'] = $order_id+1;
-               
+              
+                
            }  
            else  
            {  

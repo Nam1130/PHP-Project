@@ -66,7 +66,9 @@
            {  foreach ($result as $key => $value) {
 
                $_SESSION['id_cus'] =  $value['id'];
+              
                $_SESSION['cus_name'] =  $value['cus_name'];
+               
                
            }
                 $kq =  1;  
