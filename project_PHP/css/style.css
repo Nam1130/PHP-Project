@@ -228,3 +228,8 @@ ul li.congcu,ul li.search2{
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
 }
+
+
+.infor{
+  border: 1px solid blanchedalmond;
+}

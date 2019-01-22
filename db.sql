@@ -320,16 +320,8 @@ insert into prod_orders(prod_id,order_id,quantity,status)values
 (11,12,1,0),
 (12,13,1,1);
 
-/*quản lí đơn hàng*/
-select prod_orders.prod_id,orders.id,orders.cus_id,product.prod_name, product.price, prod_orders.quantity,customer.cus_name from customer, product, orders,prod_orders, bills 
-where bills.order_id =  orders.id and orders.id = prod_orders.order_id and prod_orders.prod_id = product.id and  orders.cus_id =1 and  orders.cus_id= customer.id group by prod_orders.prod_id;
-
-select prod_orders.prod_id,orders.id,orders.cus_id,product.prod_name, product.price, prod_orders.quantity,customer.cus_name from customer, product, orders,prod_orders, bills 
-where bills.order_id =  orders.id and orders.id = prod_orders.order_id and prod_orders.prod_id = product.id and  orders.id = 19 and  orders.cus_id= customer.id group by prod_orders.prod_id;
+insert into bills(order_id,imported_date,price,address,status)values
+(2,now(),23434,'TPHCM',0),(5,now(),23434,'Đà Nẵng',0),(4,now(),23434,'Đà Nẵng',0);
 
 
-select prod_orders.prod_id,orders.id,orders.cus_id,product.prod_name, product.price, prod_orders.quantity,customer.cus_name from customer, product, orders,prod_orders, bills 
-where bills.order_id =  orders.id and orders.id = prod_orders.order_id and prod_orders.prod_id = product.id and  orders.id =1 and  orders.cus_id= customer.id group by prod_orders.prod_id;
 
-
-select customer.cus_name, orders.id from customer, orders, bills where customer.id = orders.cus_id and orders.id = bills.order_id;

@@ -19,7 +19,12 @@
 
 ?>
 
+
+
+
+
           <div class="row">
+
             <div style = "margin-left: -20px; width: 100%;" id="header">
               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">
 
@@ -29,17 +34,26 @@
               </div>
 
               <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <div class="row">
+                <div  class="row">
                   <div class="bar">
-                    <a style="width: 30%;" href="#news">Vị Trí <i class="glyphicon glyphicon-map-marker hvr-grow a"></i></a>
-                    <a style="width: 40%;"  href="login.php"><span id="tk"><?php 
+                 
+                    <a style="width: 40%;" ><?php 
                         if(isset($_SESSION['cus_name'])){
-                            echo $_SESSION['cus_name'] ;
+                            ?>
+                              <a href="taikhoan.php"><?php echo $_SESSION['cus_name'] ; ?> <i  class="glyphicon glyphicon-user  hvr-grow a"></i></a>
+                              <a style="width: 30%;" href="#news">Đăng Xuất<i class="glyphicon glyphicon-log-in hvr-grow a"></i></a>
+                            <?php
+                                
                         }else{
-                          echo "Tài Khoản";
+                            ?>
+                              <a href="login.php"><?php  echo "Tài Khoản"; ?> <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
+                             
+                            <?php
+                         
                         }
-                    ?></span>  <i class="glyphicon glyphicon-user  hvr-grow a"></i></a>
-                    <a style="width: 30%;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
+                    ?>
+                       
+                    <a style="width: 30%;padding-right: 0px;" href="displayCart.php">Giỏ Hàng <i class="glyphicon glyphicon-shopping-cart  hvr-grow a1"
                               onclick="displayProduct()"></i><i id="cart"></i>
                       </a>
 
