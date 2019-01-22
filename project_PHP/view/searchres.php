@@ -6,11 +6,7 @@
     echo "Failed to connect: " . mysqli_connect_error();
   }  
   
-  
-  
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -67,13 +63,12 @@
          if(isset($_SESSION['cus_name'])){
            $cus_name = $_SESSION['cus_name'];
          }
-         
 
     ?>
 
  <div id="wapper">
         <div class="container-fluid">
-
+        
             <div style = "width: 100%;margin-left: -15px;margin-right: -30px;"  class="row fixtop">
 
 
@@ -84,22 +79,14 @@
 
             </div>  //header
 
-            <div class="row">          
-                
-            </div>
-
-
-            <div class="row">
+            <div class="row" style="margin-top: 200px;">
 
                <div id="content">
-
-                    <h2 style="text-align: center">
+                <h2 style="text-align: center">
                         <b style="color: red;font-size: 40px;">KẾT QUẢ TÌM KIẾM</b>
                     </h2>
-
+                  
                     <?php
-
-                //error_reporting(0);
 
                     $output = ' ';
 
@@ -128,7 +115,7 @@
 
                                  ?>
                                  
-                                 $output .= ' <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product">
+                                 <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product">
                                  <div class="product-img">
                                         <a style = "height: 286px;" href="chitiet.php?idProduct=<?php echo $idSp; ?>&idcate= <?php  echo $cateId; ?>" class="thumbnail">
                                             <img src="<?php echo $image; ?>" class="img-responsive hvr-pulse" alt="Image">
@@ -149,33 +136,21 @@
                                           </div>
                                         </div>
 
-                                    </div>';<?php
-                                
-                                
+                                    </div><?php    
                 
                               }
 
+                          } 
 
-                          }                   
-                      }   
-                       else
-                            {
-                              
+                      } else {
+                              print("$output");
+                              mysqli_close($conn);
                             }
-                      print("$output");
-                      mysqli_close($conn);
-                       
-
-                    ?>
-              </div>
+                  ?>
+                </div>
             </div>
 
-            <div class="row">
-
- <button type="button" onclick="window.location.href='chitiet.php'" data-toggle="modal" data-target="#myModal" class="btn btn-success" >
-                                                  Mua Ngay</button>
-                 
-            </div>
+           
 
                 
             <div class="row">
@@ -184,7 +159,7 @@
             </div>
 
         </div>
-  </div> 
+</div> 
 
 
 </body> 

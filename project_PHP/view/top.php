@@ -19,7 +19,7 @@
 
 ?>
 
-<div class="row">
+          <div class="row">
             <div style = "margin-left: -20px; width: 100%;" id="header">
               <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 logo">
 
@@ -49,16 +49,32 @@
 
                   <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 offset-1">
                     <div class="row">
-                      <div class="search">
-                        <div class="input-group">
-                          <input type="text" class="  search-query form-control" placeholder="Search" />
-                          <span class="input-group-btn">
-                                      <button style="float: left" class="btn btn-danger" type="button">
-                                          <span class=" glyphicon glyphicon-search"></span>
-                          </button>
-                          </span>
+
+                      <form action="searchres.php" method="POST" role="form">
+                      
+                        <div class="form-group">
+                            <div class="search">
+                              <div class="input-group">
+                                <input type="text" name="term" class="  search-query form-control" placeholder="Search" />
+                                <span class="input-group-btn">
+                                <button style="float: left" class="btn btn-danger" type="submit">
+                                <span class=" glyphicon glyphicon-search"></span>
+                                </button>
+                                </span>
+                              </div>
+                            </div>
+
                         </div>
-                      </div>
+                      
+                        
+                      
+                       
+                      </form>
+
+                     
+
+
+
                     </div>
                     <!--row -->
 
@@ -102,14 +118,21 @@
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                       <ul class="nav navbar-nav menu">
                         <li class="search2">
-                          <div class="input-group">
-                            <input style="margin-left: 5px;" type="text" class="  search-query form-control" placeholder="Search" />
-                            <span class="input-group-btn">
-                                          <button style="margin-right: 5px;" class="btn btn-danger" type="button">
-                                              <span class=" glyphicon glyphicon-search"></span>
-                            </button>
-                            </span>
-                          </div>
+                            <form action="" method="POST" role="form">
+                              <legend>Form title</legend>                         
+                               <div class="form-group">
+                                     <div class="input-group">
+                                        <input style="margin-left: 5px;" type="text" name="term" class="  search-query form-control" placeholder="Search" />
+                                        <span class="input-group-btn">
+                                              <button style="margin-right: 5px;" class="btn btn-danger" type="button">
+                                                <span class=" glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </span>
+                                      </div>
+                              </div>
+                              
+                            </form>
+
                         </li>
                         <li class="menufull"><a href="javascript:void(0)">Thương Hiệu</a>
 
