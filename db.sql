@@ -321,5 +321,5 @@ insert into prod_orders(prod_id,order_id,quantity,status)values
 (12,13,1,1);
 
 /*quản lí đơn hàng*/
-select prod_orders.prod_id,orders.cus_id,product.prod_name, prod_orders.quantity from product, orders,prod_orders, bills 
+select product.prod_name, prod_orders.quantity,product.image, product.price from product, orders,prod_orders, bills 
 where bills.order_id =  orders.id and orders.id = prod_orders.order_id and prod_orders.prod_id = product.id and  orders.cus_id =1 group by prod_orders.prod_id;
