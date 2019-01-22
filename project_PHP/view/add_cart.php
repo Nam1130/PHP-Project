@@ -8,18 +8,14 @@ $quantity = $_POST['quantity'];
 
 if(isset($_SESSION['id_cus'])){
     $id_cus =  $_SESSION['id_cus'];
-} 
+}else{
+    echo "Đăng Nhập Trước Khi Mua Hàng!";
+}
 
  //oder id
  if(isset($_SESSION['id_oder'])){
     $order_id = $_SESSION['id_oder'];
 }
-
-
-
-
-
-
 
 // kiểm tra sản phẩm trùng giỏ hàng khồng
 $sql = 'select prod_orders.prod_id,prod_orders.quantity from
@@ -53,7 +49,7 @@ foreach ($quantityArr as $key => $value) {
         $quan = $quan + $quantity;
         $sql = "UPDATE prod_orders SET quantity = '$quan' WHERE prod_id = '$id' and order_id = '$order_id'";
         $db->excute($sql);
-       
+        
     }else{
           
         $db->orders($order_id, $id_cus , date('Y-m-d'),1);

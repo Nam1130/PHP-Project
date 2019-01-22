@@ -318,7 +318,7 @@
         
     
 
-        <div style = "margin-top: 30px;position: fixed;bottom: 0;width: 100%;" class="row">
+        <div style = "margin-top: 30px;bottom: 0;width: 100%;" class="row">
             <?php require('bottom.php'); ?>
         </div>
 

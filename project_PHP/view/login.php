@@ -62,7 +62,7 @@
  $message = ''; 
 
       if(isset($_POST["submit"]))  
-       {  
+       {    
 
             $ahihidongoc = $_POST['password'];
 
@@ -77,11 +77,16 @@
             if($data->required_validation($login_data))  
             {
                  if($data->can_login('customer', $login_data)==1)  
-                 {  
+                 {    
                    
                       header("location:index.php"); 
                       $_SESSION['name'] =  $login_data['user_name'];
-                      
+                      $sql  = 'select max(id) from orders';
+                    $order = $data->view($sql);
+                    foreach ($order as $key => $value) {
+                        $order_id = $value['max(id)'];
+                    }
+                    $_SESSION['id_oder'] = $order_id+1;
                      
                  }  
                  else  
@@ -157,7 +162,7 @@
                             </div>
                             
                             <div class="row">
-                                <a  href="#" class="fa fa-google"></a>
+                                <a  href="login-with-google/index.php" class="fa fa-google"></a>
                             </div>
                             
                         </div>

@@ -41,7 +41,7 @@
                         if(isset($_SESSION['cus_name'])){
                             ?>
                               <a href="taikhoan.php"><?php echo $_SESSION['cus_name'] ; ?> <i  class="glyphicon glyphicon-user  hvr-grow a"></i></a>
-                              <a style="width: 30%;" href="#news">Đăng Xuất<i class="glyphicon glyphicon-log-in hvr-grow a"></i></a>
+                              <a style="width: 30%;" href="logOut.php">Đăng Xuất<i class="glyphicon glyphicon-log-in hvr-grow a"></i></a>
                             <?php
                                 
                         }else{

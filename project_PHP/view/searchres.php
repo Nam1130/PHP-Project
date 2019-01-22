@@ -1,5 +1,5 @@
 <?php
-  $conn = mysqli_connect("localhost", "root", "", "db");
+  $conn = mysqli_connect("localhost:3307", "root", "", "db");
   
   if(mysqli_connect_errno())
   {
@@ -32,7 +32,6 @@
 
 
      <?php
-
           session_start();
          require "../model/card.php";
          $db=new card; 
@@ -42,28 +41,21 @@
          $dhMy=array(); 
          $sql = "SELECT name FROM provided WHERE address  =  'Mĩ'";
          $dhMy = $db->view($sql);
-
          $dhDuc=array(); 
          $sql = "SELECT name FROM provided WHERE address  =  'Đức'";
          $dhDuc = $db->view($sql);
-
          $dhThuySy=array(); 
          $sql = "SELECT name FROM provided WHERE address  =  'Thụy Sỹ'";
          $dhThuySy = $db->view($sql);
-
          $dhNhat=array(); 
          $sql = "SELECT name FROM provided WHERE address  =  'Nhật'";
          $dhNhat = $db->view($sql);
-
-
          $cate=array(); 
          $sql = "SELECT cat_name FROM category";
          $cate = $db->view($sql);
-
          if(isset($_SESSION['cus_name'])){
            $cus_name = $_SESSION['cus_name'];
          }
-
     ?>
 
  <div id="wapper">
@@ -74,7 +66,6 @@
 
              <?php
                    require_once "top.php";
-
               ?>
 
             </div>  //header
@@ -87,9 +78,7 @@
                     </h2>
                   
                     <?php
-
                     $output = ' ';
-
                     if($_POST['term'] !== "" )
                       { 
                          $searchq = $_POST['term']; 
@@ -112,7 +101,6 @@
                                 
                                 $idSp = $row['id'];
                                 $cateId = $row['category_id'];
-
                                  ?>
                                  
                                  <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 product">
@@ -139,9 +127,7 @@
                                     </div><?php    
                 
                               }
-
                           } 
-
                       } else {
                               print("$output");
                               mysqli_close($conn);

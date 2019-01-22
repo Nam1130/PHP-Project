@@ -100,52 +100,49 @@
          foreach ($arr as $key => $value) {
             $arrId[] = $value['prod_id'];
         }
-#
-//lấy số lượng sản phẩm này trong giỏ hàng
-        $quan;
-        $sql = 'select prod_orders.quantity from
-        product,prod_orders,orders where product.id = prod_orders.prod_id 
-       and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus.'. and prod_orders.prod_id ='.$idProduct;
-       $quantityArr = $db->view($sql);
-       foreach ($quantityArr as $key => $value) {
-        $quan = $value['quantity'];
-    }
-    //oder id
-    if(isset($_SESSION['id_oder'])){
-        $order_id = $_SESSION['id_oder'];
-    }  
-
-
-        if(isset($_POST['addCard'])) 
-        { 
-            if (!in_array($idProduct, $arrId)) {
-                $db->orders($order_id, $id_cus , date('Y-m-d'),1);
-                $db->prod_orders($prod_id, $order_id,1,1);
-                // $sql  = 'select max(id) from orders';
-                // $order = $db->view($sql);
-                // foreach ($order as $key => $value) {
-                //     $order_id = $value['max(id)'];
-                // }
-                $_SESSION['card']= array(
+// #
+// //lấy số lượng sản phẩm này trong giỏ hàng
+//         $quan;
+//         $sql = 'select prod_orders.quantity from
+//         product,prod_orders,orders where product.id = prod_orders.prod_id 
+//        and prod_orders.status = 1 and prod_orders.order_id = orders.id and orders.cus_id ='. $id_cus.'. and prod_orders.prod_id ='.$idProduct;
+//        $quantityArr = $db->view($sql);
+//        foreach ($quantityArr as $key => $value) {
+//         $quan = $value['quantity'];
+//     }
+//     //oder id
+//     if(isset($_SESSION['id_oder'])){
+//         $order_id = $_SESSION['id_oder'];
+//         if(isset($_POST['addCard'])) 
+//         { 
+//             if (!in_array($idProduct, $arrId)) {
+//                 $db->orders($order_id, $id_cus , date('Y-m-d'),1);
+//                 $db->prod_orders($prod_id, $order_id,1,1);
+              
+//                 $_SESSION['card']= array(
     
-                        'prod_id' => $prod_id,
-                        'order_id' =>$order_id,
-                        'sl' => 1,
-                        'id_cus'=> $id_cus 
-                    );
+//                         'prod_id' => $prod_id,
+//                         'order_id' =>$order_id,
+//                         'sl' => 1,
+//                         'id_cus'=> $id_cus 
+//                     );
                
-            }else{
-               $quan = $quan +1;
-                $sql = "UPDATE prod_orders SET quantity = '$quan' WHERE prod_id = $idProduct";
-                $db->excute($sql);
-            }
+//             }else{
+//                $quan = $quan +1;
+//                 $sql = "UPDATE prod_orders SET quantity = '$quan' WHERE prod_id = $idProduct";
+//                 $db->excute($sql);
+//             }
 
-            
+//         }
+       
+//     }else{
+//         if(isset($_POST['addCard'])) 
+//         { 
+//             header('Location: login.php');
+//         }
+//     }
 
-          
-            
-            
-        }
+
        
         
 
@@ -250,6 +247,7 @@
                                 <!-- <form action="" method="POST" role="form">
                                     <button type="submit" name = "addCard"class="btn btn-lg btn-danger" style="width: 90%">THÊM VÀO GIỎ</button>
                                 </form> -->
+                                
                                 <a style = "margin-left: 100px;" href="#" data-role="addCart" data-id="<?php echo $prod_id;  ?> " name = "addCard" class="btn btn-lg btn-danger">THÊM VÀO GIỎ</a>
                                 
                               
@@ -541,8 +539,9 @@
                 $(document).on('click','a[data-role=addCart]',function(){
                         var id  = $(this).data('id');
                         id= id.trim();
-                        addCart(id,1);  
                         
+                        addCart(id,1);  
+                       
                 
                     });
 

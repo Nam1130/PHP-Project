@@ -144,6 +144,7 @@
 
                     <h2 style="text-align: center">
                         <b style="color: red;font-size: 40px;">SẢN PHẨM MỚI</b>
+                        
                     </h2>
 
                     <?php

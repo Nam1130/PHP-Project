@@ -106,7 +106,7 @@
                         <span id="errpass">Mật khẩu:</span>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="Password" name="password" id="input_pass" class="form-control" value="" pattern="^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$" required>
+                        <input type="Password" name="password" id="input_pass" class="form-control" value="" >
                 
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                         <span id="errname">Địa Chỉ:</span>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="text" name="address" id="input_name" class="form-control" value="" pattern="^[a-zA-Z0-9 ]*$" required>
+                        <input type="text" name="address" id="input_name" class="form-control" value="">
                     </div>
                 </div>
                 <div class="row">
@@ -125,7 +125,7 @@
                         <span id="errname">Số Điện Thoại:</span>
                     </div>
                     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                        <input type="text" name="phone" id="input_name" class="form-control" value="" pattern="\S[0-9]{9}$" required>
+                        <input type="text" name="phone" id="input_name" class="form-control" value="" >
                     </div>
                 </div>
 

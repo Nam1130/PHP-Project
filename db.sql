@@ -48,10 +48,10 @@ create table if not exists customer (
 id int(11) not null auto_increment,
 cus_name varchar(255) not null,
 user_name varchar(255) not null,
-password varchar(255) not null,
+password varchar(255) ,
 address varchar(255),
 email varchar(255) not null unique,
-sdt varchar(15) not null,
+sdt varchar(15) ,
 primary key (id)
 );
 
