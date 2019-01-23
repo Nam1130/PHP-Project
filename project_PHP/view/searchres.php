@@ -1,11 +1,5 @@
 <?php
-  $conn = mysqli_connect("localhost", "root", "", "db");
-  
-  if(mysqli_connect_errno())
-  {
-    echo "Failed to connect: " . mysqli_connect_error();
-  }  
-  
+  include("database.php");
 ?>
 
 <!DOCTYPE html>
@@ -121,10 +115,7 @@
                                             <img src="<?php echo $image; ?>" class="img-responsive hvr-pulse" alt="Image">
                                         </a>
                                     </div>
-
-                                 
-                        
-                                   
+ 
                                     <div class="caption">
                                         <h3><?php echo $prod_name?> </h3>
                                         <div class="cost"><?php echo $price;?></div>

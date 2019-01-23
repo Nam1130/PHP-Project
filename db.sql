@@ -325,3 +325,8 @@ insert into bills(order_id,imported_date,price,address,status)values
 
 
 
+select prod_orders.prod_id,orders.id,orders.cus_id,product.prod_name, product.price, prod_orders.quantity,customer.cus_name from customer, product, orders,prod_orders, bills 
+where bills.order_id =  orders.id and orders.id = prod_orders.order_id and prod_orders.prod_id = product.id and  orders.id =1 and  orders.cus_id= customer.id group by prod_orders.prod_id;
+
+
+select customer.cus_name, orders.id from customer, orders, bills where customer.id = orders.cus_id and orders.id = bills.order_id;
