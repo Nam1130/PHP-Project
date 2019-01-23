@@ -57,14 +57,7 @@
 
 
 //xoa
-        if (isset($_GET['idBill']))
-	    {
-            $idBill = $_GET['idBill'];
-            $sql = "DELETE  FROM bills WHERE id  = " . $id;
-            $db->excute($sql);
-            $arr=array(); 
-            $arr=$db->display("product"); 
-        }
+      
     ?>
 
 
@@ -181,16 +174,6 @@
       </div>
     </div>
  
-
-
-
-
-  
-
-
-
-
-
   </div>
 
 </body>

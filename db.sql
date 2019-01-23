@@ -333,3 +333,11 @@ where bills.order_id =  orders.id and orders.id = prod_orders.order_id and prod_
 
 
 select customer.cus_name, orders.id from customer, orders, bills where customer.id = orders.cus_id and orders.id = bills.order_id;
+
+SELECT distinct details.brand FROM details, product WHERE product.id = details.prod_id and category_id = '1' GROUP BY brand;
+
+SELECT distinct details.color FROM details, product WHERE product.id = details.prod_id and category_id = '1' GROUP BY color;
+
+SELECT distinct details.strap FROM details, product WHERE product.id = details.prod_id and category_id = '1' GROUP BY strap;
+
+SELECT distinct details.brand, details.glass, details.machine FROM product,details WHERE product.id = details.prod_id and product.category_id = '1'
