@@ -240,7 +240,7 @@
                                 <h4>Phân Loại: <?php  echo $cat_name; ?></h4>
                             </div>
                             <div class="row">
-                                <h3><?php   echo $price; ?> ₫</h3>
+                                <h3><?php   echo number_format($price); ?> ₫</h3>
                             </div>
                             <div class="row">
                                 <p><?php echo $note1; ?> </p>
