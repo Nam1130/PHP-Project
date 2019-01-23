@@ -1,0 +1,235 @@
+
+#wapper{
+  /* font-size: 1.1vw; */
+  margin-left: 0px;
+}
+.fixtop{
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: aliceblue;
+  width: 100%;
+
+}
+
+
+.carousel-caption h2{
+  color: red;
+}
+.bar{
+  margin-top: 5px;
+  float: right;
+  margin-right: 20px;
+ 
+}
+.bar a{
+  padding-right:25px; 
+  color: black;
+  width: 30%;
+}
+ul li a{
+  color: #000;
+}
+.unstyled h4{
+  color: dodgerblue;
+}
+.bar i{
+  padding-right: 0px 3px 0px 3px;
+}
+.na1{
+  padding-top : 10px;
+  border-top:1px solid #000;
+}
+ul.menu1 li a, ul.menu-sub li a{
+  color: black;
+}
+
+
+.menu{
+  position: relative;
+  display: inline-block;
+
+}
+
+.menu-sub, .menu-sub-full {
+  position: absolute;
+  display: none;
+  list-style: none;
+  text-decoration: none;
+  background-color: azure;
+  z-index: 1000;
+
+}
+.menu-sub-full li{
+  width: 1280px;
+}
+.menu-sub li{
+  width: 120px;
+}
+ul li a:hover{
+  color: rgb(253, 0, 0);
+}
+
+.menu2:hover .menu-sub,.menufull:hover .menu-sub-full {
+  display: block;
+
+}
+.menu-sub li:hover, .menu-sub li a:hover{
+  background-color:aliceblue;
+ 
+}
+ul.menu li {
+  /* padding-right: 15px 20px; */
+  /* width: 130px; */
+  text-align: center;
+  padding: 0px 5px 0px 5px;
+}
+ul.unstyled li{
+  width: 200px;
+}
+ul.unstyled li {
+  list-style: none;
+  text-decoration: none;
+  padding: 0px 10px 10px 0px;
+  text-align: left;
+}
+.search{
+  padding: 12px 5px 10px 0px;
+  width: 70%;
+}
+ul li.congcu,ul li.search2{
+  display: none;
+}
+.navbar-default .navbar-nav>li>a: hover{
+  color: red;
+}
+.bar .icon{
+  display:none;
+}
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+  z-index: 2;
+  margin-left: -1px;
+  margin-top: 0px;
+ 
+}
+/* content */
+.product{
+  padding-top: 10px;
+ padding-left: 10px;
+  padding-right: 10px;
+ padding-bottom: 15px;
+}
+.bt-cost button{
+  width: 70%;
+  margin: 5px;
+  padding: 4px;
+  height: 40px;;
+}
+.caption, .main.product{
+  text-align: center;
+}
+.cost{
+  color: red;
+  font-size: 16px;
+}
+
+.btpro{
+  width: 45%;
+}
+#content{
+  /* border-bottom:1px solid #000; */
+ 
+}
+/* footer */
+#footer{
+  padding-top: 20px;
+  border-top:1px solid #000;
+  text-align: center;
+}
+
+
+/* gio hàng*/
+#cart,#cart2{
+  color: red;
+  font-size: 17px;
+  
+}
+.modalform div{
+   
+      margin-top: 10px;
+    
+}
+
+/*=====================================display cart====================================*/
+.xemGioHang{
+  margin-top: 180px;
+}
+
+.title{
+    text-align: center;
+    color: red;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 25px;
+}
+/* man watches      */
+.thuonghieu button {
+  margin-left: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  width: 80%;
+  border: 1px solid black;
+}
+
+/* Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+
+
+@keyframes hvr-pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.hvr-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+
+.infor{
+  border: 1px solid blanchedalmond;
+}
